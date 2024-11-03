@@ -1,17 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
+import RootLayout from './layout/RootLayout'
+import Home from './pages/Home'
+import SignUp from './auth/SignUp'
+import Login from './auth/Login'
+import ProtectedRoute from './auth/ProtectedRoute'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const router = createBrowserRouter([
+    // {
+    //   path: "/",
+    //   element: <Home />
+    // },
+    // {
+    //   path: "/sidebar",
+    //   element: <Sidebar />
+    // },
+    // {
+    //   path: "/navbar",
+    //   element: <Navbar />
+    // },
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [ // takes an array of objects...
+        {
+          index: true,
+          // path: "home",
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "signup",
+          element: <SignUp />
+        },
+        {
+          path: "login",
+          element: <Login />
+        },
+      ]
+    }
+  ])
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
