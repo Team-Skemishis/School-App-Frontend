@@ -17,13 +17,15 @@ const SignUp = () => {
       const lastName = formData.get("lastName");
       const email = formData.get("email");
       const password = formData.get("password");
+      const role = formData.get("role");
 
       // passing payload to the API...
       const payload = {
         firstName,
         lastName,
         email,
-        password
+        password,
+        role
       }
 
       // calling the API to sign up...
@@ -62,6 +64,14 @@ const SignUp = () => {
             </div>
             <div>
               <input type="password" name="password" required id="password" placeholder='Enter a secure password...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 mb-1" />
+            </div>
+            <div>
+              <select name="role" id="role" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1">
+                <option value="" disabled defaultValue={"Select your role..."}>Select your role...</option>
+                <option value="admin">Admin</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+              </select>
             </div>
             <button type="submit" className="w-full bg-[#0E345A] text-white py-3 rounded-lg hover:bg-[#0e345ade] transition-colors my-5">
               {loading ? "Loading..." : "Sign Up"}

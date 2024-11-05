@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
 import { Outlet } from 'react-router-dom'
 
+// eslint-disable-next-line no-unused-vars
 const RootLayout = ({ children }) => {
     const [darkMode, setDarkMode] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -18,16 +20,11 @@ const RootLayout = ({ children }) => {
 
     return (
         <div className={`${darkMode && "dark"}`}>
-            <Navbar
-                darkMode={darkMode}
-                toggleDarkMode={toggleDarkMode}
-                toggleSidebar={toggleSidebar} />
-            <div className='flex'>
-                <Sidebar isSidebarOpen={isSidebarOpen} />
-                <div >
-                    <Outlet />
-                    <Footer />
-                </div>
+            <Sidebar isSidebarOpen={isSidebarOpen} />
+            <div className='flex-1 sm:ml-48' >
+                <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleSidebar={toggleSidebar} />
+                <Outlet />
+                <Footer />
             </div>
 
         </div>

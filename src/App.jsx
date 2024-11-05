@@ -2,32 +2,39 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import RootLayout from './layout/RootLayout'
 import Home from './pages/Home'
-import SignUp from './auth/SignUp'
 import Login from './auth/Login'
 import ProtectedRoute from './auth/ProtectedRoute'
-
+import LandingPage from './pages/landingPage/LandingPage'
+import AdminRegister from './auth/AdminRegister'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import TeacherDashboard from './pages/teacher/TeacherDashboard'
+import SidebarComponent from './components/Sidebar'
+import StudentDashboard from './pages/student/StudentDashboard'
 function App() {
 
   const router = createBrowserRouter([
-    // {
-    //   path: "/",
-    //   element: <Home />
-    // },
-    // {
-    //   path: "/sidebar",
-    //   element: <Sidebar />
-    // },
-    // {
-    //   path: "/navbar",
-    //   element: <Navbar />
-    // },
     {
       path: "/",
+      element: <LandingPage />
+    },
+    {
+      path: "/register",
+      element: <AdminRegister />
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/sidebarr",
+      element: <SidebarComponent />
+    },
+    {
+      path: "/system",
       element: <RootLayout />,
-      children: [ // takes an array of objects...
+      children: [
         {
           index: true,
-          // path: "home",
           element: (
             <ProtectedRoute>
               <Home />
@@ -35,13 +42,45 @@ function App() {
           )
         },
         {
-          path: "signup",
-          element: <SignUp />
+          path: "admin",
+          element: (
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          )
         },
         {
-          path: "login",
-          element: <Login />
+          path: "teachers",
+          element: (
+            <ProtectedRoute>
+              <TeacherDashboard />
+            </ProtectedRoute>
+          )
         },
+        {
+          path: "students",
+          element: (
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          )
+        },
+        // {
+        //   path: "parents",
+        //   element: (
+        //     <ProtectedRoute>
+        //       <TeacherDashboard />
+        //     </ProtectedRoute>
+        //   )
+        // },
+        // {
+        //   path: "assignments",
+        //   element: (
+        //     <ProtectedRoute>
+        //       <TeacherDashboard />
+        //     </ProtectedRoute>
+        //   )
+        // },
       ]
     }
   ])
