@@ -10,6 +10,7 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import TeacherDashboard from './pages/teacher/TeacherDashboard'
 import SidebarComponent from './components/Sidebar'
 import StudentDashboard from './pages/student/StudentDashboard'
+import UserDetails from './pages/admin/UserDetails'
 function App() {
 
   const router = createBrowserRouter([
@@ -26,8 +27,8 @@ function App() {
       element: <Login />
     },
     {
-      path: "/sidebarr",
-      element: <SidebarComponent />
+      path: "/users/:id",
+      element: <UserDetails />
     },
     {
       path: "/system",
@@ -37,7 +38,7 @@ function App() {
           index: true,
           element: (
             <ProtectedRoute>
-              <Home />
+              <AdminDashboard />
             </ProtectedRoute>
           )
         },

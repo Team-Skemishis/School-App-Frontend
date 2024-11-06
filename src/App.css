@@ -19,12 +19,16 @@
 
 .logo-prop {
   width: 120px;
-  height: auto;
+  height: min-content;
+  /* object-fit: contain;
+  align-items: center;
+  justify-content: center; */
+  align-self: center;
   transition: transform 0.3s ease-in-out;
   opacity: 0.5;
 }
 
 .logo-prop:hover {
-  transform: scale(1.2);
+  transform: scale(1.4);
   opacity: 1;
 }

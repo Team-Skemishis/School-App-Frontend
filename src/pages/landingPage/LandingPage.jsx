@@ -246,7 +246,7 @@ export default function LandingPage() {
                 <div className="trusted-partners py-10 bg-white text-center">
                     <h2 className="text-3xl md:text-5xl font-bold mb-10 font-arima">Trusted Partners</h2>
                     <div className="overflow-hidden relative">
-                        <div className="flex animate-marquee space-x-8">
+                         <div className="flex space-x-8"> {/*animate-marquee */}
                             <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
                             <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
                             <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
