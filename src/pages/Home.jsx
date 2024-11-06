@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../services/config';
+import GetUsersComponent from './admin/GetUsersComponent';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Home = () => {
     return (
         <div className="p-5">
             <h2>Home Page!</h2>
+            <GetUsersComponent />
             <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi at enim dolorem molestias odit amet quia, eligendi quasi libero esse hic dicta necessitatibus aliquam accusantium, tenetur consectetur quidem autem accusamus!
             </p>

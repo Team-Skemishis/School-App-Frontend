@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
 import logo from '../../assets/images/wink.gif'
+import schoolBuilding from '../../assets/images/schooll.svg'
 import mobile from '../../assets/images/downloadPhoneApp.png'
 import responsiveImage from '../../assets/images/responsiveImage.png'
 import uenrLogo from '../../assets/images/schoolLogos/UENR-logo.png'
 import ciscoLogo from '../../assets/images/schoolLogos/cisco.jpg'
 import knustLogo from '../../assets/images/schoolLogos/knust.png'
-import { ChevronLeft, ChevronRight, ArrowRight, CircleDollarSign, LayoutDashboard, MonitorSmartphone, CloudDownload, HeartHandshake, MessageCircle, ChartLine, ShieldCheck, Facebook, Twitter, Linkedin } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight, CircleDollarSign, LayoutDashboard, MonitorSmartphone, CloudDownload, HeartHandshake, MessageCircle, ChartLine, ShieldCheck, Facebook, Twitter, Linkedin, Mail, Phone, Map } from 'lucide-react'
 
 
 export default function LandingPage() {
@@ -97,7 +98,7 @@ export default function LandingPage() {
                         <img src={logo} alt="EduBridge Logo" className="h-10 w-10" />
                         <span className="text-2xl font-bold text-theme-color font-righteousStatic">EduBridge</span>
                     </Link>
-                    <nav className="hidden md:flex space-x-6">
+                    <nav className="hidden md:flex space-x-8 text-nowrap shrink-0">
                         <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             Home
                         </ScrollLink>
@@ -114,38 +115,46 @@ export default function LandingPage() {
                             Contact
                         </ScrollLink>
                     </nav>
-                    <Link to="/register" className="bg-theme-color text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+                    <Link to="/register" className="bg-theme-color text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 text-nowrap">
                         Get Started
                     </Link>
                 </div>
             </header>
 
             {/* Hero Section */}
-            <section id="home" className="hero h-screen flex flex-wrap justify-center  items-center pb-12 bg-gradient-to-r from-blue-500 to-blue-700 text-white">
-                <div className="w-1/2 flex justify-end items-center s">
-                    <img src={responsiveImage} alt="Responsive Design" className="max-w-md" />
-                </div>
-                <div className="container mx-auto px-4 flex flex-col items-start text-left w-1/2">
-                    <h1 className="text-2xl md:text-5xl font-bold mb-8 font-arima">Empowering Schools with Simplified Management</h1>
-                    <p className="text-lg md:text-xl mb-8 max-w-3xl">
-                        Your all-in-one platform to streamline school operations and foster communication across every level—Admin, Teacher, Student, and Parent. <br /><br /> And it&apos;s <span className='font-bold'>100%</span> free to use!
-                    </p>
-                    <div className="flex space-x-4">
-                        <Link to="/register" className="bg-white text-theme-color px-5 py-2 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">
-                            Get Started Today
-                        </Link>
-                        <ScrollLink to="features" smooth={true} duration={1500} className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-lg font-semibold hover:bg-white hover:text-theme-color transition duration-300">
-                            Learn More
-                        </ScrollLink>
+            <section id="home" className="hero h-screen bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+                <div className='flex flex-col md:flex-row justify-end items-center gap-5 mt-24 sm:mt-16 md:mt-32 p-10'>
+                    <div className="w-full md:w-1/2 flex justify-center md:justify-end items-center">
+                        <img src={responsiveImage} alt="Responsive Design" className="w-4/5 sm:w-3/4 md:w-full" />
+                    </div>
+                    <div className="w-full md:w-1/2 container mx-auto flex flex-col items-center md:items-start text-center md:text-left">
+                        <div>
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold sm:mb-4 mb-2 font-arima">Empowering Schools with Simplified Management</h1>
+                            <p className="text-base sm:text-lg md:text-xl max-w-3xl">
+                                Your all-in-one platform to streamline school operations and foster communication across every level—Admin, Teacher, Student, and Parent.
+                            </p>
+                            <p className='text-base sm:text-lg md:text-xl mb-8 max-w-3xl mt-3 sm:mt-4 md:mt-5 lg:mt-6'>
+                                And it&apos;s <span className='font-bold'>100%</span> free to use!
+                            </p>
+                        </div>
+                        <div className="flex sm:space-x-4 space-x-2">
+                            <Link to="/register" >
+                                <span className="bg-white text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap">Get Started Today</span>
+                            </Link>
+                            <ScrollLink to="features" smooth={true} duration={1500} >
+                                <span className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-white hover:text-theme-color text-nowrap cursor-pointer">Learn More</span>
+                            </ScrollLink>
+                        </div>
                     </div>
                 </div>
+
             </section>
 
             {/* Key Features Section */}
-            <section id="features" className="py-16 bg-gray-100">
+            <section id="features" className="sm:py-20 py-5 bg-gray-100">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-arima">Key Features</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <h2 className="text-3xl md:text-5xl font-bold text-center sm:mb-12 mb-5 font-arima">Key Features</h2>
+                    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature, index) => (
                             <div
                                 key={index}
@@ -154,7 +163,7 @@ export default function LandingPage() {
                             >
                                 <div className='flex md:gap-2 md:mb-2 items-center space-x-2'>
                                     <p className='text-theme-color' size={32}>{feature.icon}</p>
-                                    <h3 className="text-2xl font-semibold mb-3 text-theme-color self-end">{feature.title}</h3>
+                                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-theme-color self-end">{feature.title}</h3>
                                 </div>
                                 <p className="text-gray-600">{feature.description}</p>
                             </div>
@@ -164,7 +173,7 @@ export default function LandingPage() {
             </section>
 
             {/* How It Works Section */}
-            <section id="how-it-works" className="py-16 bg-white">
+            <section id="how-it-works" className="sm:py-20 py-5 bg-white">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 font-arima">How It Works</h2>
                     <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
@@ -202,12 +211,12 @@ export default function LandingPage() {
             </section>
 
             {/* Testimonials Section */}
-            <section id="testimonials" className="py-16 bg-gray-100">
-                <div className="container mx-auto px-4 ">
+            <section id="testimonials" className="sm:pt-20 pt-5 bg-gray-100">
+                <div className="container mx-auto px-4 pb-20 ">
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 font-arima">Some words from our happy schools</h2>
-                    <div className="relative max-w-3xl mx-auto border-[0.1px] border-theme-color py-12 rounded-tl-3xl rounded-br-3xl">
-                        <span className='font-bold text-theme-color text-6xl absolute top-5 left-2 font-serif italic'>&quot;</span>
-                        <div className="overflow-hidden">
+                    <div className="relative max-w-3xl mx-auto px-12">
+                        <span className='font-bold text-theme-color text-6xl absolute top-2 left-14 font-serif italic'>&quot;</span>
+                        <div className="overflow-hidden border-[0.1px] border-theme-color rounded-tl-3xl rounded-br-3xl p-6">
                             <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}>
                                 {testimonials.map((testimonial, index) => (
                                     <div key={index} className="w-full flex-shrink-0 px-4 ">
@@ -218,6 +227,7 @@ export default function LandingPage() {
                                     </div>
                                 ))}
                             </div>
+                            <span className='font-bold text-theme-color text-6xl absolute bottom-2 right-14 font-serif italic'>&quot;</span>
                         </div>
                         <button
                             onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
@@ -233,7 +243,7 @@ export default function LandingPage() {
                         </button>
                     </div>
                 </div>
-                <div className="trusted-partners py-16 bg-white text-center">
+                <div className="trusted-partners py-10 bg-white text-center">
                     <h2 className="text-3xl md:text-5xl font-bold mb-10 font-arima">Trusted Partners</h2>
                     <div className="overflow-hidden relative">
                         <div className="flex animate-marquee space-x-8">
@@ -260,36 +270,81 @@ export default function LandingPage() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="py-16 bg-white">
+            <section id="contact" className="sm:py-20 py-5 bg-white">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 font-arima">Contact Us</h2>
-                    <div className="max-w-lg mx-auto">
-                        <p className="text-center mb-8">
-                            Have questions or need assistance? Our support team is here to help!
-                        </p>
-                        <div className="flex justify-center space-x-4 mb-8">
-                            <a href="mailto:support@edubridge.com" className="text-theme-color hover:text-blue-800">
-                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                            </a>
-                            <a href="https://twitter.com/edubridge" target="_blank" rel="noopener noreferrer" className="text-theme-color hover:text-blue-800">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                                </svg>
-                            </a>
-                            <a href="https://www.facebook.com/edubridge" target="_blank" rel="noopener noreferrer" className="text-theme-color hover:text-blue-800">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438  9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                                </svg>
-                            </a>
+                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-5 font-arima">Contact Us</h2>
+                    <div className="flex flex-col md:flex-row  justify-around gap-12 w-full">
+                        <div className="w-full md:w-1/2">
+                            <p className='text-start text-theme-color font-bold text-xl mb-5'>Send us a message...</p>
+                            <form action="" className=" rounded-lg space-y-2">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-theme-color">First name *</label>
+                                        <input type="text" placeholder='First Name' className="w-full p-2 rounded border border-gray-300" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-theme-color">Last name *</label>
+                                        <input type="text" placeholder='Last Name' className="w-full p-2 rounded border border-gray-300" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-theme-color">Email *</label>
+                                        <input type="email" placeholder='Email' className="w-full p-2 rounded border border-gray-300" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-theme-color">Phone</label>
+                                        <input type="text" placeholder='Phone' className="w-full p-2 rounded border border-gray-300" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-theme-color">Message *</label>
+                                    <textarea name="" id="" cols="10" rows="2" placeholder='Message' className="w-full p-2 rounded border border-gray-300"></textarea>
+                                </div>
+                                <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Send Message</button>
+                            </form>
+                        </div>
+                        <div className="w-full md:w-1/2 flex flex-col space-y-4 mb-8">
+                            <p className='text-start text-theme-color font-bold text-xl mb-5'>Reach out to us...</p>
+                            <div className="contact-item flex gap-4 items-center">
+                                <div className='border-2 border-theme-color rounded-xl p-2'>
+                                    <Phone className='text-theme-color' size={24} />
+                                </div>
+                                <div className="contact-text">
+                                    <p className="text-theme-color">Phone</p>
+                                    <a className="font-medium font-montserrat hover:underline" href="tel: +233555975976">
+                                        +233 555 975 976
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="contact-item flex gap-4 items-center">
+                                <div className='border-2 border-theme-color rounded-xl p-2'>
+                                    <Mail className='text-theme-color' size={24} />
+                                </div>
+                                <div className="contact-text">
+                                    <p className="text-theme-color">Email</p>
+                                    <a className="font-medium font-montserrat hover:underline" href="mailto:agyemangmichael555@gmail.com">
+                                        agyemangmichael555@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="contact-item flex gap-4 items-start">
+                                <div className='border-2 border-theme-color rounded-xl p-2'>
+                                    <Map className='text-theme-color' size={24} />
+                                </div>
+                                <div className="contact-text">
+                                    <p className="text-theme-color">Address</p>
+                                    <a className="font-medium font-montserrat hover:underline" href="https://maps.app.goo.gl/euywUBrFsdxPfyqU9">
+                                        Crown Prince Academy (Annex), <br />
+                                        Lapax, Accra - Ghana
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Mobile App Section */}
-            <section className="py-16 bg-gray-100">
+            <section className="py-10 bg-gray-100">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-5">
                         <div className="">
@@ -320,39 +375,42 @@ export default function LandingPage() {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gray-800 text-white py-12">
+            <footer className="bg-blue-300 text-black py-12">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <Link to="/" className="flex items-center space-x-2 mb-4">
                                 <img src={logo} alt="EduBridge Logo" className="h-10 w-10" />
-                                <span className="text-2xl font-bold font-righteousStatic">EduBridge</span>
+                                <span className="text-2xl font-bold text-theme-color font-righteousStatic">EduBridge</span>
                             </Link>
                             <p className="text-sm">
                                 EduBridge is the world&apos;s best and #1 ranked free online school management software. Our school management software has more features than any school software in the market.
                             </p>
+                            <div>
+                                <img src={schoolBuilding} alt="EduBridge Logo" />
+                            </div>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
+                            <h3 className="text-lg font-bold mb-4 text-theme-color border-b-2 border-theme-color w-fit">Useful Links</h3>
                             <ul className="space-y-2">
-                                <li><Link to="/about" className="hover:text-blue-400 transition duration-300">About Us</Link></li>
-                                <li><Link to="/features" className="hover:text-blue-400 transition duration-300">Features</Link></li>
-                                <li><Link to="/pricing" className="hover:text-blue-400 transition duration-300">Pricing</Link></li>
-                                <li><Link to="/support" className="hover:text-blue-400 transition duration-300">Support</Link></li>
-                                <li><Link to="/privacy" className="hover:text-blue-400 transition duration-300">Privacy Policy</Link></li>
-                                <li><Link to="/terms" className="hover:text-blue-400 transition duration-300">Terms of Service</Link></li>
+                                <li><Link to="/about" className="hover:text-white hover:underline ">About Us</Link></li>
+                                <li><Link to="/features" className="hover:text-white hover:underline ">Features</Link></li>
+                                <li><Link to="/pricing" className="hover:text-white hover:underline ">Pricing</Link></li>
+                                <li><Link to="/support" className="hover:text-white hover:underline ">Support</Link></li>
+                                <li><Link to="/privacy" className="hover:text-white hover:underline ">Privacy Policy</Link></li>
+                                <li><Link to="/terms" className="hover:text-white hover:underline ">Terms of Service</Link></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+                            <h3 className="text-lg font-bold mb-4 text-theme-color border-b-2 border-theme-color w-fit">Connect With Us</h3>
                             <div className="flex space-x-4 mb-4">
-                                <Link to="/facebook" className="hover:text-blue-400 transition duration-300">
+                                <Link to="/facebook" className="hover:text-white ">
                                     <Facebook className="w-6 h-6" />
                                 </Link>
-                                <Link to="/twitter" className="hover:text-blue-400 transition duration-300">
+                                <Link to="/twitter" className="hover:text-white ">
                                     <Twitter className="w-6 h-6" />
                                 </Link>
-                                <Link to="/linkedin" className="hover:text-blue-400 transition duration-300">
+                                <Link to="/linkedin" className="hover:text-white ">
                                     <Linkedin className="w-6 h-6" />
                                 </Link>
                             </div>

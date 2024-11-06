@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/images/wink.gif';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Bell, Calendar, ChevronDown, FileText, Home, LogOut, MessageCircle, PieChart, Settings, Users, Users2 } from 'lucide-react';
+import { Bell, Calendar, FileText, Home, LogOut, MessageCircle, PieChart, Settings, Users, Users2, SquareUserRound } from 'lucide-react';
 import { logout } from '../services/config';
 
 // Define sections with titles and items
@@ -14,7 +14,7 @@ const sections = [
             { icon: Home, label: 'Dashboard', path: '/system' },
             { icon: Users2, label: 'Teachers', path: 'teachers' },
             { icon: Users, label: 'Students', path: 'students' },
-            { icon: Users, label: 'Parents', path: 'parents' },
+            { icon: SquareUserRound, label: 'Parents', path: 'parents' },
         ]
     },
     {
@@ -78,7 +78,7 @@ const Sidebar = ({ isSidebarOpen = true }) => {
                             </Link>
                         ))}
                         {/* Divider between sections */}
-                        {sectionIndex < sections.length - 1 && <hr className="border-t border-gray-300 dark:border-gray-600 my-2" />}
+                        {sectionIndex < sections.length - 1 && <hr className="border-t border-gray-300 dark:border-gray-600 mb-2" />}
                     </div>
                 ))}
                 {/* Settings and Logout */}

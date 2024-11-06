@@ -73,7 +73,9 @@ const AdminRegister = () => {
                                 <option value="student">Student</option>
                             </select>
                         </div>
-                        <button type="submit" className="w-full bg-[#0E345A] text-white py-3 rounded-lg hover:bg-[#0e345ade] transition-colors my-5">
+                        <button type="submit" className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"
+                            }`}
+                            disabled={loading}>
                             {loading ? "Loading..." : "Sign Up"}
                         </button>
                     </div>

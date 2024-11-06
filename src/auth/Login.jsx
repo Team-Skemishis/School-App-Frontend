@@ -67,11 +67,13 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#0E345A] text-white py-3 rounded-lg hover:bg-[#0e345ade] transition-colors mb-5"
+            className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"
+              }`}
             disabled={loading}
           >
             {loading ? "Loading..." : "Login"}
           </button>
+
           <p className="text-center text-sm text-gray-600 mt-5">
             New Here?{" "}
             <Link

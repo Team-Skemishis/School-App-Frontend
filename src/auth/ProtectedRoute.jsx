@@ -2,6 +2,7 @@ import React from 'react'
 import { isAuthenticated } from '../services/config'
 import { Navigate } from 'react-router-dom'
 
+// eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
     if (!isAuthenticated()) {
         return <Navigate to="/login" />
