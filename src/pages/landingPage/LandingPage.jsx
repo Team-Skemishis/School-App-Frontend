@@ -154,11 +154,11 @@ export default function LandingPage() {
             <section id="features" className="sm:py-20 py-5 bg-gray-100">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl md:text-5xl font-bold text-center sm:mb-12 mb-5 font-arima">Key Features</h2>
-                    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className="p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                                className="p-3 sm:p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
                                 style={{ backgroundColor: feature.backgroundColor }}
                             >
                                 <div className='flex md:gap-2 md:mb-2 items-center space-x-2'>
@@ -246,7 +246,7 @@ export default function LandingPage() {
                 <div className="trusted-partners py-10 bg-white text-center">
                     <h2 className="text-3xl md:text-5xl font-bold mb-10 font-arima">Trusted Partners</h2>
                     <div className="overflow-hidden relative">
-                         <div className="flex space-x-8"> {/*animate-marquee */}
+                        <div className="flex space-x-8"> {/*animate-marquee */}
                             <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
                             <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
                             <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
