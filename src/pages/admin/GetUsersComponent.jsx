@@ -6,11 +6,48 @@ import { useNavigate } from 'react-router-dom';
 
 const GetUsersComponent = () => {
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
-    const usersPerPage = 4; // number of users per page
+    const usersPerPage = 4;
     const navigate = useNavigate();
+
+    // Fetch users on component mount
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    const fetchUsers = async () => {
+        try {
+            setLoading(true);
+            const response = await getUsers();
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+            setError('Failed to fetch users');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleDeleteUser = async (userId) => {
+        if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+            try {
+                setLoading(true);
+                await deleteUser(userId);
+                // Refresh the users list after deletion
+                await fetchUsers();
+                // Show success message (you could add a toast notification here)
+                console.log('User deleted successfully');
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                setError('Failed to delete user');
+            } finally {
+                setLoading(false);
+            }
+        }
+    };
 
     // calculating the number of users to display per page...
     const indexOfLastUser = currentPage * usersPerPage;
@@ -45,33 +82,13 @@ const GetUsersComponent = () => {
         setSortConfig({ key, direction });
     };
 
-    useEffect(() => {
-        getUsers()
-            .then(response => {
-                setUsers(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching users:', error);
-            });
-    }, []);
-
-    const viewUser = (id) => {
-        navigate(`/users/${id}`);
+    const viewUser = (_id) => {
+        navigate(`/admin/users/${_id}`);
     };
 
-    const editUser = async (id) => {
-        console.log('Edit user with ID:', id);
-        navigate(`/admin/edit-user/${id}`);
-    };
-
-    const deleteUser = async (id) => {
-        try {
-            await deleteUser(id);
-            setUsers(users.filter(user => user.id !== id));
-            console.log('User deleted successfully');
-        } catch (error) {
-            console.error('Error deleting user:', error);
-        }
+    const editUser = async (_id) => {
+        console.log('Edit user with ID:', _id);
+        navigate(`/admin/edit-user/${_id}`);
     };
 
     if (loading)
@@ -80,6 +97,11 @@ const GetUsersComponent = () => {
     return (
         <div>
             <h2 className="text-2xl font-bold mb-4">List of Users in the system...</h2>
+            {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+                    {error}
+                </div>
+            )}
             <table className="min-w-full bg-white dark:bg-gray-800 text-black dark:text-gray-200 shadow-md rounded-lg overflow-hidden">
                 <thead>
                     <tr className="bg-gray-200 dark:bg-gray-700">
@@ -112,20 +134,30 @@ const GetUsersComponent = () => {
                 </thead>
                 <tbody>
                     {sortedUsers.slice(indexOfFirstUser, indexOfLastUser).map(user => (
-                        <tr key={user.id} className="border-b border-gray-200 dark:border-gray-700">
+                        <tr key={user._id} className="border-b border-gray-200 dark:border-gray-700">
                             <td className="py-4 px-4">{user.firstName}</td>
                             <td className="py-4 px-4">{user.lastName}</td>
                             <td className="py-4 px-4">{user.email}</td>
                             <td className="py-4 px-4">{user.role}</td>
                             <td className="py-4 px-4">
                                 <div className="flex items-center space-x-2">
-                                    <button className="text-blue-500 hover:text-blue-700" onClick={() => viewUser(user._id)}>
+                                    <button 
+                                        className="text-blue-500 hover:text-blue-700" 
+                                        onClick={() => navigate(`/admin/users/${user._id}`)}
+                                    >
                                         <Eye className="w-5 h-5" />
                                     </button>
-                                    <button className="text-green-500 hover:text-green-700" onClick={() => editUser(user._id)}>
+                                    <button 
+                                        className="text-green-500 hover:text-green-700" 
+                                        onClick={() => navigate(`/admin/edit-user/${user._id}`)}
+                                    >
                                         <Edit className="w-5 h-5" />
                                     </button>
-                                    <button className="text-red-500 hover:text-red-700" onClick={() => deleteUser(user._id)}>
+                                    <button 
+                                        className="text-red-500 hover:text-red-700" 
+                                        onClick={() => handleDeleteUser(user._id)}
+                                        disabled={loading}
+                                    >
                                         <Trash className="w-5 h-5" />
                                     </button>
                                 </div>

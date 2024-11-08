@@ -1,39 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getOneUser } from '../../services/users';
-import { deleteUser } from '../../services/users';
+import { getOneStudent, deleteStudent } from '../../services/students';
 
-const UserDetails = () => {
+const StudentDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    const [student, setStudent] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchStudent = async () => {
             try {
-                const response = await getOneUser(id);
-                setUser(response.data);
+                const response = await getOneStudent(id);
+                setStudent(response.data);
             } catch (error) {
-                console.error('Error fetching user details:', error);
+                console.error('Error fetching student details:', error);
+                setError('Failed to fetch student details');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchUser();
+        fetchStudent();
     }, [id]);
 
-    const handleDeleteUser = async () => {
-        if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+    const handleDeleteStudent = async () => {
+        if (window.confirm('Are you sure you want to delete this student? This action cannot be undone.')) {
             try {
                 setLoading(true);
-                await deleteUser(id);
-                navigate('/admin/users');
+                await deleteStudent(id);
+                navigate('/admin/students');
             } catch (error) {
-                console.error('Error deleting user:', error);
-                setError('Failed to delete user');
+                console.error('Error deleting student:', error);
+                setError('Failed to delete student');
             } finally {
                 setLoading(false);
             }
@@ -41,37 +41,36 @@ const UserDetails = () => {
     };
 
     if (loading) return <div>Loading...</div>;
-
-    if (!user) return <div>User not found</div>;
+    if (!student) return <div>Student not found</div>;
 
     return (
         <div className="p-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h2 className="text-2xl font-bold mb-6">User Details</h2>
+                <h2 className="text-2xl font-bold mb-6">Student Details</h2>
                 {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                         {error}
                     </div>
                 )}
                 <div className="space-y-4">
-                    <p><strong>First Name:</strong> {user.firstName}</p>
-                    <p><strong>Last Name:</strong> {user.lastName}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Role:</strong> {user.role}</p>
+                    <p><strong>First Name:</strong> {student.firstName}</p>
+                    <p><strong>Last Name:</strong> {student.lastName}</p>
+                    <p><strong>Email:</strong> {student.email}</p>
+                    <p><strong>Role:</strong> {student.role}</p>
                 </div>
                 <div className="flex gap-4 mt-6">
                     <button
-                        onClick={() => navigate(`/admin/edit-user/${id}`)}
+                        onClick={() => navigate(`/admin/students/edit/${id}`)}
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                     >
-                        Edit User
+                        Edit Student
                     </button>
                     <button
-                        onClick={handleDeleteUser}
+                        onClick={handleDeleteStudent}
                         className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                         disabled={loading}
                     >
-                        {loading ? 'Deleting...' : 'Delete User'}
+                        {loading ? 'Deleting...' : 'Delete Student'}
                     </button>
                 </div>
             </div>
@@ -79,4 +78,4 @@ const UserDetails = () => {
     );
 };
 
-export default UserDetails;
+export default StudentDetails; 

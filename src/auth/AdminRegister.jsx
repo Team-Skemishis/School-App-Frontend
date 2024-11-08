@@ -25,7 +25,7 @@ const AdminRegister = () => {
                 lastName,
                 email,
                 password,
-                role
+                role: "admin"
             }
 
             // calling the API to sign up...
@@ -50,7 +50,7 @@ const AdminRegister = () => {
                     <p className="text-2xl font-semibold text-[#0E345A] relative pl-10 mb-8">
                         Sign Up as Admin
                         <span className="mt-[4px] absolute left-[4px] top-[5px] w-4 h-4 bg-[#0E345A] rounded-full"></span>
-                        <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse                   bg-[#0E345A] rounded-full opacity-10"></span>
+                        <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse bg-[#0E345A] rounded-full opacity-10"></span>
                     </p>
                     <div className='space-y-2'>
                         <div>
@@ -65,14 +65,14 @@ const AdminRegister = () => {
                         <div>
                             <input type="password" name="password" required id="password" placeholder='Enter a secure password...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 mb-1" />
                         </div>
-                        <div>
+                        {/* <div>
                             <select name="role" id="role" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1">
                                 <option value="" disabled defaultValue={"Select your role..."}>Select your role...</option>
                                 <option value="admin">Admin</option>
                                 <option value="teacher">Teacher</option>
                                 <option value="student">Student</option>
                             </select>
-                        </div>
+                        </div> */}
                         <button type="submit" className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"
                             }`}
                             disabled={loading}>

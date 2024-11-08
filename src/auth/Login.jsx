@@ -1,35 +1,59 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { userLogin } from '../services/auth';
+import { setAuthToken, setUserRole } from '../services/config';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError('');
 
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
+    const role = formData.get("role");
 
     try {
       setLoading(true);
-      const response = await userLogin({ email, password });
-      console.log(response.data);
+      const loginResponse = await userLogin({ email, password, role });
+      console.log('Login Response:', loginResponse);
 
-      // Navigate to the dashboard after showing the toast for 2 seconds
-      setTimeout(() => {
-        navigate("/system");
-      }, 2000); // Wait 2 seconds before navigation
+      if (loginResponse.status === 200) {
+        const { accessToken } = loginResponse.data;
+        
+        // Store token
+        setAuthToken(accessToken);
+        
+        // Store role from the form
+        const selectedRole = role.toLowerCase();
+        console.log('Selected Role:', selectedRole);
+        
+        // Store role
+        setUserRole(selectedRole);
 
-      if (response.status === 200) {
-        localStorage.setItem("token", response.data.accessToken);
-        // const profileResponse = await apiProfile();
-        // console.log(profileResponse.data);
+        // Navigate based on selected role
+        switch (selectedRole) {
+          case 'admin':
+            navigate("/admin/dashboard");
+            break;
+          case 'teacher':
+            navigate("/teacher/dashboard");
+            break;
+          case 'student':
+            navigate("/student/dashboard");
+            break;
+          default:
+            setError('Invalid user role');
+            navigate("/");
+        }
       }
     } catch (error) {
-      console.log(error)
+      console.error('Login Error:', error);
+      setError(error.response?.data?.message || 'An error occurred during login');
     } finally {
       setLoading(false);
     }
@@ -47,6 +71,25 @@ const Login = () => {
             <span className="mt-[4px] absolute left-[4px] top-[5px] w-4 h-4 bg-[#0E345A] rounded-full"></span>
             <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse bg-[#0E345A] rounded-full opacity-10"></span>
           </p>
+
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+              {error}
+            </div>
+          )}
+          <div>
+            <select 
+              name="role" 
+              id="role" 
+              required 
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1"
+            >
+              <option value="" disabled selected>Select your role...</option>
+              <option value="admin">Admin</option>
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
           <div>
             <input
               required
@@ -85,9 +128,8 @@ const Login = () => {
           </p>
         </form>
       </div>
-
     </div>
   )
 }
 
-export default Login
+export default Login;
