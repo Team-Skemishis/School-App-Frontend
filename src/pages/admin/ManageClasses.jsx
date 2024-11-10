@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllClasses, deleteClass } from '../../services/classes';
 import { Eye, Edit, Trash, ArrowUpDown, BookPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getOneUser } from '../../services/users';
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -11,6 +12,7 @@ const ManageClasses = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const classesPerPage = 4;
   const navigate = useNavigate();
+  const [teacherNames, setTeacherNames] = useState({});
 
   useEffect(() => {
     fetchClasses();
@@ -21,6 +23,21 @@ const ManageClasses = () => {
       setLoading(true);
       const response = await getAllClasses();
       setClasses(response.data);
+      
+      // Fetch teacher names for each class
+      const teacherData = {};
+      for (const classItem of response.data) {
+        if (classItem.classTeacher) {
+          try {
+            const teacherResponse = await getOneUser(classItem.classTeacher);
+            teacherData[classItem.classTeacher] = `${teacherResponse.data.firstName} ${teacherResponse.data.lastName}`;
+          } catch (error) {
+            console.error('Error fetching teacher:', error);
+            teacherData[classItem.classTeacher] = 'Unknown Teacher';
+          }
+        }
+      }
+      setTeacherNames(teacherData);
     } catch (error) {
       console.error('Error fetching classes:', error);
       setError('Failed to fetch classes');
@@ -117,7 +134,7 @@ const ManageClasses = () => {
                 <td className="py-4 px-4">{classItem.classNumber}</td>
                 <td className="py-4 px-4">{classItem.classCategory}</td>
                 <td className="py-4 px-4">
-                  {classItem.teacher ? `${classItem.teacher.firstName} ${classItem.teacher.lastName}` : 'Not Assigned'}
+                  {teacherNames[classItem.classTeacher] || 'No teacher assigned'}
                 </td>
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-2">

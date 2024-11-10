@@ -14,7 +14,7 @@ const BaseSidebar = ({ navItems, role }) => {
     };
 
     return (
-        <div className="flex flex-col w-64 bg-white dark:bg-gray-800 border-r dark:border-gray-700">
+        <div className="flex flex-col w-64 bg-white dark:bg-gray-800 border-r dark:border-gray-700 h-screen">
             {/* Header */}
             <div className="flex items-center justify-center h-16 bg-[#0E345A] dark:bg-gray-900">
                 <span className="text-white text-lg font-semibold">

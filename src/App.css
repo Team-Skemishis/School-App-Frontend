@@ -4,6 +4,18 @@
   background-position: center;
 }
 
+.signupPage {
+  background-image: url("./assets/images/classroom2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.signinPage {
+  background-image: url("./assets/images/wallpaper2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);

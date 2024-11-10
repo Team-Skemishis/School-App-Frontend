@@ -18,18 +18,21 @@ export const deleteStudent = async (id) => {
 
 export const addStudent = async (payload) => {
     const token = localStorage.getItem('token');
-    const studentData = {
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        email: payload.email,
-        password: payload.password,
-        role: "student"
+    const formData = new FormData();
+    formData.append('firstName', payload.firstName);
+    formData.append('lastName', payload.lastName);
+    formData.append('email', payload.email);
+    formData.append('password', payload.password);
+    formData.append('role', 'student');
+    formData.append('gender', payload.gender);
+    formData.append('classes', payload.classes);
+    if (payload.avatar) {
+        formData.append('avatar', payload.avatar);
     }
 
-    return await apiClient.post("/students/register", studentData, {
+    return await apiClient.post("/students/register", formData, {
         headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
         }
     });
 }

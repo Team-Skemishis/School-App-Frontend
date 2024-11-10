@@ -46,36 +46,80 @@ const TeacherDetails = () => {
     return (
         <div className="p-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h2 className="text-2xl font-bold mb-6">Teacher Details</h2>
+                <div className='flex items-center mb-6 justify-between'>
+                    <h2 className="text-2xl font-bold">Teacher Details</h2>
+                    <div className="flex gap-4 ">
+                        <button
+                            onClick={() => navigate(`/admin/users/teachers/edit-teacher/${id}`)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                            Edit Teacher
+                        </button>
+                        <button
+                            onClick={handleDeleteTeacher}
+                            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                            disabled={loading}
+                        >
+                            {loading ? 'Deleting...' : 'Delete Teacher'}
+                        </button>
+                    </div>
+                </div>
                 {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                         {error}
                     </div>
                 )}
-                <div className="space-y-4">
-                    <p><strong>First Name:</strong> {teacher.firstName}</p>
-                    <p><strong>Last Name:</strong> {teacher.lastName}</p>
-                    <p><strong>Email:</strong> {teacher.email}</p>
-                    <p><strong>Role:</strong> {teacher.role}</p>
-                    <p><strong>Gender:</strong> {teacher.gender}</p>
-                    <p><strong>Image:</strong> {teacher.image}</p>
-                    {/* Add any additional teacher-specific fields here */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-nowrap">
+                    {/* Profile Picture */}
+                    {teacher.avatar && (
+                        <div className="col-span-1">
+                            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Profile Picture</h3>
+                            <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-700">
+                                {teacher ? (
+                                    <>
+                                        <img
+                                            src={`https://savefiles.org/${teacher.avatar}?shareable_link=484`}
+                                            alt="Teacher profile"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </>
+                                ) : (
+                                    <p className="text-gray-500 dark:text-gray-400">No profile picture added yet</p>
+                                )}
+
+                            </div>
+                        </div>
+                    )}
+                    {/* Basic Information */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Basic Information</h3>
+                        <p><strong>First Name:</strong> {teacher.firstName}</p>
+                        <p><strong>Last Name:</strong> {teacher.lastName}</p>
+                        <p><strong>Email:</strong> {teacher.email}</p>
+                        <p><strong>Gender:</strong> {teacher.gender}</p>
+                        <p><strong>Role:</strong> {teacher.role}</p>
+                    </div>
+                    {/* Class Information */}
+                    <div className="space-y-4">
+                        <div>
+                            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">Academic Responsibilities</h3>
+                            <div className="mt-2 space-y-2">
+                                {teacher.classes ? (
+                                    <>
+                                        <p><strong>Class Number:</strong> {teacher.classes.classNumber}</p>
+
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className="text-gray-500 dark:text-gray-400">No class assigned</p>
+                                        <p className="text-gray-500 dark:text-gray-400">No courses assigned</p>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex gap-4 mt-6">
-                    <button
-                        onClick={() => navigate(`/admin/users/teachers/edit-teacher/${id}`)}
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                        Edit Teacher
-                    </button>
-                    <button
-                        onClick={handleDeleteTeacher}
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                        disabled={loading}
-                    >
-                        {loading ? 'Deleting...' : 'Delete Teacher'}
-                    </button>
-                </div>
+
             </div>
         </div>
     );

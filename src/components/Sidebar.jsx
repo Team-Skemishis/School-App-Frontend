@@ -44,7 +44,7 @@ const sections = [
     }
 ];
 
-const Sidebar = ({ isSidebarOpen = true }) => {
+const Sidebarr = ({ isSidebarOpen = true }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -52,7 +52,7 @@ const Sidebar = ({ isSidebarOpen = true }) => {
         navigate("/login");
     };
     return (
-        <aside className={`bg-[#F0F8FF] border-r border-gray-200 sm:translate-x-0 w-48 fixed top-0 left-0 text-nowrap h-screen text-theme-color dark:text-white dark:bg-gray-800 dark:border-gray-700 transition-transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} overflow-scroll`}>
+        <aside className={`bg-[#F0F8FF] border-r border-gray-200 sm:translate-x-0 w-48 fixed top-0 right-0 text-nowrap h-screen text-theme-color dark:text-white dark:bg-gray-800 dark:border-gray-700 transition-transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} overflow-scroll`}>
             <Link to="/">
                 <div className='flex justify-center items-center gap-3 cursor-pointer py-8 w-full sticky top-0 '>
                     <img src={logo} alt="logo-image" className='w-7' />
@@ -96,8 +96,8 @@ const Sidebar = ({ isSidebarOpen = true }) => {
     );
 };
 
-Sidebar.propTypes = {
+Sidebarr.propTypes = {
     isSidebarOpen: PropTypes.bool,
 };
 
-export default Sidebar;
+export default Sidebarr;

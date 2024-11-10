@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { deleteStudent, getStudents } from '../../services/students';
 import { Eye, Edit, Trash, ArrowUpDown, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getOneClass } from '../../services/classes';
 
 const GetStudents = () => {
     const [students, setStudents] = useState([]);
@@ -9,6 +10,7 @@ const GetStudents = () => {
     const [error, setError] = useState('');
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
+    const [classNames, setClassNames] = useState({});
     const studentsPerPage = 4;
     const navigate = useNavigate();
 
@@ -19,17 +21,26 @@ const GetStudents = () => {
     const fetchStudents = async () => {
         try {
             setLoading(true);
-            console.log('Fetching students...');
             const response = await getStudents();
-            console.log('Students Response:', response);
             setStudents(response.data || []);
+
+            // Fetch class details for each student
+            const classData = {};
+            for (const student of response.data) {
+                if (student.classes) {
+                    try {
+                        const classResponse = await getOneClass(student.classes);
+                        classData[student.classes] = `${classResponse.data.classNumber} - ${classResponse.data.classCategory}`;
+                    } catch (error) {
+                        console.error('Error fetching class:', error);
+                        classData[student.classes] = 'Unknown Class';
+                    }
+                }
+            }
+            setClassNames(classData);
         } catch (error) {
             console.error('Error details:', error.response || error);
-            if (error.response?.status === 401) {
-                setError('Session expired. Please login again.');
-            } else {
-                setError(`Failed to fetch students: ${error.message}`);
-            }
+            setError(`Failed to fetch students: ${error.message}`);
         } finally {
             setLoading(false);
         }
@@ -82,12 +93,13 @@ const GetStudents = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading)
+        return <div>Loading...</div>;
 
     return (
         <div className="flex flex-col min-h-96 justify-between">
             <div>
-                <h2 className="text-2xl font-bold mb-4">List of Students in the system...</h2>
+                <h2 className="text-2xl font-bold mb-4">List of Students...</h2>
                 {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                         {error}
@@ -113,9 +125,10 @@ const GetStudents = () => {
                                         <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
                                     </div>
                                 </th>
-                                <th className="py-2 px-4 text-left cursor-pointer" onClick={() => requestSort('email')}>
+                                <th className="py-2 px-4 text-left">Class</th>
+                                <th className="py-2 px-4 text-left" onClick={() => requestSort('gender')}>
                                     <div className="flex items-center">
-                                        Email
+                                        Gender
                                         <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
                                     </div>
                                 </th>
@@ -127,7 +140,10 @@ const GetStudents = () => {
                                 <tr key={student._id} className="border-b border-gray-200 dark:border-gray-700">
                                     <td className="py-4 px-4">{student.firstName}</td>
                                     <td className="py-4 px-4">{student.lastName}</td>
-                                    <td className="py-4 px-4">{student.email}</td>
+                                    <td className="py-4 px-4">
+                                        {classNames[student.classes] || 'No Class Assigned'}
+                                    </td>
+                                    <td className="py-4 px-4 capitalize">{student.gender || 'Not specified'}</td>
                                     <td className="py-4 px-4">
                                         <div className="flex items-center space-x-2">
                                             <button

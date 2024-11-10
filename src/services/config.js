@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -35,4 +36,13 @@ export const isAuthenticated = () => {
 export const apiClient = axios.create({
     baseURL: baseURL,
 });
+
+export const getUserIdFromToken = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        const decoded = jwtDecode(token);
+        return decoded.id;  // Assuming your token contains the user ID
+    }
+    return null;
+};
 

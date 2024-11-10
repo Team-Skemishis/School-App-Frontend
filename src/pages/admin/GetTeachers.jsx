@@ -22,14 +22,11 @@ const GetTeachers = () => {
         try {
             setLoading(true);
             const response = await getTeachers();
-            // Directly use the response data without filtering
             setTeachers(response.data);
         } catch (error) {
             console.error('Error fetching teachers:', error);
             if (error.response?.status === 401) {
                 setError('Session expired. Please login again.');
-                // Optionally redirect to login
-                // navigate('/login');
             } else {
                 setError('Failed to fetch teachers');
             }
@@ -87,14 +84,6 @@ const GetTeachers = () => {
         setSortConfig({ key, direction });
     };
 
-    const viewTeacher = (_id) => {
-        navigate(`/admin/teachers/${_id}`);
-    };
-
-    const editTeacher = async (_id) => {
-        console.log('Edit teacher with ID:', _id);
-        navigate(`/admin/teachers/edit/${_id}`);
-    };
 
     if (loading)
         return <div>Loading...</div>
@@ -129,6 +118,12 @@ const GetTeachers = () => {
                                     <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
                                 </div>
                             </th>
+                            <th className="py-2 px-4 text-left" onClick={() => requestSort('gender')}>
+                                <div className="flex items-center">
+                                    Gender
+                                    <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
+                                </div>
+                            </th>
                             <th className="py-2 px-4 text-left">Actions</th>
                         </tr>
                     </thead>
@@ -138,6 +133,7 @@ const GetTeachers = () => {
                                 <td className="py-4 px-4">{teacher.firstName}</td>
                                 <td className="py-4 px-4">{teacher.lastName}</td>
                                 <td className="py-4 px-4">{teacher.email}</td>
+                                <td className="py-4 px-4 capitalize">{teacher.gender || 'Not Specified'}</td>
                                 <td className="py-4 px-4">
                                     <div className="flex items-center space-x-2">
                                         <button

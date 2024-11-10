@@ -1,11 +1,12 @@
 import React from 'react';
 import BaseSidebar from '../../components/shared/BaseSidebar';
-import { 
-    LayoutDashboard, 
-    UserCircle, 
-    Users, 
+import {
+    LayoutDashboard,
+    UserCircle,
+    Users,
     Calendar,
-    BookOpen
+    BookOpen,
+    Book
 } from 'lucide-react';
 
 const TeacherSidebar = () => {
@@ -21,14 +22,19 @@ const TeacherSidebar = () => {
             icon: <Users className="h-5 w-5" />,
         },
         {
+            path: '/teacher/schedule',
+            name: 'Schedule',
+            icon: <Calendar className="h-5 w-5" />,
+        },
+        {
             path: '/teacher/classes',
             name: 'Classes',
             icon: <BookOpen className="h-5 w-5" />,
         },
         {
-            path: '/teacher/schedule',
-            name: 'Schedule',
-            icon: <Calendar className="h-5 w-5" />,
+            path: '/teacher/assignments',
+            name: 'Assignments',
+            icon: <Book className="h-5 w-5" />,
         },
         {
             path: '/teacher/profile',

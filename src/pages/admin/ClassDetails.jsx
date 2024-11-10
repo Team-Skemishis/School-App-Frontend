@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneClass, deleteClass } from '../../services/classes';
+import { getOneUser } from '../../services/users';
 
 const ClassDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [classData, setClassData] = useState(null);
+    const [teacher, setTeacher] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchClass = async () => {
+        const fetchClassAndTeacher = async () => {
             try {
-                const response = await getOneClass(id);
-                setClassData(response.data);
+                const classResponse = await getOneClass(id);
+                setClassData(classResponse.data);
+
+                if (classResponse.data.classTeacher) {
+                    const teacherResponse = await getOneUser(classResponse.data.classTeacher);
+                    setTeacher(teacherResponse.data);
+                }
             } catch (error) {
                 console.error('Error fetching class details:', error);
                 setError('Failed to fetch class details');
@@ -22,7 +29,7 @@ const ClassDetails = () => {
             }
         };
 
-        fetchClass();
+        fetchClassAndTeacher();
     }, [id]);
 
     const handleDeleteClass = async () => {
@@ -55,6 +62,7 @@ const ClassDetails = () => {
                 <div className="space-y-4">
                     <p><strong>Class Number:</strong> {classData.classNumber}</p>
                     <p><strong>Category:</strong> {classData.classCategory}</p>
+                    <p><strong>Class Teacher:</strong> {teacher ? `${teacher.firstName} ${teacher.lastName}` : 'No teacher assigned'}</p>
                 </div>
                 <div className="flex gap-4 mt-6">
                     <button

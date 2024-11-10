@@ -2,7 +2,15 @@ import { apiClient } from "./config";
 
 export const addClass = async (payload) => {
     const token = localStorage.getItem('token');
-    return await apiClient.post("/class", payload, {
+    const classData = {
+        classNumber: payload.classNumber,
+        classCategory: payload.classCategory,
+        classTeacher: payload.classTeacher
+    };
+
+    console.log('Sending class data:', classData);
+
+    return await apiClient.post("/class", classData, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'

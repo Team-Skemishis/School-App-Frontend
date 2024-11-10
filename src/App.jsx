@@ -34,6 +34,11 @@ import TeacherProfile from './pages/teacher/TeacherProfile';
 import TeacherStudents from './pages/teacher/TeacherStudents';
 import TeacherClasses from './pages/teacher/TeacherClasses';
 import TeacherSchedule from './pages/teacher/TeacherSchedule';
+import GetAssignments from './pages/teacher/GetAssignments';
+import AddAssignment from './pages/teacher/AddAssignment';
+import EditAssignment from './pages/teacher/EditAssignment';
+import AssignmentDetails from './pages/teacher/AssignmentDetails';
+
 
 // Student Components
 import StudentDashboard from './pages/student/StudentDashboard';
@@ -80,6 +85,10 @@ const App = () => {
         <Route path="students" element={<TeacherStudents />} />
         <Route path="classes" element={<TeacherClasses />} />
         <Route path="schedule" element={<TeacherSchedule />} />
+        <Route path="assignments" element={<GetAssignments />} />
+        <Route path="assignments/add" element={<AddAssignment />} />
+        <Route path="assignments/:id" element={<AssignmentDetails />} />
+        <Route path="assignments/edit/:id" element={<EditAssignment />} />
         <Route path="profile" element={<TeacherProfile />} />
       </Route>
 

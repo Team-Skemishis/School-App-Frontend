@@ -5,7 +5,12 @@ export const getUsers = async () => {
 }
 
 export const getOneUser = async (id) => {
-    return await apiClient.get(`/users/${id}`);
+    const token = localStorage.getItem('token');
+    return await apiClient.get(`/users/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
 }
 
 export const editUser = async (id, userData) => {

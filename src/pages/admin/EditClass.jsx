@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneClass, updateClass } from '../../services/classes';
+import { getUsers } from '../../services/users';
 
 const EditClass = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [teachers, setTeachers] = useState([]);
     const [classData, setClassData] = useState({
         classNumber: '',
         classCategory: '',
+        classTeacher: ''
     });
 
     const classCategories = [
@@ -27,23 +30,32 @@ const EditClass = () => {
     };
 
     useEffect(() => {
-        const fetchClass = async () => {
+        const fetchData = async () => {
             try {
-                const response = await getOneClass(id);
-                const classDetails = response.data;
+                const [classResponse, teachersResponse] = await Promise.all([
+                    getOneClass(id),
+                    getUsers()
+                ]);
+
+                const classDetails = classResponse.data;
                 setClassData({
                     classNumber: classDetails.classNumber,
                     classCategory: classDetails.classCategory,
+                    classTeacher: classDetails.classTeacher || ''
                 });
+
+                // Filter users to get only teachers
+                const teachersList = teachersResponse.data.filter(user => user.role === 'teacher');
+                setTeachers(teachersList);
             } catch (error) {
-                console.error('Error fetching class details:', error);
+                console.error('Error fetching data:', error);
                 setError('Failed to fetch class details');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchClass();
+        fetchData();
     }, [id]);
 
     const handleSubmit = async (e) => {
@@ -117,6 +129,26 @@ const EditClass = () => {
                             {classData.classCategory && classNumbers[classData.classCategory].map(number => (
                                 <option key={number} value={number}>
                                     {number}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Assign Teacher
+                        </label>
+                        <select
+                            name="classTeacher"
+                            value={classData.classTeacher}
+                            onChange={handleChange}
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            required
+                        >
+                            <option value="">Select a teacher...</option>
+                            {teachers.map(teacher => (
+                                <option key={teacher._id} value={teacher._id}>
+                                    {teacher.firstName} {teacher.lastName}
                                 </option>
                             ))}
                         </select>

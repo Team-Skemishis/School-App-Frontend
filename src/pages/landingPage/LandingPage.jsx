@@ -7,6 +7,9 @@ import logo from '../../assets/images/wink.gif'
 import schoolBuilding from '../../assets/images/schooll.svg'
 import mobile from '../../assets/images/downloadPhoneApp.png'
 import responsiveImage from '../../assets/images/responsiveImage.png'
+import contact from '../../assets/images/contactUs.png'
+import contact2 from '../../assets/images/contactUss.svg'
+import contact3 from '../../assets/images/contactUsss.svg'
 import uenrLogo from '../../assets/images/schoolLogos/UENR-logo.png'
 import ciscoLogo from '../../assets/images/schoolLogos/cisco.jpg'
 import knustLogo from '../../assets/images/schoolLogos/knust.png'
@@ -122,7 +125,7 @@ export default function LandingPage() {
             </header>
 
             {/* Hero Section */}
-            <section id="home" className="hero h-screen bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+            <section id="home" className="hero h-screen  text-white">
                 <div className='flex flex-col md:flex-row justify-end items-center gap-5 mt-24 sm:mt-16 md:mt-32 p-10'>
                     <div className="w-full md:w-1/2 flex justify-center md:justify-end items-center">
                         <img src={responsiveImage} alt="Responsive Design" className="w-4/5 sm:w-3/4 md:w-full" />
@@ -275,7 +278,7 @@ export default function LandingPage() {
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-5 font-arima">Contact Us</h2>
                     <div className="flex flex-col md:flex-row  justify-around gap-12 w-full">
                         <div className="w-full md:w-1/2">
-                            <p className='text-start text-theme-color font-bold text-xl mb-5'>Send us a message...</p>
+                            <p className='text-start text-theme-color font-bold text-2xl mb-5'>Send us a message...</p>
                             <form action="" className=" rounded-lg space-y-2">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
@@ -302,8 +305,9 @@ export default function LandingPage() {
                                 <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Send Message</button>
                             </form>
                         </div>
-                        <div className="w-full md:w-1/2 flex flex-col space-y-4 mb-8">
-                            <p className='text-start text-theme-color font-bold text-xl mb-5'>Reach out to us...</p>
+                        <img src={contact3} alt="contact image" className="hidden md:block md:w-[300px] md:h-[300px] mx-auto items-center justify-center self-center" />
+                        <div className=" w-full md:w-1/2 flex flex-col space-y-4 mb-8">
+                            <p className='text-start text-theme-color font-bold text-2xl mb-5'>Reach out to us...</p>
                             <div className="contact-item flex gap-4 items-center">
                                 <div className='border-2 border-theme-color rounded-xl p-2'>
                                     <Phone className='text-theme-color' size={24} />

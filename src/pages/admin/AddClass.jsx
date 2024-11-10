@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addClass } from '../../services/classes';
-// import { getTeachers } from '../../services/teachers';
+import { getUsers } from '../../services/users';
 
 const AddClass = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    // const [teachers, setTeachers] = useState([]);
+    const [teachers, setTeachers] = useState([]);
     const [classData, setClassData] = useState({
         classNumber: '',
         classCategory: '',
-        // teacher: '',
+        classTeacher: ''
     });
 
     const classCategories = [
@@ -28,25 +28,28 @@ const AddClass = () => {
         'Senior high': ['SHS 1', 'SHS 2', 'SHS 3']
     };
 
-    // useEffect(() => {
-    //     const fetchTeachers = async () => {
-    //         try {
-    //             const response = await getTeachers();
-    //             setTeachers(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching teachers:', error);
-    //             setError('Failed to fetch teachers');
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchTeachers = async () => {
+            try {
+                const response = await getUsers();
+                const teachersList = response.data.filter(user => user.role === 'teacher');
+                console.log('Teachers fetched:', teachersList);
+                setTeachers(teachersList);
+            } catch (error) {
+                console.error('Error fetching teachers:', error);
+                setError('Failed to fetch teachers');
+            }
+        };
 
-    //     fetchTeachers();
-    // }, []);
+        fetchTeachers();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         try {
             setLoading(true);
+            console.log('Submitting class data:', classData);
             await addClass(classData);
             navigate('/admin/classes');
         } catch (error) {
@@ -116,13 +119,13 @@ const AddClass = () => {
                         </select>
                     </div>
 
-                    {/* <div>
+                    <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                            Teacher
+                            Assign Teacher
                         </label>
                         <select
-                            name="teacher"
-                            value={classData.teacher}
+                            name="classTeacher"
+                            value={classData.classTeacher}
                             onChange={handleChange}
                             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
                             required
@@ -134,7 +137,7 @@ const AddClass = () => {
                                 </option>
                             ))}
                         </select>
-                    </div> */}
+                    </div>
                 </div>
 
                 <div className="mt-6 flex gap-4">
