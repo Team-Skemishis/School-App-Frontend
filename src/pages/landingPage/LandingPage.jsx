@@ -7,7 +7,7 @@ import logo from '../../assets/images/wink.gif'
 import schoolBuilding from '../../assets/images/schooll.svg'
 import mobile from '../../assets/images/downloadPhoneApp.png'
 import responsiveImage from '../../assets/images/responsiveImage.png'
-import contact from '../../assets/images/contactUs.svg'
+// import contact from '../../assets/images/contactUs.svg'
 import uenrLogo from '../../assets/images/schoolLogos/UENR-logo.png'
 import ciscoLogo from '../../assets/images/schoolLogos/cisco.jpg'
 import knustLogo from '../../assets/images/schoolLogos/knust.png'
@@ -312,7 +312,7 @@ export default function LandingPage() {
                                 <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Send Message</button>
                             </form>
                         </div>
-                        <img src={contact} alt="contact image" className="hidden lg:block md:w-[300px] md:h-[300px] mx-auto items-center justify-center self-center" />
+                        {/* <img src={contact} alt="contact image" className="hidden lg:block md:w-[300px] md:h-[300px] mx-auto items-center justify-center self-center" /> */}
                         <div className=" w-full md:w-1/2 flex flex-col space-y-5 mb-8">
                             <p className='text-start text-theme-color font-bold text-2xl'>Reach out to us...</p>
                             <div className="contact-item flex gap-2 md:gap-4 items-start sm:border-b-[0.1px] sm:border-gray-300 sm:pb-5">
