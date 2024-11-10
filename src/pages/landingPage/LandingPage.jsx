@@ -7,17 +7,27 @@ import logo from '../../assets/images/wink.gif'
 import schoolBuilding from '../../assets/images/schooll.svg'
 import mobile from '../../assets/images/downloadPhoneApp.png'
 import responsiveImage from '../../assets/images/responsiveImage.png'
-import contact from '../../assets/images/contactUs.png'
-import contact2 from '../../assets/images/contactUss.svg'
-import contact3 from '../../assets/images/contactUsss.svg'
+import contact from '../../assets/images/contactUs.svg'
 import uenrLogo from '../../assets/images/schoolLogos/UENR-logo.png'
 import ciscoLogo from '../../assets/images/schoolLogos/cisco.jpg'
 import knustLogo from '../../assets/images/schoolLogos/knust.png'
-import { ChevronLeft, ChevronRight, ArrowRight, CircleDollarSign, LayoutDashboard, MonitorSmartphone, CloudDownload, HeartHandshake, MessageCircle, ChartLine, ShieldCheck, Facebook, Twitter, Linkedin, Mail, Phone, Map } from 'lucide-react'
+import kuhisLogo from '../../assets/images/schoolLogos/kuhis.png'
+import TISLogo from '../../assets/images/schoolLogos/TIS.png'
+import GISLogo from '../../assets/images/schoolLogos/GIS.png'
+import ugMainLogo from '../../assets/images/schoolLogos/UGmain.png'
+import GISA from '../../assets/images/schoolLogos/GISA.webp'
+import { ChevronLeft, ChevronRight, ArrowRight, CircleDollarSign, LayoutDashboard, MonitorSmartphone, CloudDownload, HeartHandshake, MessageCircle, ChartLine, ShieldCheck, Mail, Phone, Map, Facebook, Twitter, Linkedin } from 'lucide-react'
 
 
 export default function LandingPage() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+        }, 5000)
+        return () => clearInterval(timer)
+    })
 
     const testimonials = [
         {
@@ -33,13 +43,6 @@ export default function LandingPage() {
             author: "Teacher, Greenwood Elementary"
         }
     ]
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-        }, 5000)
-        return () => clearInterval(timer)
-    })
 
     const features = [
         {
@@ -97,24 +100,24 @@ export default function LandingPage() {
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 bg-blue-300 shadow-md z-50">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                    <Link to="/" className="flex items-center space-x-2">
+                    <ScrollLink to="home" smooth={true} duration={1500} className="flex items-center space-x-2 cursor-pointer">
                         <img src={logo} alt="EduBridge Logo" className="h-10 w-10" />
                         <span className="text-2xl font-bold text-theme-color font-righteousStatic">EduBridge</span>
-                    </Link>
-                    <nav className="hidden md:flex space-x-8 text-nowrap shrink-0">
-                        <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
+                    </ScrollLink>
+                    <nav className="hidden md:flex space-x-2 lg:space-x-8 text-nowrap shrink-0">
+                        <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             Home
                         </ScrollLink>
-                        <ScrollLink to="features" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
+                        <ScrollLink to="features" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             Features
                         </ScrollLink>
-                        <ScrollLink to="how-it-works" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
+                        <ScrollLink to="how-it-works" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             How it Works
                         </ScrollLink>
-                        <ScrollLink to="testimonials" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
+                        <ScrollLink to="testimonials" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             Testimonials
                         </ScrollLink>
-                        <ScrollLink to="contact" smooth={true} duration={1500} className="text-theme-color text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
+                        <ScrollLink to="contact" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
                             Contact
                         </ScrollLink>
                     </nav>
@@ -142,7 +145,7 @@ export default function LandingPage() {
                         </div>
                         <div className="flex sm:space-x-4 space-x-2">
                             <Link to="/register" >
-                                <span className="bg-white text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap">Get Started Today</span>
+                                <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap">Get Started Today</span>
                             </Link>
                             <ScrollLink to="features" smooth={true} duration={1500} >
                                 <span className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-white hover:text-theme-color text-nowrap cursor-pointer">Learn More</span>
@@ -156,7 +159,7 @@ export default function LandingPage() {
             {/* Key Features Section */}
             <section id="features" className="sm:py-20 py-5 bg-gray-100">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center sm:mb-12 mb-5 font-arima">Key Features</h2>
+                    <h2 className="text-3xl md:text-5xl text-black dark:text-black font-bold text-center sm:mb-12 mb-5 font-arima">Key Features</h2>
                     <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
                         {features.map((feature, index) => (
                             <div
@@ -168,7 +171,7 @@ export default function LandingPage() {
                                     <p className='text-theme-color' size={32}>{feature.icon}</p>
                                     <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-theme-color self-end">{feature.title}</h3>
                                 </div>
-                                <p className="text-gray-600">{feature.description}</p>
+                                <p className="text-gray-600 text-sm sm:text-base md:text-lg">{feature.description}</p>
                             </div>
                         ))}
                     </div>
@@ -178,36 +181,36 @@ export default function LandingPage() {
             {/* How It Works Section */}
             <section id="how-it-works" className="sm:py-20 py-5 bg-white">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 font-arima">How It Works</h2>
+                    <h2 className="text-3xl md:text-5xl text-black dark:text-black font-bold text-center mb-10 font-arima">How It Works</h2>
                     <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
-                        <div className="flex flex-col items-center text-center max-w-xs">
+                        <div className="flex flex-col items-center text-center max-w-xs md:w-1/3">
                             <div className="bg-blue-100 text-theme-color rounded-full p-4 mb-4">
                                 <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">Step 1</h3>
-                            <p className="text-gray-600">Sign up your school.</p>
+                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 1</h3>
+                            <p className="text-gray-600 text-lg">Sign up your school. <br /> <span className='text-theme-color'>It&apos;s free!</span></p>
                         </div>
                         <ArrowRight className="hidden md:block text-theme-color" size={32} />
-                        <div className="flex flex-col items-center text-center max-w-xs">
+                        <div className="flex flex-col items-center text-center max-w-xs md:w-1/3">
                             <div className="bg-blue-100 text-theme-color rounded-full p-4 mb-4">
                                 <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">Step 2</h3>
-                            <p className="text-gray-600">Customize your school&apos;s profile and invite teachers, students, and parents.</p>
+                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 2</h3>
+                            <p className="text-gray-600 b text-lg">Customize your school&apos;s profile and invite teachers, students, and parents.</p>
                         </div>
                         <ArrowRight className="hidden md:block text-theme-color" size={32} />
-                        <div className="flex flex-col items-center text-center max-w-xs">
+                        <div className="flex flex-col items-center text-center max-w-sm md:w-1/3">
                             <div className="bg-blue-100 text-theme-color rounded-full p-4 mb-4">
                                 <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">Step 3</h3>
-                            <p className="text-gray-600">Manage classes, attendance, grades, and communication from a unified platform.</p>
+                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 3</h3>
+                            <p className="text-gray-600 text-lg">Manage classes, attendance, grades, and communication, all in one unified platform.</p>
                         </div>
                     </div>
                 </div>
@@ -216,57 +219,56 @@ export default function LandingPage() {
             {/* Testimonials Section */}
             <section id="testimonials" className="sm:pt-20 pt-5 bg-gray-100">
                 <div className="container mx-auto px-4 pb-20 ">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 font-arima">Some words from our happy schools</h2>
+                    <h2 className="text-3xl md:text-5xl text-black dark:text-black font-bold text-center mb-10 font-arima">Some words from our happy schools</h2>
                     <div className="relative max-w-3xl mx-auto px-12">
                         <span className='font-bold text-theme-color text-6xl absolute top-2 left-14 font-serif italic'>&quot;</span>
                         <div className="overflow-hidden border-[0.1px] border-theme-color rounded-tl-3xl rounded-br-3xl p-6">
-                            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}>
+                            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)`}}>
                                 {testimonials.map((testimonial, index) => (
                                     <div key={index} className="w-full flex-shrink-0 px-4 ">
                                         <blockquote className="text-center">
-                                            <p className="text-xl italic mb-4 relative">{testimonial.quote}&quot;</p>
-                                            <cite className="text-gray-600 not-italic">— {testimonial.author}</cite>
+                                            <p className="text-xl text-black dark:text-black italic mb-4 relative">{testimonial.quote}&quot;</p>
+                                            <cite className="text-gray-600 dark:text-gray-600 not-italic">— {testimonial.author}</cite>
                                         </blockquote>
                                     </div>
                                 ))}
                             </div>
-                            <span className='font-bold text-theme-color text-6xl absolute bottom-2 right-14 font-serif italic'>&quot;</span>
+                            <span className='font-bold text-theme-color text-6xl absolute bottom-2 right-16 font-serif italic'>&quot;</span>
                         </div>
                         <button
                             onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+                            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white hover:bg-gray-50 rounded-full p-2 shadow-md"
                         >
                             <ChevronLeft className="text-theme-color" size={24} />
                         </button>
                         <button
                             onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
-                            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+                            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white hover:bg-gray-50 rounded-full p-2 shadow-md"
                         >
                             <ChevronRight className="text-theme-color" size={24} />
                         </button>
                     </div>
                 </div>
-                <div className="trusted-partners py-10 bg-white text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-10 font-arima">Trusted Partners</h2>
-                    <div className="overflow-hidden relative">
-                        <div className="flex space-x-8"> {/*animate-marquee */}
-                            <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
-                            <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
-                            <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
-                            {/*<img src="./images/linkedin-learning.webp" alt="LinkedIn Learning Logo" className="logo-prop" />
-                            <img src="./images/microsoft.jpg" alt="Microsoft Logo" className="logo-prop" />
-                            <img src="./images/kweku-tech2.jpg" alt="Kweku Tech Logo" className="logo-prop" />
-                            <img src="./images/UENR-logo.png" alt="UENR Logo" className="logo-prop" />
-                            <img src="./images/adobe2.jpg" alt="Adobe Logo" className="logo-prop" /> */}
-                            {/* Repeat logos for continuous effect */}
-                            {/* <img src="./images/ibm-logo.svg" alt="IBM Logo" className="logo-prop" />
-                            <img src="./images/cisco.jpg" alt="Cisco Logo" className="logo-prop" />
-                            <img src="./images/knust.png" alt="KNUST Logo" className="logo-prop" />
-                            <img src="./images/linkedin-learning.webp" alt="LinkedIn Learning Logo" className="logo-prop" />
-                            <img src="./images/microsoft.jpg" alt="Microsoft Logo" className="logo-prop" />
-                            <img src="./images/kweku-tech2.jpg" alt="Kweku Tech Logo" className="logo-prop" />
-                            <img src="./images/UENR-logo.png" alt="UENR Logo" className="logo-prop" />
-                            <img src="./images/adobe2.jpg" alt="Adobe Logo" className="logo-prop" /> */}
+                <div className="trusted-partners py-5 bg-white text-center">
+                    <h2 className="text-3xl md:text-5xl text-black dark:text-black font-bold font-arima">Trusted Partners</h2>
+                    <div className="marquee ">
+                        <div className='track'>
+                            <div className="partners-logos">
+                                <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
+                                <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
+                                <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
+                                <img src={kuhisLogo} alt="KUHIS Logo" className="w-[50px]" />
+                                <img src={GISLogo} alt="GIS Logo" className="logo-prop" />
+                                <img src={ugMainLogo} alt="UG Main Logo" className="logo-prop" />
+                                <img src={TISLogo} alt="TIS Logo" className="logo-prop" />
+                                <img src={GISA} alt="GISA Logo" className="logo-prop" />
+                                <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
+                                <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
+                                <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
+                                <img src={kuhisLogo} alt="KUHIS Logo" className="w-[50px]" />
+                                <img src={GISLogo} alt="GIS Logo" className="logo-prop" />
+                                <img src={ugMainLogo} alt="UG Main Logo" className="logo-prop" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,7 +277,7 @@ export default function LandingPage() {
             {/* Contact Section */}
             <section id="contact" className="sm:py-20 py-5 bg-white">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-center mb-5 font-arima">Contact Us</h2>
+                    <h2 className="text-3xl md:text-5xl text-black dark:text-black font-bold text-center mb-5 font-arima">Contact Us</h2>
                     <div className="flex flex-col md:flex-row  justify-around gap-12 w-full">
                         <div className="w-full md:w-1/2">
                             <p className='text-start text-theme-color font-bold text-2xl mb-5'>Send us a message...</p>
@@ -283,60 +285,65 @@ export default function LandingPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-theme-color">First name *</label>
-                                        <input type="text" placeholder='First Name' className="w-full p-2 rounded border border-gray-300" />
+                                        <input type="text" placeholder='First Name' className="w-full p-2 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:placeholder-gray-400" />
                                     </div>
                                     <div>
                                         <label className="block text-theme-color">Last name *</label>
-                                        <input type="text" placeholder='Last Name' className="w-full p-2 rounded border border-gray-300" />
+                                        <input type="text" placeholder='Last Name' className="w-full p-2 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:placeholder-gray-400" />
                                     </div>
                                     <div>
                                         <label className="block text-theme-color">Email *</label>
-                                        <input type="email" placeholder='Email' className="w-full p-2 rounded border border-gray-300" />
+                                        <input type="email" placeholder='Email' className="w-full p-2 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:placeholder-gray-400" />
                                     </div>
                                     <div>
                                         <label className="block text-theme-color">Phone</label>
-                                        <input type="text" placeholder='Phone' className="w-full p-2 rounded border border-gray-300" />
+                                        <input type="text" placeholder='Phone' className="w-full p-2 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:placeholder-gray-400" />
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-theme-color">Message *</label>
-                                    <textarea name="" id="" cols="10" rows="2" placeholder='Message' className="w-full p-2 rounded border border-gray-300"></textarea>
+                                    <textarea name="" id="" cols="10" rows="2" placeholder='Message' className="w-full p-2 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:placeholder-gray-400"></textarea>
                                 </div>
                                 <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Send Message</button>
                             </form>
                         </div>
-                        <img src={contact3} alt="contact image" className="hidden md:block md:w-[300px] md:h-[300px] mx-auto items-center justify-center self-center" />
-                        <div className=" w-full md:w-1/2 flex flex-col space-y-4 mb-8">
-                            <p className='text-start text-theme-color font-bold text-2xl mb-5'>Reach out to us...</p>
-                            <div className="contact-item flex gap-4 items-center">
+                        <img src={contact} alt="contact image" className="hidden lg:block md:w-[300px] md:h-[300px] mx-auto items-center justify-center self-center" />
+                        <div className=" w-full md:w-1/2 flex flex-col space-y-5 mb-8">
+                            <p className='text-start text-theme-color font-bold text-2xl'>Reach out to us...</p>
+                            <div className="contact-item flex gap-2 md:gap-4 items-start sm:border-b-[0.1px] sm:border-gray-300 sm:pb-5">
                                 <div className='border-2 border-theme-color rounded-xl p-2'>
                                     <Phone className='text-theme-color' size={24} />
                                 </div>
                                 <div className="contact-text">
                                     <p className="text-theme-color">Phone</p>
-                                    <a className="font-medium font-montserrat hover:underline" href="tel: +233555975976">
+                                    <a className="font-medium font-montserrat text-black text-sm md:text-base dark:text-black hover:underline" href="tel: +233555975976">
                                         +233 555 975 976
                                     </a>
                                 </div>
                             </div>
-                            <div className="contact-item flex gap-4 items-center">
+                            <div className="contact-item flex gap-2 md:gap-4 items-start sm:border-b-[0.1px] sm:border-gray-300 sm:pb-5">
                                 <div className='border-2 border-theme-color rounded-xl p-2'>
                                     <Mail className='text-theme-color' size={24} />
                                 </div>
                                 <div className="contact-text">
                                     <p className="text-theme-color">Email</p>
-                                    <a className="font-medium font-montserrat hover:underline" href="mailto:agyemangmichael555@gmail.com">
+                                    <a className="font-medium font-montserrat text-black text-sm md:text-base dark:text-black hover:underline" href="mailto:agyemangmichael555@gmail.com">
                                         agyemangmichael555@gmail.com
                                     </a>
                                 </div>
                             </div>
-                            <div className="contact-item flex gap-4 items-start">
+                            <div className="contact-item flex gap-2 md:gap-4 items-start">
                                 <div className='border-2 border-theme-color rounded-xl p-2'>
                                     <Map className='text-theme-color' size={24} />
                                 </div>
                                 <div className="contact-text">
                                     <p className="text-theme-color">Address</p>
-                                    <a className="font-medium font-montserrat hover:underline" href="https://maps.app.goo.gl/euywUBrFsdxPfyqU9">
+                                    <a className="font-medium font-montserrat text-black text-sm md:text-base dark:text-black hover:underline" href="https://maps.app.goo.gl/euywUBrFsdxPfyqU9">
                                         Crown Prince Academy (Annex), <br />
                                         Lapax, Accra - Ghana
                                     </a>
@@ -355,8 +362,8 @@ export default function LandingPage() {
                             <img src={mobile} alt="EduBridge Mobile App" className="mx-auto md:mx-0 max-w-xs" />
                         </div>
                         <div className="md:w-1/2 text-start">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Free Download</h2>
-                            <p className="text-xl mb-6">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-black">Free Download</h2>
+                            <p className="text-xl mb-6 text-black dark:text-black">
                                 Download our mobile app for a more interactive experience, wherever you are, whenever you want, however please you!
                             </p>
                             <div className="flex space-x-4">
@@ -405,7 +412,7 @@ export default function LandingPage() {
                                 <li><Link to="/terms" className="hover:text-white hover:underline ">Terms of Service</Link></li>
                             </ul>
                         </div>
-                        <div>
+                        <div className='mapBG'>
                             <h3 className="text-lg font-bold mb-4 text-theme-color border-b-2 border-theme-color w-fit">Connect With Us</h3>
                             <div className="flex space-x-4 mb-4">
                                 <Link to="/facebook" className="hover:text-white ">
