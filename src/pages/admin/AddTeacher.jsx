@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addTeacher } from '../../services/teachers';
 import { Upload } from 'lucide-react';
+import { getBaseURL } from '@/lib/utils';
 
 const AddTeacher = () => {
     const navigate = useNavigate();
@@ -63,8 +64,10 @@ const AddTeacher = () => {
             setLoading(true);
             const payload = {
                 ...teacherData,
-                avatar: selectedFile
+                avatar: selectedFile,
+                redirectURL: getBaseURL()
             };
+            console.log(payload)
             await addTeacher(payload);
             navigate('/admin/users/teachers');
         } catch (error) {
