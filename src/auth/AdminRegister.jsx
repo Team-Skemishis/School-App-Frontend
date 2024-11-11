@@ -16,6 +16,7 @@ const AdminRegister = () => {
             const firstName = formData.get("firstName");
             const lastName = formData.get("lastName");
             const email = formData.get("email");
+            const schoolName = formData.get("schoolName");
             const password = formData.get("password");
             // const role = formData.get("role");
 
@@ -24,6 +25,7 @@ const AdminRegister = () => {
                 firstName,
                 lastName,
                 email,
+                schoolName,
                 password,
                 role: "admin"
             }
