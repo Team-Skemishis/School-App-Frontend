@@ -24,6 +24,7 @@ export const addTeacher = async (payload) => {
     formData.append('email', payload.email);
     formData.append('password', payload.password);
     formData.append('gender', payload.gender);
+    formData.append('redirectURL', payload.redirectURL);
     formData.append('role', 'teacher');
     if (payload.avatar) {
         formData.append('avatar', payload.avatar);

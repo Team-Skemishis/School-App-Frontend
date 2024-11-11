@@ -16,7 +16,8 @@ const AddTeacher = () => {
         password: '',
         gender: '',
         role: 'teacher', // Set default role
-        avatar: null
+        avatar: null,
+        redirectURL: ""
     });
 
     const validateForm = () => {
