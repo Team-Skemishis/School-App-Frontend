@@ -24,7 +24,7 @@ const BaseSidebar = ({ navItems, role }) => {
 
             {/* Navigation */}
             <nav className="flex-1 overflow-y-auto">
-                <ul className="p-2">
+                <ul className="p-4">
                     {navItems.map((item) => (
                         <li key={item.path}>
                             <Link
