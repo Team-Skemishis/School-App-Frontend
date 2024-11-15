@@ -3,6 +3,11 @@ import { jwtDecode } from "jwt-decode";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
+export const apiClient = axios.create({
+    baseURL: baseURL,
+});
+
+
 // Adding role management
 export const setAuthToken = (token) => {
     if (token) {
@@ -32,10 +37,6 @@ export const logout = () => {
 export const isAuthenticated = () => {
     return !!localStorage.getItem("token");
 }
-
-export const apiClient = axios.create({
-    baseURL: baseURL,
-});
 
 export const getUserIdFromToken = () => {
     const token = localStorage.getItem('token');

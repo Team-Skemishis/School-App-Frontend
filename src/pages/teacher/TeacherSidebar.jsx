@@ -6,6 +6,7 @@ import {
     Users,
     Calendar,
     BookOpen,
+    Bell,
     Book
 } from 'lucide-react';
 
@@ -35,6 +36,11 @@ const TeacherSidebar = () => {
             path: '/teacher/assignments',
             name: 'Assignments',
             icon: <Book className="h-5 w-5" />,
+        },
+        {
+            path: '/teacher/announcements',
+            name: 'Announcements',
+            icon: <Bell className="h-5 w-5" />,
         },
         {
             path: '/teacher/profile',
