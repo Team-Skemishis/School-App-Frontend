@@ -57,7 +57,7 @@ const UserDetails = () => {
                     <p><strong>First Name:</strong> {user.firstName}</p>
                     <p><strong>Last Name:</strong> {user.lastName}</p>
                     <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Role:</strong> {user.role}</p>
+                    <p><strong>Role:</strong> {user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
                 </div>
                 <div className="flex gap-4 mt-6">
                     <button

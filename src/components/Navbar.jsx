@@ -39,12 +39,31 @@ const Navbar = ({ toggleSidebar }) => {
         }
     };
 
+    const getAnnouncementPath = (role) => {
+        switch (role) {
+            case 'admin':
+                return '/admin/announcements';
+            case 'teacher':
+                return '/teacher/announcements';
+            case 'student':
+                return '/student/announcements';
+            default:
+                return '/';
+        }
+    }
+
     // Handle profile click
     const handleProfileClick = () => {
         if (user && user.role) {
             navigate(getProfilePath(user.role));
         }
     };
+
+    const handleAnnouncementClick = () => {
+        if (user && user.role) {
+            navigate(getAnnouncementPath(user.role));
+        }
+    }
 
     return (
         <nav className="flex justify-between items-center py-2 px-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -71,7 +90,7 @@ const Navbar = ({ toggleSidebar }) => {
                 </button>
 
                 {/* Notifications */}
-                <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 relative">
+                <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 relative" onClick={handleAnnouncementClick}>
                     <Bell className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                     {/* Notification badge */}
                     <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>

@@ -28,6 +28,9 @@ import EditClass from './pages/admin/EditClass';
 import Settings from './pages/admin/Settings';
 import GetAnnouncements from "./pages/admin/GetAnnouncements";
 import AddAnnouncement from "./pages/admin/AddAnnouncement";
+import GetTimeTable from "./pages/admin/GetTimeTable";
+import AddTimetable from "./pages/admin/AddTimetable";
+import EditTimetable from "./pages/admin/EditTimetable";
 
 
 // Teacher Components
@@ -41,6 +44,7 @@ import AddAssignment from './pages/teacher/AddAssignment';
 import EditAssignment from './pages/teacher/EditAssignment';
 import AssignmentDetails from './pages/teacher/AssignmentDetails';
 import TeacherAnnouncements from "./pages/teacher/TeacherAnnouncements";
+import GetAttendance from "./pages/teacher/GetAttendance";
 
 
 // Student Components
@@ -55,6 +59,7 @@ import AnnouncementDetails from "./pages/admin/AnnouncementDetails";
 import StudentAnnouncements from "./pages/student/StudentAnnouncements";
 import EditAdminProfile from "./pages/admin/EditAdminProfile";
 import StudentAssignments from "./pages/student/StudentAssignments";
+
 
 const App = () => {
   return (
@@ -90,6 +95,10 @@ const App = () => {
         <Route path="announcements/add" element={<AddAnnouncement />} />
         <Route path="announcements/edit/:id" element={<EditAnnouncement />} />
         <Route path="announcements/:id" element={<AnnouncementDetails />} />
+        <Route path="timetable" element={<GetTimeTable />} />
+        <Route path="timetable/add" element={<AddTimetable />} />
+        <Route path="timetable/edit/:id" element={<EditTimetable />} />
+        <Route path="students/attendance/:id" element={<EditTimetable />} />
       </Route>
 
 
@@ -104,6 +113,7 @@ const App = () => {
         <Route path="assignments/:id" element={<AssignmentDetails />} />
         <Route path="assignments/edit/:id" element={<EditAssignment />} />
         <Route path="announcements" element={<TeacherAnnouncements />} />
+        <Route path="attendance" element={<GetAttendance />} />
         <Route path="profile" element={<TeacherProfile />} />
       </Route>
 

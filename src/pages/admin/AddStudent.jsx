@@ -2,24 +2,65 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addStudent } from '../../services/students';
 import { getAllClasses } from '../../services/classes';
-import { Upload } from 'lucide-react';
+import { Upload, Eye, EyeOff } from 'lucide-react';
+import { getBaseURL } from '../../lib/utils';
 
 const AddStudent = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [classes, setClasses] = useState([]);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [studentData, setStudentData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         password: '',
+        confirmPassword: '',
         gender: '',
         classes: '',
         role: 'student',
-        avatar: null
+        avatar: null,
+        redirectURL: ""
     });
+
+    const validateForm = () => {
+        if (!studentData.firstName.trim()) {
+            setError('First name is required');
+            return false;
+        }
+        if (!studentData.lastName.trim()) {
+            setError('Last name is required');
+            return false;
+        }
+        if (!studentData.email.trim()) {
+            setError('Email is required');
+            return false;
+        }
+        if (!studentData.email.includes('@')) {
+            setError('Please enter a valid email address');
+            return false;
+        }
+        if (!studentData.password.trim()) {
+            setError('Password is required');
+            return false;
+        }
+        if (studentData.password.length < 6) {
+            setError('Password must be at least 6 characters long');
+            return false;
+        }
+        if (!studentData.gender) {
+            setError('Please select a gender');
+            return false;
+        }
+        if (studentData.password !== studentData.confirmPassword) {
+            setError('Passwords do not match');
+            return false;
+        }
+        return true;
+    };
 
     useEffect(() => {
         const fetchClasses = async () => {
@@ -38,11 +79,18 @@ const AddStudent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        // Validate form before submission
+        if (!validateForm()) {
+            return;
+        }
+
         try {
             setLoading(true);
             const payload = {
                 ...studentData,
-                avatar: selectedFile
+                avatar: selectedFile,
+                redirectURL: getBaseURL()
             };
             console.log('Submitting student data:', payload);
             await addStudent(payload);
@@ -132,19 +180,6 @@ const AddStudent = () => {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={studentData.password}
-                            onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:text-gray-300"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Gender
                         </label>
                         <select
@@ -159,7 +194,6 @@ const AddStudent = () => {
                             <option value="female">Female</option>
                         </select>
                     </div>
-
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Assign Class
@@ -178,6 +212,60 @@ const AddStudent = () => {
                                 </option>
                             ))}
                         </select>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
+                            Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={studentData.password}
+                                onChange={handleChange}
+                                placeholder="Enter a secure password..."
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
+                                {showPassword ? (
+                                    <EyeOff className="h-5 w-5" />
+                                ) : (
+                                    <Eye className="h-5 w-5" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
+                            Confirm Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                name="confirmPassword"
+                                value={studentData.confirmPassword}
+                                onChange={handleChange}
+                                placeholder="Confirm Password..."
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
+                                {showConfirmPassword ? (
+                                    <EyeOff className="h-5 w-5" />
+                                ) : (
+                                    <Eye className="h-5 w-5" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -223,7 +311,7 @@ const AddStudent = () => {
                     <button
                         type="button"
                         onClick={() => navigate('/admin/users/students')}
-                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 border-[1px] border-gray-300 dark:hover:bg-gray-700 transition-colors"
                     >
                         Cancel
                     </button>

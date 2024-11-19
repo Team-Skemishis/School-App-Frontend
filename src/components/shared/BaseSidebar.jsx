@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { logout } from '../../services/config';
 import { useNavigate } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
 
 const BaseSidebar = ({ navItems, role }) => {
     const location = useLocation();
@@ -49,10 +50,8 @@ const BaseSidebar = ({ navItems, role }) => {
                     onClick={handleLogout}
                     className="w-full flex items-center p-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M3 3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3zm11 4.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L11.586 7H7a1 1 0 1 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7.414z" clipRule="evenodd" />
-                    </svg>
-                    <span className="ml-3">Logout</span>
+                    <LogOut />
+                    <span className="ml-2">Logout</span>
                 </button>
             </div>
         </div>

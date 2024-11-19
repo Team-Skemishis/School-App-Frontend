@@ -118,11 +118,10 @@ const GetAnnouncements = () => {
                         <button
                             key={type.value}
                             onClick={() => setSelectedUserType(type.value)}
-                            className={`px-4 py-2 rounded-lg transition-colors ${
-                                selectedUserType === type.value
+                            className={`px-4 py-2 rounded-lg transition-colors ${selectedUserType === type.value
                                     ? 'bg-blue-600 text-white'
                                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                            }`}
+                                }`}
                         >
                             {type.label}
                         </button>
@@ -163,7 +162,7 @@ const GetAnnouncements = () => {
 
                             {announcement.coverImage && (
                                 <img
-                                    src={`https://savefiles.org/${announcement.coverImage}?shareable_link=485`}
+                                    src={`https://savefiles.org/${announcement.coverImage}?shareable_link=521`}
                                     alt="Announcement cover"
                                     className="w-full h-48 object-cover rounded-lg mb-4 border-[0.1px]"
                                 />

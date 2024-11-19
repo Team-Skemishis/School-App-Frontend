@@ -1,39 +1,58 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { deleteTeacher, getTeachers } from '../../services/teachers';
-import { Eye, Edit, Trash, ArrowUpDown, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { deleteTeacher, getTeachers } from '../../services/teachers';
+import { getOneClass } from '../../services/classes';
+import { Eye, Edit, Trash, ArrowUpDown, UserPlus } from 'lucide-react';
 
 const GetTeachers = () => {
     const [teachers, setTeachers] = useState([]);
+    const [classNames, setClassNames] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
-    const teachersPerPage = 4;
+    const teachersPerPage = 5;
     const navigate = useNavigate();
-
-    // Fetch teachers on component mount
-    useEffect(() => {
-        fetchTeachers();
-    }, []);
 
     const fetchTeachers = async () => {
         try {
             setLoading(true);
             const response = await getTeachers();
-            setTeachers(response.data);
+            const teacherList = response.data;
+            setTeachers(teacherList);
+
+            // Fetch classes for each teachers...
+            const classData = {};
+            for (const teacher of teacherList) {
+                if (teacher.classes) {
+                    try {
+                        const classResponse = await getOneClass(teacher.classes);
+                        if (classResponse.data) {
+                            classData[teacher.classes] = `${classResponse.data.classNumber} - ${classResponse.data.classCategory}`;
+                        } else {
+                            classData[teacher.classes] = 'Class not found';
+                        }
+                    } catch (error) {
+                        console.error('Error fetching class:', error);
+                        classData[teacher.classes] = 'Unknown Class';
+                    }
+                } else {
+                    classData[teacher.classes] = 'No Class Assigned';
+                }
+            }
+            setClassNames(classData);
         } catch (error) {
             console.error('Error fetching teachers:', error);
-            if (error.response?.status === 401) {
-                setError('Session expired. Please login again.');
-            } else {
-                setError('Failed to fetch teachers');
-            }
+            setError('Failed to fetch teachers');
         } finally {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchTeachers();
+    }, []);
 
     const handleDeleteTeacher = async (teacherId) => {
         if (window.confirm('Are you sure you want to delete this teacher? This action cannot be undone.')) {
@@ -118,6 +137,12 @@ const GetTeachers = () => {
                                     <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
                                 </div>
                             </th>
+                            <th className="py-2 px-4 text-left" onClick={() => requestSort('classes')}>
+                                <div className="flex items-center">
+                                    Assigned Class
+                                    <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
+                                </div>
+                            </th>
                             <th className="py-2 px-4 text-left" onClick={() => requestSort('gender')}>
                                 <div className="flex items-center">
                                     Gender
@@ -133,6 +158,7 @@ const GetTeachers = () => {
                                 <td className="py-4 px-4">{teacher.firstName}</td>
                                 <td className="py-4 px-4">{teacher.lastName}</td>
                                 <td className="py-4 px-4">{teacher.email}</td>
+                                <td className="py-4 px-4 capitalize">{classNames[teacher.classes] || 'Not Specified'}</td>
                                 <td className="py-4 px-4 capitalize">{teacher.gender || 'Not Specified'}</td>
                                 <td className="py-4 px-4">
                                     <div className="flex items-center space-x-2">

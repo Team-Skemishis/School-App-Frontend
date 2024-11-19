@@ -243,7 +243,7 @@ const EditTeacher = () => {
                     <button
                         type="button"
                         onClick={() => navigate('/admin/users/teachers')}
-                        className="px-5 py-2 bg-gray-100 text-gray-700 rounded-lg border-[1px] border-gray-300 hover:bg-gray-200 transition-colors"
+                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 border-[1px] border-gray-300 dark:hover:bg-gray-700 transition-colors"
                     >
                         Cancel
                     </button>

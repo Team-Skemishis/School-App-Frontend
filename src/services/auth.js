@@ -1,15 +1,7 @@
 import { apiClient } from "./config"
 
-export const userSignUp = async (userData) => {
-    const { confirmPassword, ...registrationData } = userData;
-
-    console.log('Sending registration data:', registrationData);
-
-    return await apiClient.post("/users/register", registrationData, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+export const userSignUp = async (payload) => {
+    return await apiClient.post("/users/register", payload);
 }
 
 export const userLogin = async (credentials) => {

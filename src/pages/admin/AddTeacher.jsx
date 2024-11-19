@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addTeacher } from '../../services/teachers';
-import { Upload } from 'lucide-react';
-import { getBaseURL } from '@/lib/utils';
+import { Upload, Eye, EyeOff } from 'lucide-react';
+import { getBaseURL } from '../../lib/utils';
 
 const AddTeacher = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [teacherData, setTeacherData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         password: '',
+        confirmPassword: '',
         gender: '',
         role: 'teacher', // Set default role
         avatar: null,
@@ -47,6 +50,10 @@ const AddTeacher = () => {
         }
         if (!teacherData.gender) {
             setError('Please select a gender');
+            return false;
+        }
+        if (teacherData.password !== teacherData.confirmPassword) {
+            setError('Passwords do not match');
             return false;
         }
         return true;
@@ -105,7 +112,7 @@ const AddTeacher = () => {
     };
 
     return (
-        <div className="p-6">
+        <div className="p-4">
             <h2 className="text-2xl font-bold mb-6">Add New Teacher</h2>
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
@@ -115,7 +122,7 @@ const AddTeacher = () => {
             <form onSubmit={handleSubmit} className="max-w-lg">
                 <div className="space-y-2">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
                             First Name
                         </label>
                         <input
@@ -128,7 +135,7 @@ const AddTeacher = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
                             Last Name
                         </label>
                         <input
@@ -141,7 +148,7 @@ const AddTeacher = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
                             Email
                         </label>
                         <input
@@ -154,20 +161,7 @@ const AddTeacher = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={teacherData.password}
-                            onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
                             Gender
                         </label>
                         <select
@@ -183,7 +177,65 @@ const AddTeacher = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
+                            Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={teacherData.password}
+                                onChange={handleChange}
+                                placeholder="Enter a secure password..."
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
+                                {showPassword ? (
+                                    <EyeOff className="h-5 w-5" />
+                                ) : (
+                                    <Eye className="h-5 w-5" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
+                            Confirm Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                name="confirmPassword"
+                                value={teacherData.confirmPassword}
+                                onChange={handleChange}
+                                placeholder="Confirm Password..."
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
+                                {showConfirmPassword ? (
+                                    <EyeOff className="h-5 w-5" />
+                                ) : (
+                                    <Eye className="h-5 w-5" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 ">
                             Profile Picture
                         </label>
                         <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -225,7 +277,7 @@ const AddTeacher = () => {
                     <button
                         type="button"
                         onClick={() => navigate('/admin/users/teachers')}
-                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 border-[1px] border-gray-300 dark:hover:bg-gray-700 transition-colors"
                     >
                         Cancel
                     </button>

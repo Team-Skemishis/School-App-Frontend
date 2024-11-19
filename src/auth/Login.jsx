@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Eye, EyeOff } from 'lucide-react';
 import { userLogin } from '../services/auth';
 import { setAuthToken, setUserRole } from '../services/config';
 
@@ -7,6 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -108,18 +110,26 @@ const Login = () => {
                   dark:focus:ring-blue-500 dark:placeholder-gray-400"
               />
             </div>
-            <div>
+
+            <div className="relative">
               <input
-                required
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder="Enter your password..."
-                className="w-full p-3 border border-gray-300 rounded-md 
-                  focus:outline-none focus:ring-2 focus:ring-blue-600 
-                  bg-white text-gray-900
-                  dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
-                  dark:focus:ring-blue-500 dark:placeholder-gray-400"
+                placeholder="Enter a your password..."
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
+              </button>
             </div>
             <button
               type="submit"

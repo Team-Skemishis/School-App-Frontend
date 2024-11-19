@@ -18,19 +18,7 @@ export const deleteTeacher = async (id) => {
 
 export const addTeacher = async (payload) => {
     const token = localStorage.getItem('token');
-    const formData = new FormData();
-    formData.append('firstName', payload.firstName);
-    formData.append('lastName', payload.lastName);
-    formData.append('email', payload.email);
-    formData.append('password', payload.password);
-    formData.append('gender', payload.gender);
-    formData.append('redirectURL', payload.redirectURL);
-    formData.append('role', 'teacher');
-    if (payload.avatar) {
-        formData.append('avatar', payload.avatar);
-    }
-
-    return await apiClient.post("/teachers/register", formData, {
+    return await apiClient.post("/teachers/register", payload, {
         headers: {
             'Authorization': `Bearer ${token}`,
             // 'Content-Type': 'application/json'

@@ -164,7 +164,7 @@ export default function LandingPage() {
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className="p-3 sm:p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                                className="p-3 sm:p-4 md:p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
                                 style={{ backgroundColor: feature.backgroundColor }}
                             >
                                 <div className='flex md:gap-2 md:mb-2 items-center space-x-2'>
@@ -223,7 +223,7 @@ export default function LandingPage() {
                     <div className="relative max-w-3xl mx-auto px-12">
                         <span className='font-bold text-theme-color text-6xl absolute top-2 left-14 font-serif italic'>&quot;</span>
                         <div className="overflow-hidden border-[0.1px] border-theme-color rounded-tl-3xl rounded-br-3xl p-6">
-                            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)`}}>
+                            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}>
                                 {testimonials.map((testimonial, index) => (
                                     <div key={index} className="w-full flex-shrink-0 px-4 ">
                                         <blockquote className="text-center">

@@ -11,7 +11,7 @@ const GetStudents = () => {
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
     const [classNames, setClassNames] = useState({});
-    const studentsPerPage = 4;
+    const studentsPerPage = 5;
     const navigate = useNavigate();
 
     useEffect(() => {

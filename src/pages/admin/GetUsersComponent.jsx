@@ -10,7 +10,7 @@ const GetUsersComponent = () => {
     const [error, setError] = useState('');
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
-    const usersPerPage = 4;
+    const usersPerPage = 10;
     const navigate = useNavigate();
 
     // Fetch users on component mount
@@ -141,20 +141,20 @@ const GetUsersComponent = () => {
                             <td className="py-4 px-4">{user.role}</td>
                             <td className="py-4 px-4">
                                 <div className="flex items-center space-x-2">
-                                    <button 
-                                        className="text-blue-500 hover:text-blue-700" 
+                                    <button
+                                        className="text-blue-500 hover:text-blue-700"
                                         onClick={() => navigate(`/admin/users/${user._id}`)}
                                     >
                                         <Eye className="w-5 h-5" />
                                     </button>
-                                    <button 
-                                        className="text-green-500 hover:text-green-700" 
+                                    <button
+                                        className="text-green-500 hover:text-green-700"
                                         onClick={() => navigate(`/admin/edit-user/${user._id}`)}
                                     >
                                         <Edit className="w-5 h-5" />
                                     </button>
-                                    <button 
-                                        className="text-red-500 hover:text-red-700" 
+                                    <button
+                                        className="text-red-500 hover:text-red-700"
                                         onClick={() => handleDeleteUser(user._id)}
                                         disabled={loading}
                                     >

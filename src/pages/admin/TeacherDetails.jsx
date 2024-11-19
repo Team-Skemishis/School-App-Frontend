@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneTeacher, deleteTeacher } from '../../services/teachers';
+import { getOneClass } from '@/services/classes';
 
 const TeacherDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [teacher, setTeacher] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [teacher, setTeacher] = useState(null);
+    const [classData, setClassData] = useState(null)
 
     useEffect(() => {
         const fetchTeacher = async () => {
             try {
                 const response = await getOneTeacher(id);
                 setTeacher(response.data);
+
+                // fetch class details if teacher has a class assigned to him/her...
+                if (response.data.classes) {
+                    const classResponse = await getOneClass(response.data.classes)
+                    setClassData(classResponse.data);
+                }
             } catch (error) {
                 console.error('Error fetching teacher details:', error);
                 setError('Failed to fetch teacher details');
@@ -96,8 +104,8 @@ const TeacherDetails = () => {
                         <p><strong>First Name:</strong> {teacher.firstName}</p>
                         <p><strong>Last Name:</strong> {teacher.lastName}</p>
                         <p><strong>Email:</strong> {teacher.email}</p>
-                        <p><strong>Gender:</strong> {teacher.gender}</p>
-                        <p><strong>Role:</strong> {teacher.role}</p>
+                        <p><strong>Gender:</strong> {teacher.gender.charAt(0).toUpperCase() + teacher.gender.slice(1)}</p>
+                        <p><strong>Role:</strong> {teacher.role.charAt(0).toUpperCase() + teacher.role.slice(1)}</p>
                     </div>
                     {/* Class Information */}
                     <div className="space-y-4">
@@ -106,16 +114,16 @@ const TeacherDetails = () => {
                             <div className="mt-2 space-y-2">
                                 {teacher.classes ? (
                                     <>
-                                        <p><strong>Class Number:</strong> {teacher.classes.classNumber}</p>
+                                        <p><strong>Assigned Class:</strong> {classData ? `${classData.classNumber} - ${classData.classCategory}` : 'No Class Assigned'}</p>
 
                                     </>
                                 ) : (
                                     <>
                                         <p className="text-gray-500 dark:text-gray-400">No class assigned</p>
-                                        <p className="text-gray-500 dark:text-gray-400">No courses assigned</p>
                                     </>
                                 )}
                             </div>
+                            <p className="text-gray-500 dark:text-gray-400">No courses assigned</p>
                         </div>
                     </div>
                 </div>

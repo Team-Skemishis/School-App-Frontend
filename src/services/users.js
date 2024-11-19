@@ -10,6 +10,7 @@ export const getOneUser = async (id) => {
         headers: {
             'Authorization': `Bearer ${token}`
         }
+        
     });
 }
 

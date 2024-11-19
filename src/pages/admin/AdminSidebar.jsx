@@ -6,7 +6,7 @@ import {
     Users,
     Settings,
     School,
-    Bell,
+    CalendarClock,
     User,
     UserRound,
     GraduationCap
@@ -45,9 +45,9 @@ const AdminSidebar = () => {
             icon: <School className="h-5 w-5" />,
         },
         {
-            path: '/admin/announcements',
-            name: 'Announcements',
-            icon: <Bell className="h-5 w-5" />,
+            path: '/admin/timetable',
+            name: 'Timetable',
+            icon: <CalendarClock className="h-5 w-5" />,
         },
         {
             path: '/admin/settings',
