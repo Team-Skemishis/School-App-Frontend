@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react';
 import { userLogin } from '../services/auth';
 import { setAuthToken, setUserRole } from '../services/config';
-import illustration from '../assets/images/SignUpIllustration.png'
+import illustration from '../assets/images/loginIllustration.png'
 import logo from '../assets/images/eSukuu.png'
 
 
@@ -66,32 +66,32 @@ const Login = () => {
   };
 
   return (
-    <div className="signup flex justify-center items-center h-screen bg-white">
+    <div className="signup flex justify-center items-center h-screen bg-white lg:px-24">
       <form
         onSubmit={handleSubmit}
         className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
       >
         <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
           <section className='flex gap-5'>
-            <div className='w-1/2 space-y-6 items-center justify-center flex flex-col p-6 rounded-2xl'>
-              <img src={illustration} alt="eSukuu Logo" className="w-72" />
-              <h2 className='text-2xl text-gray-800 font-righteousStatic text-center'>&quot;Welcome Back to Smarter School Management!</h2>
-              <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an admin overseeing operations, a teacher managing lessons, or a student staying on top of your studies, our platform is here to keep things seamless and efficient. Let&apos;s get started!</p>
+            <div className='w-1/2 items-center justify-center flex flex-col p-6 rounded-2xl my-auto'>
+              <img src={illustration} alt="eSukuu Logo" className="w-80" />
+              <h2 className='text-2xl mb-3 text-gray-800 font-righteousStatic text-center'>&quot;Welcome Back to Smarter School Management!</h2>
+              <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an <span className='font-semibold italic text-theme-color'>admin</span> overseeing operations, a <span className='font-semibold italic text-theme-color'>teacher</span> managing lessons, or a <span className='font-semibold italic text-theme-color'>student</span> staying on top of your studies, our platform is here to keep things seamless and efficient. <br /> Let&apos;s get started!</p>
             </div>
-            <div className='space-y-4 dark:bg-gray-800 p-6 rounded-2xl flex flex-col'>
+            <div className='w-1/2 dark:bg-gray-800 p-6 rounded-2xl flex flex-col space-y-6 my-auto'>
               <Link to="/" className='cursor-pointer'>
-                <img src={logo} alt="eSukuuLogo" className=" w-40  " />
+                <img src={logo} alt="eSukuuLogo" className="w-40" />
               </Link>
-              <section className='space-y-4 bg-white dark:bg-gray-800 p-6 rounded-2xl w-full max-w-md'>
-                <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative pl-10 mb-8">
-                  Login
-                </p>
+              <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative mb-8">
+                Login
+              </p>
 
-                {error && (
-                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-                    {error}
-                  </div>
-                )}
+              {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+                  {error}
+                </div>
+              )}
+              <section className='space-y-6 bg-white dark:bg-gray-800 rounded-2xl'>
                 <div>
                   <select
                     name="role"

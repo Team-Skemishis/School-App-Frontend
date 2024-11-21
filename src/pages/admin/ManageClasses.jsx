@@ -10,7 +10,7 @@ const ManageClasses = () => {
   const [error, setError] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
   const [currentPage, setCurrentPage] = useState(1);
-  const classesPerPage = 4;
+  const classesPerPage = 7;
   const navigate = useNavigate();
   const [teacherNames, setTeacherNames] = useState({});
 
