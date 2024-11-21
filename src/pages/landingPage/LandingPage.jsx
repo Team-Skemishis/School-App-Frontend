@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
-import logo from '../../assets/images/wink.gif'
+import logo from '../../assets/images/eSukuu.png'
 import schoolBuilding from '../../assets/images/schooll.svg'
 import mobile from '../../assets/images/downloadPhoneApp.png'
 import responsiveImage from '../../assets/images/responsiveImage.png'
@@ -11,6 +11,7 @@ import responsiveImage from '../../assets/images/responsiveImage.png'
 import uenrLogo from '../../assets/images/schoolLogos/UENR-logo.png'
 import ciscoLogo from '../../assets/images/schoolLogos/cisco.jpg'
 import knustLogo from '../../assets/images/schoolLogos/knust.png'
+import school_romeo from '../../assets/images/schoolLogos/school_romeo.png'
 import kuhisLogo from '../../assets/images/schoolLogos/kuhis.png'
 import TISLogo from '../../assets/images/schoolLogos/TIS.png'
 import GISLogo from '../../assets/images/schoolLogos/GIS.png'
@@ -31,7 +32,7 @@ export default function LandingPage() {
 
     const testimonials = [
         {
-            quote: "EduBridge has transformed how we manage our school. Communication is faster, and everything is organized.",
+            quote: "eSukuu has transformed how we manage our school. Communication is faster, and everything is organized.",
             author: "Principal, Oakridge Academy"
         },
         {
@@ -48,7 +49,7 @@ export default function LandingPage() {
         {
             icon: <CircleDollarSign size={48} />,
             title: "Absolutely Free",
-            description: "EduBridge is an absolutely 100% free school management software for a lifetime with no limitations. No need to buy anything. Just Sign Up!",
+            description: "eSukuu is an absolutely 100% free school management software for a lifetime with no limitations. No need to buy anything. Just Sign Up!",
             backgroundColor: "#f0f8ff"
         },
         {
@@ -66,7 +67,7 @@ export default function LandingPage() {
         {
             icon: <CloudDownload size={48} />,
             title: "Cloud Based Software",
-            description: "EduBridge is free school software that is always online, you can access it from anywhere, anytime. We will take care of your data and backups.",
+            description: "eSukuu is free school software that is always online, you can access it from anywhere, anytime. We will take care of your data and backups.",
             backgroundColor: "#efd2fa"
         },
         {
@@ -101,8 +102,8 @@ export default function LandingPage() {
             <header className="fixed top-0 left-0 right-0 bg-blue-300 shadow-md z-50">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     <ScrollLink to="home" smooth={true} duration={1500} className="flex items-center space-x-2 cursor-pointer">
-                        <img src={logo} alt="EduBridge Logo" className="h-10 w-10" />
-                        <span className="text-2xl font-bold text-theme-color font-righteousStatic">EduBridge</span>
+                        <img src={logo} alt="eSukuu Logo" className="w-40" />
+                        {/* <span className="text-2xl font-bold text-theme-color font-righteousStatic">eSukuu</span> */}
                     </ScrollLink>
                     <nav className="hidden md:flex space-x-2 lg:space-x-8 text-nowrap shrink-0">
                         <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
@@ -189,7 +190,7 @@ export default function LandingPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                 </svg>
                             </div>
-                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 1</h3>
+                            <h3 className="text-4xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 1</h3>
                             <p className="text-gray-600 text-lg">Sign up your school. <br /> <span className='text-theme-color'>It&apos;s free!</span></p>
                         </div>
                         <ArrowRight className="hidden md:block text-theme-color" size={32} />
@@ -199,7 +200,7 @@ export default function LandingPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                             </div>
-                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 2</h3>
+                            <h3 className="text-4xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 2</h3>
                             <p className="text-gray-600 b text-lg">Customize your school&apos;s profile and invite teachers, students, and parents.</p>
                         </div>
                         <ArrowRight className="hidden md:block text-theme-color" size={32} />
@@ -209,7 +210,7 @@ export default function LandingPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                                 </svg>
                             </div>
-                            <h3 className="text-3xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 3</h3>
+                            <h3 className="text-4xl font-semibold text-black dark:text-black font-dancingScript mb-2">Step 3</h3>
                             <p className="text-gray-600 text-lg">Manage classes, attendance, grades, and communication, all in one unified platform.</p>
                         </div>
                     </div>
@@ -262,6 +263,7 @@ export default function LandingPage() {
                                 <img src={ugMainLogo} alt="UG Main Logo" className="logo-prop" />
                                 <img src={TISLogo} alt="TIS Logo" className="logo-prop" />
                                 <img src={GISA} alt="GISA Logo" className="logo-prop" />
+                                <img src={school_romeo} alt="school_romeo" className="logo-prop w-[50px]" />
                                 <img src={uenrLogo} alt="UENR Logo" className="logo-prop" />
                                 <img src={ciscoLogo} alt="Cisco Logo" className="logo-prop" />
                                 <img src={knustLogo} alt="KNUST Logo" className="logo-prop" />
@@ -359,7 +361,7 @@ export default function LandingPage() {
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-5">
                         <div className="">
-                            <img src={mobile} alt="EduBridge Mobile App" className="mx-auto md:mx-0 max-w-xs" />
+                            <img src={mobile} alt="eSukuu Mobile App" className="mx-auto md:mx-0 max-w-xs" />
                         </div>
                         <div className="md:w-1/2 text-start">
                             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-black">Free Download</h2>
@@ -391,14 +393,14 @@ export default function LandingPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <Link to="/" className="flex items-center space-x-2 mb-4">
-                                <img src={logo} alt="EduBridge Logo" className="h-10 w-10" />
-                                <span className="text-2xl font-bold text-theme-color font-righteousStatic">EduBridge</span>
+                                <img src={logo} alt="eSukuu Logo" className=" w-40" />
+                                {/* <span className="text-2xl font-bold text-theme-color font-righteousStatic">eSukuu</span> */}
                             </Link>
                             <p className="text-sm">
-                                EduBridge is the world&apos;s best and #1 ranked free online school management software. Our school management software has more features than any school software in the market.
+                                eSukuu is the world&apos;s best and #1 ranked free online school management software. Our school management software has more features than any school software in the market.
                             </p>
                             <div>
-                                <img src={schoolBuilding} alt="EduBridge Logo" />
+                                <img src={schoolBuilding} alt="eSukuu Logo" />
                             </div>
                         </div>
                         <div>
@@ -425,7 +427,7 @@ export default function LandingPage() {
                                     <Linkedin className="w-6 h-6" />
                                 </Link>
                             </div>
-                            <p className="text-sm">&copy; {new Date().getFullYear()} EduBridge. All rights reserved.</p>
+                            <p className="text-sm">&copy; {new Date().getFullYear()} eSukuu. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

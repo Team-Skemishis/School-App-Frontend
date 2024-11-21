@@ -142,9 +142,9 @@ const EditAdminProfile = () => {
                             {currentAvatar && !selectedFile && (
                                 <div className="flex items-center gap-2 mb-2">
                                     <img
-                                        src={`https://savefiles.org/${currentAvatar}?shareable_link=484`}
+                                        src={`https://savefiles.org/${currentAvatar}?shareable_link=533`}
                                         alt="Current profile"
-                                        className="w-20 h-20 rounded-full object-cover"
+                                        className="w-20 h-20 rounded-full "
                                     />
                                 </div>
                             )}

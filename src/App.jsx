@@ -31,6 +31,7 @@ import AddAnnouncement from "./pages/admin/AddAnnouncement";
 import GetTimeTable from "./pages/admin/GetTimeTable";
 import AddTimetable from "./pages/admin/AddTimetable";
 import EditTimetable from "./pages/admin/EditTimetable";
+import TimetableDetails from "./pages/admin/TimetableDetails";
 
 
 // Teacher Components
@@ -45,6 +46,8 @@ import EditAssignment from './pages/teacher/EditAssignment';
 import AssignmentDetails from './pages/teacher/AssignmentDetails';
 import TeacherAnnouncements from "./pages/teacher/TeacherAnnouncements";
 import GetAttendance from "./pages/teacher/GetAttendance";
+import GetTimetable from "./pages/student/GetTimetable";
+import StuTimetableDetails from "./pages/student/TimetableDetails";
 
 
 // Student Components
@@ -59,6 +62,7 @@ import AnnouncementDetails from "./pages/admin/AnnouncementDetails";
 import StudentAnnouncements from "./pages/student/StudentAnnouncements";
 import EditAdminProfile from "./pages/admin/EditAdminProfile";
 import StudentAssignments from "./pages/student/StudentAssignments";
+
 
 
 const App = () => {
@@ -96,6 +100,7 @@ const App = () => {
         <Route path="announcements/edit/:id" element={<EditAnnouncement />} />
         <Route path="announcements/:id" element={<AnnouncementDetails />} />
         <Route path="timetable" element={<GetTimeTable />} />
+        <Route path="timetable/:id" element={<TimetableDetails />} />
         <Route path="timetable/add" element={<AddTimetable />} />
         <Route path="timetable/edit/:id" element={<EditTimetable />} />
         <Route path="students/attendance/:id" element={<EditTimetable />} />
@@ -126,6 +131,8 @@ const App = () => {
         <Route path="assignments" element={<StudentAssignments />} />
         <Route path="announcements" element={<StudentAnnouncements />} />
         <Route path="profile" element={<StudentProfile />} />
+        <Route path="timetable" element={<GetTimetable />} />
+        <Route path="timetable/:id" element={<StuTimetableDetails />} />
       </Route>
 
       {/* Catch all route - 404 */}

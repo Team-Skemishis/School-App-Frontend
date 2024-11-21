@@ -2,11 +2,13 @@ import { apiClient } from "./config";
 
 export const getTimetable = async () => {
     const token = localStorage.getItem('token');
-    return await apiClient.get("/timetable", {
+    const response = await apiClient.get("/timetable", {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     });
+    console.log('Fetched Timetable:', response.data);
+    return response;
 }
 
 export const getOneTimetable = async (id) => {

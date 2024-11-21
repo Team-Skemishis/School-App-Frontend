@@ -63,7 +63,7 @@ const StudentAnnouncements = () => {
                         >
                             {announcement.coverImage && (
                                 <img
-                                    src={`https://savefiles.org/${announcement.coverImage}?shareable_link=484`}
+                                    src={`https://savefiles.org/${announcement.coverImage}?shareable_link=521`}
                                     alt="Announcement cover"
                                     className="w-full h-48 object-cover"
                                 />

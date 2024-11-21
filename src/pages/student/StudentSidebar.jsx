@@ -38,6 +38,11 @@ const StudentSidebar = () => {
             icon: <Book className="h-5 w-5" />,
         },
         {
+            path: '/student/timetable',
+            name: 'Timetable',
+            icon: <Bell className="h-5 w-5" />,
+        },
+        {
             path: '/student/announcements',
             name: 'Announcements',
             icon: <Bell className="h-5 w-5" />,

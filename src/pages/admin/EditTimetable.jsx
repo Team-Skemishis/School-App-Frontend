@@ -53,7 +53,8 @@ const EditTimetable = () => {
 
         try {
             setLoading(true);
-            await updateTimetable(id, timetableData);
+            const { _id, ...payload } = timetableData; // Destructure to remove _id
+            await updateTimetable(id, payload); // Send the payload without _id
             navigate('/admin/timetable');
         } catch (error) {
             console.error('Error updating timetable:', error);
@@ -129,11 +130,11 @@ const EditTimetable = () => {
                             required
                         >
                             <option value="">Select a day...</option>
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
                         </select>
                     </div>
 
@@ -185,7 +186,7 @@ const EditTimetable = () => {
                     <button
                         type="button"
                         onClick={() => navigate('/admin/timetable')}
-                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 border-[1px] border-gray-300 dark:hover:bg-gray-700 transition-colors"
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
                     >
                         Cancel
                     </button>

@@ -59,7 +59,7 @@ const AdminProfile = () => {
                             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-600 mx-auto">
                                 {profileData.avatar ? (
                                     <img
-                                        src={`https://savefiles.org/${profileData.avatar}?shareable_link=484`}
+                                        src={`https://savefiles.org/${profileData.avatar}?shareable_link=533`}
                                         alt="Profile"
                                         className="w-full h-full object-cover"
                                     />
