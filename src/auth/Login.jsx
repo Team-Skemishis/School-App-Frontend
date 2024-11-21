@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react';
 import { userLogin } from '../services/auth';
 import { setAuthToken, setUserRole } from '../services/config';
+import illustration from '../assets/images/SignUpIllustration.png'
+import logo from '../assets/images/eSukuu.png'
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -62,96 +66,106 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="signup flex justify-center items-center h-screen bg-[#F0F8FF] signupPage">
-        <form
-          onSubmit={handleSubmit}
-          className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
-        >
-          <section className='space-y-4 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl w-full max-w-md'>
-            <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative pl-10 mb-8">
-              Login
-              <span className="mt-[4px] absolute left-[4px] top-[5px] w-4 h-4 bg-[#0E345A] dark:bg-gray-200 rounded-full"></span>
-              <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse bg-[#0E345A] dark:bg-gray-200 rounded-full opacity-10"></span>
-            </p>
-
-            {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-                {error}
-              </div>
-            )}
-            <div>
-              <select
-                name="role"
-                id="role"
-                required
-                className="w-full p-3 border border-gray-300 rounded-md 
-                  focus:outline-none focus:ring-2 focus:ring-blue-600 
-                  bg-white text-gray-900
-                  dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
-                  dark:focus:ring-blue-500 dark:placeholder-gray-400"
-              >
-                <option value="" disabled defaultValue={true}>Select your role...</option>
-                <option value="admin">Admin</option>
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-              </select>
+    <div className="signup flex justify-center items-center h-screen bg-white">
+      <form
+        onSubmit={handleSubmit}
+        className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
+      >
+        <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
+          <section className='flex gap-5'>
+            <div className='w-1/2 space-y-6 items-center justify-center flex flex-col p-6 rounded-2xl'>
+              <img src={illustration} alt="eSukuu Logo" className="w-72" />
+              <h2 className='text-2xl text-gray-800 font-righteousStatic text-center'>&quot;Welcome Back to Smarter School Management!</h2>
+              <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an admin overseeing operations, a teacher managing lessons, or a student staying on top of your studies, our platform is here to keep things seamless and efficient. Let&apos;s get started!</p>
             </div>
-            <div>
-              <input
-                required
-                type="email"
-                name="email"
-                placeholder="Enter your email..."
-                className="w-full p-3 border border-gray-300 rounded-md 
-                  focus:outline-none focus:ring-2 focus:ring-blue-600 
-                  bg-white text-gray-900
-                  dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
-                  dark:focus:ring-blue-500 dark:placeholder-gray-400"
-              />
-            </div>
-
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Enter a your password..."
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-5 w-5" />
-                ) : (
-                  <Eye className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-            <button
-              type="submit"
-              className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"
-                }`}
-              disabled={loading}
-            >
-              {loading ? "Loading..." : "Login"}
-            </button>
-
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-5">
-              New Here?{" "}
-              <Link
-                className="text-blue-600 font-semibold hover:underline dark:text-blue-400"
-                to="/register"
-              >
-                SignUp
+            <div className='space-y-4 dark:bg-gray-800 p-6 rounded-2xl flex flex-col'>
+              <Link to="/" className='cursor-pointer'>
+                <img src={logo} alt="eSukuuLogo" className=" w-40  " />
               </Link>
-            </p>
+              <section className='space-y-4 bg-white dark:bg-gray-800 p-6 rounded-2xl w-full max-w-md'>
+                <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative pl-10 mb-8">
+                  Login
+                </p>
+
+                {error && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+                    {error}
+                  </div>
+                )}
+                <div>
+                  <select
+                    name="role"
+                    id="role"
+                    required
+                    className="w-full p-3 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 
+                  bg-white text-gray-900
+                  dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
+                  dark:focus:ring-blue-500 dark:placeholder-gray-400"
+                  >
+                    <option value="" disabled defaultValue={true}>Select your role...</option>
+                    <option value="admin">Admin</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
+                  </select>
+                </div>
+                <div>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="w-full p-3 border border-gray-300 rounded-md 
+                  focus:outline-none focus:ring-2 focus:ring-blue-600 
+                  bg-white text-gray-900
+                  dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 
+                  dark:focus:ring-blue-500 dark:placeholder-gray-400"
+                  />
+                </div>
+
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter a your password"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+                <button
+                  type="submit"
+                  className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"
+                    }`}
+                  disabled={loading}
+                >
+                  {loading ? "Loading..." : "Login"}
+                </button>
+
+                <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-5">
+                  New Here?{" "}
+                  <Link
+                    className="text-blue-600 font-semibold hover:underline dark:text-blue-400"
+                    to="/register"
+                  >
+                    SignUp
+                  </Link>
+                </p>
+              </section>
+            </div>
           </section>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   )
 }

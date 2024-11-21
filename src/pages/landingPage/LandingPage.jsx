@@ -106,23 +106,23 @@ export default function LandingPage() {
                         {/* <span className="text-2xl font-bold text-theme-color font-righteousStatic">eSukuu</span> */}
                     </ScrollLink>
                     <nav className="hidden md:flex space-x-2 lg:space-x-8 text-nowrap shrink-0">
-                        <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
-                            Home
+                        <ScrollLink to="home" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg cursor-pointer font-josefinSans hover:text-white transition duration-200 hover:underline">
+                            HOME
                         </ScrollLink>
-                        <ScrollLink to="features" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
-                            Features
+                        <ScrollLink to="features" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg  cursor-pointer font-josefinSans hover:text-white transition duration-200 hover:underline">
+                            FEATURES
                         </ScrollLink>
-                        <ScrollLink to="how-it-works" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
-                            How it Works
+                        <ScrollLink to="how-it-works" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg  cursor-pointer font-josefinSans hover:text-white transition duration-200 hover:underline">
+                            HOW IT WORKS
                         </ScrollLink>
-                        <ScrollLink to="testimonials" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
-                            Testimonials
+                        <ScrollLink to="testimonials" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg  cursor-pointer font-josefinSans hover:text-white transition duration-200 hover:underline">
+                            TESTIMONIAL
                         </ScrollLink>
-                        <ScrollLink to="contact" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg lg:text-xl cursor-pointer hover:text-white transition duration-200 hover:underline">
-                            Contact
+                        <ScrollLink to="contact" smooth={true} duration={1500} className="text-theme-color text-base md:text-lg  cursor-pointer font-josefinSans hover:text-white transition duration-200 hover:underline">
+                            CONTACT
                         </ScrollLink>
                     </nav>
-                    <Link to="/register" className="bg-theme-color text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 text-nowrap">
+                    <Link to="/register" className="bg-theme-color text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 text-nowrap font-montserrat">
                         Get Started
                     </Link>
                 </div>
@@ -146,10 +146,10 @@ export default function LandingPage() {
                         </div>
                         <div className="flex sm:space-x-4 space-x-2">
                             <Link to="/register" >
-                                <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap">Get Started Today</span>
+                                <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap font-montserrat">Get Started Today</span>
                             </Link>
                             <ScrollLink to="features" smooth={true} duration={1500} >
-                                <span className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-white hover:text-theme-color text-nowrap cursor-pointer">Learn More</span>
+                                <span className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-white font-montserrat hover:text-theme-color text-nowrap cursor-pointer">Learn More</span>
                             </ScrollLink>
                         </div>
                     </div>

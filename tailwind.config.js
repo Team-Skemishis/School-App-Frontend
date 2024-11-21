@@ -63,7 +63,8 @@ export default {
 				dancingScript: ["Dancing Script", "cursive"],
 				righteousStatic: ["Righteous", "serif"],
 				arima: ["Arima", "serif"],
-				montserrat: ["Montserrat", "serif"]
+				montserrat: ["Montserrat", "serif"],
+				josefinSans: ["Josefin Sans", "sans-serif"],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -11,7 +11,7 @@ const GetStudents = () => {
     const [sortConfig, setSortConfig] = useState({ key: 'firstName', direction: 'ascending' });
     const [currentPage, setCurrentPage] = useState(1);
     const [classNames, setClassNames] = useState({});
-    const studentsPerPage = 5;
+    const studentsPerPage = 7;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -99,7 +99,7 @@ const GetStudents = () => {
     return (
         <div className="flex flex-col min-h-96 justify-between">
             <div>
-                <h2 className="text-2xl font-bold mb-4">List of Students...</h2>
+                <h2 className="text-2xl font-bold mb-4">List of Students</h2>
                 {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                         {error}

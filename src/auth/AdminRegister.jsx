@@ -57,7 +57,7 @@ const AdminRegister = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
-            ...prev,
+            prev,
             [name]: value
         }));
     };
@@ -85,25 +85,22 @@ const AdminRegister = () => {
     };
 
     return (
-        <div className="signup flex justify-center items-center h-screen bg-[#F0F8FF] signupPage">
+        <div className="signup flex justify-center items-center h-screen bg-white">
             <form onSubmit={handleSubmit} className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col">
-                <div className='items-center justify-center flex flex-col bg-white rounded-2xl'>
-                    <Link to="/" className='cursor-pointer pt-5'>
-                        <img src={logo} alt="eSukuuLogo" className=" w-40" />
-                    </Link>
-                    <section className='flex shadow-xl '>
-                        <div className='w-[450px] space-y-3 items-center flex flex-col p-6 rounded-2xl'>
-                            <img src={illustration} alt="eSukuu Logo" className=" w-52" />
-                            <h2 className='text-4xl text-gray-800 font-semibold font-dancingScript text-center'>Welcome to eSukuu... </h2>
-                            <h2 className='text-2xl text-gray-800  font-righteousStatic text-center'>&quot;Empower Your School Management Today!&quot;</h2>
-                            <p className='text-right'>Take the first step toward seamless school management. </p>
-                            <p>Create your admin account now and unlock a smarter way to run your institution</p>
+                <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
+                    <section className='flex gap-5'>
+                        <div className='w-1/2 space-y-6 items-center justify-center flex flex-col p-6 rounded-2xl'>
+                            <img src={illustration} alt="eSukuu Logo" className="w-72" />
+                            <h2 className='text-2xl text-gray-800 font-righteousStatic text-center'>&quot;Empower Your School Management Today!&quot;</h2>
+                            <p className='font-montserrat text-justify'>Take the first step toward seamless school management.
+                                <br />Create your admin account now and unlock a smarter way to run your institution</p>
                         </div>
-                        <div className='space-y-4 dark:bg-gray-800 p-6 rounded-2xl w-full max-w-md'>
-                            <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative pl-10 ">
-                                Sign Up as Admin
-                                <span className="mt-[4px] absolute left-[4px] top-[5px] w-4 h-4 bg-[#0E345A] dark:bg-gray-200 rounded-full"></span>
-                                <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse bg-[#0E345A] dark:bg-gray-200 rounded-full opacity-10"></span>
+                        <div className='space-y-4 dark:bg-gray-800 p-6 rounded-2xl flex flex-col'>
+                            <Link to="/" className='cursor-pointer'>
+                                <img src={logo} alt="eSukuuLogo" className=" w-40  " />
+                            </Link>
+                            <p className="text-2xl font-semibold text-[#0E345A] dark:text-gray-200 relative ">
+                                Sign Up as an Admin
                             </p>
 
                             {error && (
@@ -112,27 +109,27 @@ const AdminRegister = () => {
                                 </div>
                             )}
 
-                            <div className='flex space-x-4'>
-                                <div>
+                            <div className='flex justify-between gap-3'>
+                                <div className='flex-1'>
                                     <input
                                         type="text"
                                         name="firstName"
                                         value={formData.firstName}
                                         onChange={handleChange}
-                                        placeholder="Enter your first name..."
-                                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        placeholder="Enter your first name"
+                                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat"
                                         required
                                     />
                                 </div>
 
-                                <div>
+                                <div className='flex-1'>
                                     <input
                                         type="text"
                                         name="lastName"
                                         value={formData.lastName}
                                         onChange={handleChange}
-                                        placeholder="Enter your last name..."
-                                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                        placeholder="Enter your last name"
+                                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat"
                                         required
                                     />
                                 </div>
@@ -144,8 +141,8 @@ const AdminRegister = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    placeholder="Enter your email..."
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                    placeholder="Enter your email"
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat"
                                     required
                                 />
                             </div>
@@ -155,8 +152,8 @@ const AdminRegister = () => {
                                     name="schoolName"
                                     value={formData.schoolName}
                                     onChange={handleChange}
-                                    placeholder="Enter the name of your school..."
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                    placeholder="Enter the name of your school"
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat"
                                     required
                                 />
                             </div>
@@ -167,8 +164,8 @@ const AdminRegister = () => {
                                     name="password"
                                     value={formData.password}
                                     onChange={handleChange}
-                                    placeholder="Enter a secure password..."
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                    placeholder="Enter a secure password"
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat pr-10"
                                     required
                                 />
                                 <button
@@ -190,8 +187,8 @@ const AdminRegister = () => {
                                     name="confirmPassword"
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
-                                    placeholder="Confirm Password..."
-                                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                    placeholder="Confirm Password"
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder:font-montserrat pr-10"
                                     required
                                 />
                                 <button
@@ -212,7 +209,7 @@ const AdminRegister = () => {
                                 className={`w-full bg-[#0E345A] text-white py-3 rounded-lg mb-5 transition-colors ${loading ? "cursor-wait" : "hover:bg-[#0e345ade] cursor-pointer"}`}
                                 disabled={loading}
                             >
-                                {loading ? "Creating Account..." : "Register"}
+                                {loading ? "Creating Account" : "Register"}
                             </button>
 
                             <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-5">

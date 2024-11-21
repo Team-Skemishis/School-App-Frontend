@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { logout } from '../../services/config';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
+import logo from '../../assets/images/eSukuu-colored.jpg'
+
 
 const BaseSidebar = ({ navItems, role }) => {
     const location = useLocation();
@@ -15,13 +17,16 @@ const BaseSidebar = ({ navItems, role }) => {
     };
 
     return (
-        <div className="flex flex-col w-64 bg-white dark:bg-gray-800 border-r dark:border-gray-700 h-screen">
+        <div className="flex flex-col w-64 bg-white dark:bg-gray-800 border-r dark:border-gray-700 h-screen ">
             {/* Header */}
-            <div className="flex items-center justify-center h-16 bg-[#0E345A] dark:bg-gray-900">
+            {/* <div className="flex items-center justify-center h-16 bg-[#0E345A] dark:bg-gray-900">
                 <span className="text-white text-lg font-semibold">
                     {role.toUpperCase()} Dashboard
                 </span>
-            </div>
+            </div> */}
+            <Link to="/" className='cursor-pointer py-1 text-center justify-center flex  bg-[#0E345A]'>
+                <img src={logo} alt="eSukuuLogo" className=" w-44" />
+            </Link>
 
             {/* Navigation */}
             <nav className="flex-1 overflow-y-auto">
