@@ -3,6 +3,7 @@ import { getAttendanceByClassID } from '../../services/attendance';
 import { getOneUser } from '../../services/users';
 import { getOneClass } from '../../services/classes';
 import { useParams } from 'react-router-dom';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetAttendance = () => {
     const { classID } = useParams(); // Assuming classID is passed as a URL parameter
@@ -37,7 +38,7 @@ const GetAttendance = () => {
         fetchAttendance();
     }, [classID]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

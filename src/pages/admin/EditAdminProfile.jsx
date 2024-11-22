@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { getOneUser } from '../../services/users';
 import { Upload, FileText } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const EditAdminProfile = () => {
     const navigate = useNavigate();
@@ -119,7 +120,7 @@ const EditAdminProfile = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

@@ -50,8 +50,8 @@ const AdminSidebar = () => {
             icon: <CalendarClock className="h-5 w-5" />,
         },
         {
-            path: '/admin/settings',
-            name: 'Settings',
+            path: '/admin/announcements',
+            name: 'Announcements',
             icon: <Settings className="h-5 w-5" />,
         },
         {

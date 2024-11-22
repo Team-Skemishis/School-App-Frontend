@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../services/config';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
-import logo from '../../assets/images/eSukuu-colored.jpg'
+import logo from '../../assets/images/eSukuu-colored.png'
 
 
 const BaseSidebar = ({ navItems, role }) => {
@@ -24,8 +24,8 @@ const BaseSidebar = ({ navItems, role }) => {
                     {role.toUpperCase()} Dashboard
                 </span>
             </div> */}
-            <Link to="/" className='cursor-pointer py-1 text-center justify-center flex  bg-[#0E345A]'>
-                <img src={logo} alt="eSukuuLogo" className=" w-44" />
+            <Link to="/" className='cursor-pointer py-1 pl-5 text-center justify-center flex  bg-[#0E345A] dark:bg-inherit dark:border-b-[0.1px] dark:border-gray-700'>
+                <img src={logo} alt="eSukuuLogo" className=" w-[174px]" />
             </Link>
 
             {/* Navigation */}

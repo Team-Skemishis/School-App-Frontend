@@ -19,7 +19,7 @@ const Navbar = ({ toggleSidebar }) => {
             case 'student':
                 return '485';
             case 'admin':
-                return '484'; // Assuming admin uses same as teacher
+                return '533'; // Assuming admin uses same as teacher
             default:
                 return '484';
         }

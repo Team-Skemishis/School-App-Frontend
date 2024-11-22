@@ -3,6 +3,7 @@ import { getAllClasses, deleteClass } from '../../services/classes';
 import { Eye, Edit, Trash, ArrowUpDown, BookPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getOneUser } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -23,7 +24,7 @@ const ManageClasses = () => {
       setLoading(true);
       const response = await getAllClasses();
       setClasses(response.data);
-      
+
       // Fetch teacher names for each class
       const teacherData = {};
       for (const classItem of response.data) {
@@ -93,7 +94,7 @@ const ManageClasses = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div><LoadingState /></div>;
 
   return (
     <div className="flex flex-col min-h-96 justify-between">

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getOneAssignment, deleteAssignment } from '../../services/assignments';
 import { getOneUser } from '../../services/users';
 import { FileDown } from 'lucide-react'; // Import FileDown icon
+import LoadingState from '@/components/shared/LoadingState';
 
 const AssignmentDetails = () => {
     const { id } = useParams();
@@ -56,7 +57,7 @@ const AssignmentDetails = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
     if (!assignment) return <div>Assignment not found</div>;
 
     return (

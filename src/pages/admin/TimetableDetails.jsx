@@ -5,6 +5,7 @@ import { getOneClass } from '../../services/classes';
 import { getOneUser } from '../../services/users';
 import { Edit, Trash } from 'lucide-react';
 import { deleteTimetable } from '../../services/timetable';
+import LoadingState from '@/components/shared/LoadingState';
 
 const TimetableDetails = () => {
     const { id } = useParams();
@@ -57,7 +58,8 @@ const TimetableDetails = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
+    
     if (!timetableEntry) return <div>Timetable entry not found</div>;
 
     return (

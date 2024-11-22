@@ -4,6 +4,7 @@ import { getAllClasses } from '../../services/classes';
 import { getUsers } from '../../services/users';
 import { Edit, Trash, Plus, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetTimeTable = () => {
     const [timetable, setTimetable] = useState([]);
@@ -49,7 +50,7 @@ const GetTimeTable = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 

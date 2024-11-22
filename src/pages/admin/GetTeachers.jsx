@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { deleteTeacher, getTeachers } from '../../services/teachers';
 import { getOneClass } from '../../services/classes';
 import { Eye, Edit, Trash, ArrowUpDown, UserPlus } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetTeachers = () => {
     const [teachers, setTeachers] = useState([]);
@@ -105,7 +106,7 @@ const GetTeachers = () => {
 
 
     if (loading)
-        return <div>Loading...</div>
+        return <div><LoadingState /></div>;
 
     return (
         <div className="flex flex-col min-h-96 justify-between">

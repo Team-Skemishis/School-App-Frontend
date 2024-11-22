@@ -3,6 +3,8 @@ import { getTimetable } from '../../services/timetable';
 import { getAllClasses } from '../../services/classes';
 import { getUsers } from '../../services/users';
 import { Eye } from 'lucide-react';
+import LoadingState from '../../components/shared/LoadingState';
+import { useNavigate } from 'react-router-dom';
 
 const GetTimetable = () => {
     const [timetable, setTimetable] = useState([]);
@@ -10,6 +12,7 @@ const GetTimetable = () => {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +35,7 @@ const GetTimetable = () => {
         fetchData();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <LoadingState />;
 
     return (
         <div className="p-6">

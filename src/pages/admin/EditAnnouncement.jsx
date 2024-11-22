@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneAnnouncement, updateAnnouncement } from '../../services/announcements';
 import { Upload, FileText } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const EditAnnouncement = () => {
     const { id } = useParams();
@@ -107,7 +108,7 @@ const EditAnnouncement = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

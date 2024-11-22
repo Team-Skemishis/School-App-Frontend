@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllAssignments, deleteAssignment } from '../../services/assignments';
 import { Eye, Edit, Trash, ArrowUpDown, BookPlus, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetAssignments = () => {
     const [assignments, setAssignments] = useState([]);
@@ -74,7 +75,7 @@ const GetAssignments = () => {
         const date = new Date(deadline);
         const now = new Date();
         const isOverdue = date < now;
-        
+
         return {
             formattedDate: date.toLocaleDateString(),
             isOverdue
@@ -88,7 +89,7 @@ const GetAssignments = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="flex flex-col min-h-96 justify-between">
@@ -131,16 +132,15 @@ const GetAssignments = () => {
                                     <tr key={assignment._id} className="border-b border-gray-200 dark:border-gray-700">
                                         <td className="py-4 px-4">{assignment.title}</td>
                                         <td className="py-4 px-4">
-                                            {assignment.questions.length > 50 
-                                                ? `${assignment.questions.substring(0, 50)}...` 
+                                            {assignment.questions.length > 50
+                                                ? `${assignment.questions.substring(0, 50)}...`
                                                 : assignment.questions}
                                         </td>
                                         <td className="py-4 px-4">
-                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                                                isOverdue 
-                                                    ? 'bg-red-100 text-red-800' 
+                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${isOverdue
+                                                    ? 'bg-red-100 text-red-800'
                                                     : 'bg-green-100 text-green-800'
-                                            }`}>
+                                                }`}>
                                                 {formattedDate}
                                             </span>
                                         </td>

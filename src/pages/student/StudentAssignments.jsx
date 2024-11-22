@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllAssignments } from '../../services/assignments';
 import { Calendar, Clock, FileUp, FileDown, CheckCircle, XCircle } from 'lucide-react';
 import { Upload } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const StudentAssignments = () => {
     const [assignments, setAssignments] = useState([]);
@@ -145,7 +146,7 @@ const StudentAssignments = () => {
         </div>
     );
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">
@@ -184,15 +185,14 @@ const StudentAssignments = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                                    assignment.submitted 
-                                        ? 'bg-green-100 text-green-800' 
+                                <span className={`px-3 py-1 rounded-full text-sm font-medium ${assignment.submitted
+                                        ? 'bg-green-100 text-green-800'
                                         : new Date(assignment.deadline) < new Date()
                                             ? 'bg-red-100 text-red-800'
                                             : 'bg-yellow-100 text-yellow-800'
-                                }`}>
-                                    {assignment.submitted 
-                                        ? 'Submitted' 
+                                    }`}>
+                                    {assignment.submitted
+                                        ? 'Submitted'
                                         : new Date(assignment.deadline) < new Date()
                                             ? 'Overdue'
                                             : 'Pending'}

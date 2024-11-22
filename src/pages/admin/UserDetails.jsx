@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneUser } from '../../services/users';
 import { deleteUser } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const UserDetails = () => {
     const { id } = useParams();
@@ -40,7 +41,7 @@ const UserDetails = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     if (!user) return <div>User not found</div>;
 

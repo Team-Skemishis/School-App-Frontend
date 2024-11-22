@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneClass, deleteClass } from '../../services/classes';
 import { getOneUser } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const ClassDetails = () => {
     const { id } = useParams();
@@ -47,7 +48,7 @@ const ClassDetails = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
     if (!classData) return <div>Class not found</div>;
 
     return (

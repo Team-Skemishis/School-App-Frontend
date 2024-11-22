@@ -4,6 +4,7 @@ import { getOneUser } from '../../services/users';
 import { getOneClass } from '../../services/classes';
 import { Mail, User as UserIcon, Key, X } from 'lucide-react';
 import { changePassword } from '../../services/auth';
+import LoadingState from '@/components/shared/LoadingState';
 
 const StudentProfile = () => {
     const { user } = useUser();
@@ -173,7 +174,8 @@ const StudentProfile = () => {
         );
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
+
     if (!profileData) return <div>Profile not found</div>;
 
     return (

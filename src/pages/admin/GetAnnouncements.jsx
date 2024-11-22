@@ -3,6 +3,7 @@ import { getAllAnnouncements, deleteAnnouncement } from '../../services/announce
 import { Eye, Edit, Trash, ArrowUpDown, Plus, Filter } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getOneUser } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetAnnouncements = () => {
     const [announcements, setAnnouncements] = useState([]);
@@ -96,7 +97,7 @@ const GetAnnouncements = () => {
         return announcement.userType === selectedUserType;
     });
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">
@@ -119,8 +120,8 @@ const GetAnnouncements = () => {
                             key={type.value}
                             onClick={() => setSelectedUserType(type.value)}
                             className={`px-4 py-2 rounded-lg transition-colors ${selectedUserType === type.value
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                                 }`}
                         >
                             {type.label}

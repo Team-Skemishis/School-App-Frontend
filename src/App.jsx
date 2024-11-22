@@ -62,6 +62,7 @@ import AnnouncementDetails from "./pages/admin/AnnouncementDetails";
 import StudentAnnouncements from "./pages/student/StudentAnnouncements";
 import EditAdminProfile from "./pages/admin/EditAdminProfile";
 import StudentAssignments from "./pages/student/StudentAssignments";
+import ManageParents from "./pages/admin/ManageParents";
 
 
 
@@ -104,6 +105,7 @@ const App = () => {
         <Route path="timetable/add" element={<AddTimetable />} />
         <Route path="timetable/edit/:id" element={<EditTimetable />} />
         <Route path="students/attendance/:id" element={<EditTimetable />} />
+        <Route path="parents" element={<ManageParents />} />
       </Route>
 
 

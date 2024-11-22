@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllAnnouncements } from '../../services/announcements';
 import { Calendar, Clock } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const TeacherAnnouncements = () => {
     const [announcements, setAnnouncements] = useState([]);
@@ -38,7 +39,7 @@ const TeacherAnnouncements = () => {
         });
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

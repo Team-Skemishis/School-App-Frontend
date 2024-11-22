@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getOneTimetable } from '../../services/timetable';
 import { getOneClass } from '../../services/classes';
 import { getOneUser } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const TimetableDetails = () => {
     const { id } = useParams();
@@ -39,7 +40,7 @@ const TimetableDetails = () => {
         fetchTimetableEntry();
     }, [id]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
     if (!timetableEntry) return <div>Timetable entry not found</div>;
 
     return (

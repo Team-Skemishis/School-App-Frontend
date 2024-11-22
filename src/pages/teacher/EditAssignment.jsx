@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneAssignment, updateAssignment } from '../../services/assignments';
 import { Upload, FileText } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const EditAssignment = () => {
     const { id } = useParams();
@@ -83,7 +84,7 @@ const EditAssignment = () => {
         return today.toISOString().split('T')[0];
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

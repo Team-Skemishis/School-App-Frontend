@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllAnnouncements } from '../../services/announcements';
 import { Calendar, Clock } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
 
 const StudentAnnouncements = () => {
     const [announcements, setAnnouncements] = useState([]);
@@ -38,12 +39,12 @@ const StudentAnnouncements = () => {
         });
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">
             <h2 className="text-2xl font-bold mb-6">Announcements</h2>
-            
+
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                     {error}
@@ -57,7 +58,7 @@ const StudentAnnouncements = () => {
                     </div>
                 ) : (
                     announcements.map(announcement => (
-                        <div 
+                        <div
                             key={announcement._id}
                             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                         >

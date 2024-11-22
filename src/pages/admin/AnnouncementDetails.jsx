@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getOneAnnouncement, deleteAnnouncement } from '../../services/announcements';
 import { getOneUser } from '../../services/users';
 import { Calendar, Clock, Users } from 'lucide-react';
+import LoadingState from '@/components/shared/LoadingState';
+// import { Audio } from 'react-loader-spinner';
 
 const AnnouncementDetails = () => {
     const { id } = useParams();
@@ -76,7 +78,8 @@ const AnnouncementDetails = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>
+
     if (!announcement) return <div>Announcement not found</div>;
 
     return (
@@ -86,7 +89,7 @@ const AnnouncementDetails = () => {
                 {announcement.coverImage && (
                     <div className="w-full h-64 relative">
                         <img
-                            src={`https://savefiles.org/${announcement.coverImage}?shareable_link=484`}
+                            src={`https://savefiles.org/${announcement.coverImage}?shareable_link=521`}
                             alt="Announcement cover"
                             className="w-full h-full object-cover"
                         />

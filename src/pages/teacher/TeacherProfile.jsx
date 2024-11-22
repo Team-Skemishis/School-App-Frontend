@@ -3,6 +3,7 @@ import { useUser } from '../../context/UserContext';
 import { getOneUser } from '../../services/users';
 import { Mail, User as UserIcon, Key, X } from 'lucide-react';
 import { changePassword } from '../../services/auth';
+import LoadingState from '@/components/shared/LoadingState';
 
 const TeacherProfile = () => {
     const { user } = useUser();
@@ -68,9 +69,9 @@ const TeacherProfile = () => {
                     newPassword: localPasswordData.newPassword,
                     confirmNewPassword: localPasswordData.confirmNewPassword
                 };
-                
+
                 console.log('Sending password data:', passwordPayload); // Debug log
-                
+
                 await changePassword(passwordPayload);
                 setLocalSuccess('Password changed successfully');
                 setLocalPasswordData({
@@ -173,7 +174,7 @@ const TeacherProfile = () => {
         );
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
     if (!profileData) return <div>Profile not found</div>;
 
     return (

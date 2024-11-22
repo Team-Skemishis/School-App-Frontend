@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneClass, updateClass } from '../../services/classes';
 import { getUsers } from '../../services/users';
+import LoadingState from '@/components/shared/LoadingState';
 
 const EditClass = () => {
     const { id } = useParams();
@@ -81,7 +82,7 @@ const EditClass = () => {
         }));
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
 
     return (
         <div className="p-6">

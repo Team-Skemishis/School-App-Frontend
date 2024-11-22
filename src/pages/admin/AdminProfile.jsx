@@ -3,6 +3,7 @@ import { useUser } from '../../context/UserContext';
 import { getOneUser } from '../../services/users';
 import { Edit, Mail, User as UserIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import LoadingState from '@/components/shared/LoadingState';
 
 const AdminProfile = () => {
     const { user } = useUser();
@@ -29,7 +30,7 @@ const AdminProfile = () => {
         fetchProfileData();
     }, [user?._id]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div><LoadingState /></div>;
     if (!profileData) return <div>Profile not found</div>;
 
     return (

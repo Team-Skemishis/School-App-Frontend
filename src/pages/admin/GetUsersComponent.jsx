@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { deleteUser, editUser, getOneUser, getUsers } from '../../services/users';
 import { Eye, Edit, Trash, ArrowUpDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetUsersComponent = () => {
     const [users, setUsers] = useState([]);
@@ -92,7 +93,7 @@ const GetUsersComponent = () => {
     };
 
     if (loading)
-        return <div>Loading...</div>
+        return <div><LoadingState /></div>;
 
     return (
         <div>

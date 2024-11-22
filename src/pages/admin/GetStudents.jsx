@@ -3,6 +3,7 @@ import { deleteStudent, getStudents } from '../../services/students';
 import { Eye, Edit, Trash, ArrowUpDown, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getOneClass } from '../../services/classes';
+import LoadingState from '@/components/shared/LoadingState';
 
 const GetStudents = () => {
     const [students, setStudents] = useState([]);
@@ -94,7 +95,7 @@ const GetStudents = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     if (loading)
-        return <div>Loading...</div>;
+        return <div><LoadingState /></div>;
 
     return (
         <div className="flex flex-col min-h-96 justify-between">

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers } from '../../../services/users';
 import { getAllClasses } from '../../../services/classes';
+import teacher from '../../../assets/images/teacherIcon.png'
+import student from '../../../assets/images/studentIcon.png'
+import parent from '../../../assets/images/parentIcon.png'
+import classroom from '../../../assets/images/classroomIcon.png'
+
 
 const KeyMetrics = () => {
     const [metrics, setMetrics] = useState({
@@ -31,22 +36,34 @@ const KeyMetrics = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <h3 className="text-lg font-semibold">Teachers</h3>
-                <p className="text-2xl">{metrics.teachers}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex gap-5">
+                <img src={teacher} alt="teacherIcon" className="w-16" />
+                <div>
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400">Teachers</h3>
+                    <p className="text-3xl">{metrics.teachers}</p>
+                </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <h3 className="text-lg font-semibold">Students</h3>
-                <p className="text-2xl">{metrics.students}</p>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex gap-5">
+                <img src={student} alt="studentIcon" className="w-16" />
+                <div>
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400">Students</h3>
+                    <p className="text-3xl">{metrics.students}</p>
+                </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <h3 className="text-lg font-semibold">Parents</h3>
-                <p className="text-2xl">{metrics.parents}</p>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex gap-5">
+                <img src={parent} alt="parentIcon" className="w-16" />
+                <div>
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400">Parents</h3>
+                    <p className="text-3xl">{metrics.parents}</p>
+                </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <h3 className="text-lg font-semibold">Classes</h3>
-                <p className="text-2xl">{metrics.classes}</p>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex gap-5">
+                <img src={classroom} alt="parentIcon" className="w-16" />
+                <div>
+                    <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400">Classes</h3>
+                    <p className="text-3xl">{metrics.classes}</p>
+                </div>
             </div>
         </div>
     );
