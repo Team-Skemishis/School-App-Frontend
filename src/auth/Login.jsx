@@ -102,7 +102,7 @@ const Login = () => {
               <section className='space-y-6 bg-white dark:bg-gray-800 rounded-2xl'>
                 <p className="text-lg font-semibold  text-center">I am</p>
 
-                <div className='flex justify-around'>
+                <div className='flex justify-center gap-6'>
                   <button type='button' onClick={() => handleRoleSelection("admin")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "admin" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
                     <div className=" w-12 h-12 rounded-full flex items-center justify-center">
 
