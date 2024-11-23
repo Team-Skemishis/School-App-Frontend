@@ -5,7 +5,9 @@ import { userLogin } from '../services/auth';
 import { setAuthToken, setUserRole } from '../services/config';
 import illustration from '../assets/images/loginIllustration.png'
 import logo from '../assets/images/eSukuu.png'
-
+import teacherAvatar from '../assets/images/teacherAvatar.png'
+import studentAvatar from '../assets/images/studentAvatar.png'
+import adminAvatar from '../assets/images/adminAvatar.png'
 
 
 const Login = () => {
@@ -13,6 +15,11 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("")
+
+  const handleRoleSelection = (role) => {
+    setSelectedRole(role);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,11 +28,15 @@ const Login = () => {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
-    const role = formData.get("role");
+
+    if (!selectedRole) {
+      setError("Please select a role...");
+      return;
+    }
 
     try {
       setLoading(true);
-      const loginResponse = await userLogin({ email, password, role });
+      const loginResponse = await userLogin({ email, password, role: selectedRole });
       console.log('Login Response:', loginResponse);
 
       if (loginResponse.status === 200) {
@@ -34,15 +45,12 @@ const Login = () => {
         // Store token
         setAuthToken(accessToken);
 
-        // Store role from the form
-        const selectedRole = role.toLowerCase();
+        // storing role too...
+        setUserRole(selectedRole);
         console.log('Selected Role:', selectedRole);
 
-        // Store role
-        setUserRole(selectedRole);
-
         // Navigate based on selected role
-        switch (selectedRole) {
+        switch (selectedRole.toLowerCase()) {
           case 'admin':
             navigate("/admin/dashboard");
             break;
@@ -73,12 +81,12 @@ const Login = () => {
       >
         <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
           <section className='flex gap-5'>
-            <div className='w-1/2 items-center justify-center hidden sm:flex flex-col p-6 rounded-2xl my-auto'>
-              <img src={illustration} alt="eSukuu Logo" className="w-64" />
+            <div className='w-1/2 p-6 items-center justify-center hidden sm:flex flex-col  rounded-2xl my-auto'>
+              <img src={illustration} alt="Login illustration" className="w-80" />
               <h2 className='text-2xl font-semibold mb-3 text-gray-800 font-josefinSans text-center'>Welcome Back to a Smarter School Management System!</h2>
               <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an <span className='font-semibold italic text-theme-color'>admin</span> overseeing operations, a <span className='font-semibold italic text-theme-color'>teacher</span> managing lessons, or a <span className='font-semibold italic text-theme-color'>student</span> staying on top of your studies, our platform is here to keep things seamless and efficient. <br /> Let&apos;s get started!</p>
             </div>
-            <div className='w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto'>
+            <div className='sm:w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto'>
               <Link to="/" className='cursor-pointer'>
                 <img src={logo} alt="eSukuuLogo" className="w-40" />
               </Link>
@@ -92,7 +100,32 @@ const Login = () => {
                 </div>
               )}
               <section className='space-y-6 bg-white dark:bg-gray-800 rounded-2xl'>
-                <div>
+                <p className="text-lg font-semibold  text-center">I am</p>
+
+                <div className='flex justify-around'>
+                  <button type='button' onClick={() => handleRoleSelection("admin")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "admin" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                    <div className=" w-12 h-12 rounded-full flex items-center justify-center">
+
+                      <img src={adminAvatar} alt="Login illustration" className="w-8 md:w-12" />
+                    </div>
+                    Admin
+                  </button>
+                  <button type='button' onClick={() => handleRoleSelection("teacher")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "teacher" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                    <div className=" w-12 h-12 rounded-full flex items-center justify-center">
+
+                      <img src={teacherAvatar} alt="Login illustration" className="w-8 md:w-12" />
+                    </div>
+                    Teacher
+                  </button>
+                  <button type='button' onClick={() => handleRoleSelection("student")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "student" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                    <div className=" w-12 h-12 rounded-full flex items-center justify-center">
+
+                      <img src={studentAvatar} alt="Login illustration" className="w-8 md:w-12" />
+                    </div>
+                    Student
+                  </button>
+                </div>
+                {/* <div>
                   <select
                     name="role"
                     id="role"
@@ -108,7 +141,7 @@ const Login = () => {
                     <option value="teacher">Teacher</option>
                     <option value="student">Student</option>
                   </select>
-                </div>
+                </div> */}
                 <div>
                   <input
                     required
