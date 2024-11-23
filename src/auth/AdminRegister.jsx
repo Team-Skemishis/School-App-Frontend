@@ -89,7 +89,7 @@ const AdminRegister = () => {
             <form onSubmit={handleSubmit} className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col">
                 <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
                     <section className='flex gap-5'>
-                        <div className='w-1/2 space-y-5 items-center justify-center flex flex-col p-6 rounded-2xl'>
+                        <div className='hidden w-1/2 space-y-5 items-center justify-center sm:flex flex-col p-6 rounded-2xl'>
                             <img src={illustration} alt="eSukuu Logo" className="w-80" />
                             <h2 className='text-2xl text-gray-800 font-semibold font-josefinSans text-center'>Empower Your School Management Today!</h2>
                             <p className='font-montserrat text-justify'>Take the first step toward seamless school management.

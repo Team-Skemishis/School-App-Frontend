@@ -73,12 +73,12 @@ const Login = () => {
       >
         <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
           <section className='flex gap-5'>
-            <div className='w-1/2 items-center justify-center flex flex-col p-6 rounded-2xl my-auto'>
+            <div className='w-1/2 items-center justify-center hidden sm:flex flex-col p-6 rounded-2xl my-auto'>
               <img src={illustration} alt="eSukuu Logo" className="w-64" />
               <h2 className='text-2xl font-semibold mb-3 text-gray-800 font-josefinSans text-center'>Welcome Back to a Smarter School Management System!</h2>
               <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an <span className='font-semibold italic text-theme-color'>admin</span> overseeing operations, a <span className='font-semibold italic text-theme-color'>teacher</span> managing lessons, or a <span className='font-semibold italic text-theme-color'>student</span> staying on top of your studies, our platform is here to keep things seamless and efficient. <br /> Let&apos;s get started!</p>
             </div>
-            <div className='w-2/5 dark:bg-gray-800 p-6 rounded-2xl flex flex-col space-y-6 my-auto'>
+            <div className='w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto'>
               <Link to="/" className='cursor-pointer'>
                 <img src={logo} alt="eSukuuLogo" className="w-40" />
               </Link>
