@@ -1,4 +1,6 @@
 import "./App.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminLayout from './layouts/AdminLayout';
@@ -68,78 +70,92 @@ import ManageParents from "./pages/admin/ManageParents";
 
 const App = () => {
   return (
-    <Routes>
-      {/* Public routes */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<AdminRegister />} />
-      <Route path="/admin-register" element={<AdminRegister />} />
+    <>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<AdminRegister />} />
+        <Route path="/admin-register" element={<AdminRegister />} />
 
-      {/* Admin routes */}
-      <Route path="/admin/*" element={<AdminLayout />}>
-        <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="profile" element={<AdminProfile />} />
-        <Route path="profile/edit" element={<EditAdminProfile />} />
-        <Route path="users" element={<GetUsersComponent />} />
-        <Route path="users/:id" element={<UserDetails />} />
-        <Route path="edit-user/:id" element={<EditUser />} />
-        <Route path="users/teachers" element={<GetTeachers />} />
-        <Route path="users/teachers/:id" element={<TeacherDetails />} />
-        <Route path="users/teachers/edit-teacher/:id" element={<EditTeacher />} />
-        <Route path="users/teachers/add" element={<AddTeacher />} />
-        <Route path="users/students" element={<GetStudents />} />
-        <Route path="users/students/add" element={<AddStudent />} />
-        <Route path="users/students/:id" element={<StudentDetails />} />
-        <Route path="students/edit/:id" element={<EditStudent />} />
-        <Route path="classes" element={<ManageClasses />} />
-        <Route path="classes/add" element={<AddClass />} />
-        <Route path="classes/:id" element={<ClassDetails />} />
-        <Route path="classes/edit/:id" element={<EditClass />} />
-        <Route path="announcements" element={<GetAnnouncements />} />
-        <Route path="announcements/add" element={<AddAnnouncement />} />
-        <Route path="announcements/edit/:id" element={<EditAnnouncement />} />
-        <Route path="announcements/:id" element={<AnnouncementDetails />} />
-        <Route path="timetable" element={<GetTimeTable />} />
-        <Route path="timetable/:id" element={<TimetableDetails />} />
-        <Route path="timetable/add" element={<AddTimetable />} />
-        <Route path="timetable/edit/:id" element={<EditTimetable />} />
-        <Route path="students/attendance/:id" element={<EditTimetable />} />
-        <Route path="parents" element={<ManageParents />} />
-      </Route>
+        {/* Admin routes */}
+        <Route path="/admin/*" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<AdminProfile />} />
+          <Route path="profile/edit" element={<EditAdminProfile />} />
+          <Route path="users" element={<GetUsersComponent />} />
+          <Route path="users/:id" element={<UserDetails />} />
+          <Route path="edit-user/:id" element={<EditUser />} />
+          <Route path="users/teachers" element={<GetTeachers />} />
+          <Route path="users/teachers/:id" element={<TeacherDetails />} />
+          <Route path="users/teachers/edit-teacher/:id" element={<EditTeacher />} />
+          <Route path="users/teachers/add" element={<AddTeacher />} />
+          <Route path="users/students" element={<GetStudents />} />
+          <Route path="users/students/add" element={<AddStudent />} />
+          <Route path="users/students/:id" element={<StudentDetails />} />
+          <Route path="students/edit/:id" element={<EditStudent />} />
+          <Route path="classes" element={<ManageClasses />} />
+          <Route path="classes/add" element={<AddClass />} />
+          <Route path="classes/:id" element={<ClassDetails />} />
+          <Route path="classes/edit/:id" element={<EditClass />} />
+          <Route path="announcements" element={<GetAnnouncements />} />
+          <Route path="announcements/add" element={<AddAnnouncement />} />
+          <Route path="announcements/edit/:id" element={<EditAnnouncement />} />
+          <Route path="announcements/:id" element={<AnnouncementDetails />} />
+          <Route path="timetable" element={<GetTimeTable />} />
+          <Route path="timetable/:id" element={<TimetableDetails />} />
+          <Route path="timetable/add" element={<AddTimetable />} />
+          <Route path="timetable/edit/:id" element={<EditTimetable />} />
+          <Route path="students/attendance/:id" element={<EditTimetable />} />
+          <Route path="parents" element={<ManageParents />} />
+        </Route>
 
 
-      {/* Teacher routes */}
-      <Route path="/teacher/*" element={<TeacherLayout />}>
-        <Route path="dashboard" element={<TeacherDashboard />} />
-        <Route path="students" element={<TeacherStudents />} />
-        <Route path="classes" element={<TeacherClasses />} />
-        <Route path="schedule" element={<TeacherSchedule />} />
-        <Route path="assignments" element={<GetAssignments />} />
-        <Route path="assignments/add" element={<AddAssignment />} />
-        <Route path="assignments/:id" element={<AssignmentDetails />} />
-        <Route path="assignments/edit/:id" element={<EditAssignment />} />
-        <Route path="announcements" element={<TeacherAnnouncements />} />
-        <Route path="attendance" element={<GetAttendance />} />
-        <Route path="profile" element={<TeacherProfile />} />
-      </Route>
+        {/* Teacher routes */}
+        <Route path="/teacher/*" element={<TeacherLayout />}>
+          <Route path="dashboard" element={<TeacherDashboard />} />
+          <Route path="students" element={<TeacherStudents />} />
+          <Route path="classes" element={<TeacherClasses />} />
+          <Route path="schedule" element={<TeacherSchedule />} />
+          <Route path="assignments" element={<GetAssignments />} />
+          <Route path="assignments/add" element={<AddAssignment />} />
+          <Route path="assignments/:id" element={<AssignmentDetails />} />
+          <Route path="assignments/edit/:id" element={<EditAssignment />} />
+          <Route path="announcements" element={<TeacherAnnouncements />} />
+          <Route path="attendance" element={<GetAttendance />} />
+          <Route path="profile" element={<TeacherProfile />} />
+        </Route>
 
-      {/* Student routes */}
-      <Route path="/student/*" element={<StudentLayout />}>
-        <Route path="dashboard" element={<StudentDashboard />} />
-        <Route path="courses" element={<StudentCourses />} />
-        <Route path="schedule" element={<StudentSchedule />} />
-        <Route path="grades" element={<StudentGrades />} />
-        <Route path="assignments" element={<StudentAssignments />} />
-        <Route path="announcements" element={<StudentAnnouncements />} />
-        <Route path="profile" element={<StudentProfile />} />
-        <Route path="timetable" element={<GetTimetable />} />
-        <Route path="timetable/:id" element={<StuTimetableDetails />} />
-      </Route>
+        {/* Student routes */}
+        <Route path="/student/*" element={<StudentLayout />}>
+          <Route path="dashboard" element={<StudentDashboard />} />
+          <Route path="courses" element={<StudentCourses />} />
+          <Route path="schedule" element={<StudentSchedule />} />
+          <Route path="grades" element={<StudentGrades />} />
+          <Route path="assignments" element={<StudentAssignments />} />
+          <Route path="announcements" element={<StudentAnnouncements />} />
+          <Route path="profile" element={<StudentProfile />} />
+          <Route path="timetable" element={<GetTimetable />} />
+          <Route path="timetable/:id" element={<StuTimetableDetails />} />
+        </Route>
 
-      {/* Catch all route - 404 */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        {/* Catch all route - 404 */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 };
 

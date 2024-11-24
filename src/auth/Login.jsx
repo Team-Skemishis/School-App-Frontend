@@ -8,6 +8,8 @@ import logo from '../assets/images/eSukuu.png'
 import teacherAvatar from '../assets/images/teacherAvatar.png'
 import studentAvatar from '../assets/images/studentAvatar.png'
 import adminAvatar from '../assets/images/adminAvatar.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -31,6 +33,7 @@ const Login = () => {
 
     if (!selectedRole) {
       setError("Please select a role...");
+      toast.error("Please select a role...");
       return;
     }
 
@@ -49,32 +52,70 @@ const Login = () => {
         setUserRole(selectedRole);
         console.log('Selected Role:', selectedRole);
 
-        // Navigate based on selected role
-        switch (selectedRole.toLowerCase()) {
-          case 'admin':
-            navigate("/admin/dashboard");
-            break;
-          case 'teacher':
-            navigate("/teacher/dashboard");
-            break;
-          case 'student':
-            navigate("/student/dashboard");
-            break;
-          default:
-            setError('Invalid user role');
-            navigate("/");
-        }
+        // Show success toast
+        toast.success("Login successful!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        // Add a small delay before navigation
+        setTimeout(() => {
+          switch (selectedRole.toLowerCase()) {
+            case 'admin':
+              navigate("/admin/dashboard");
+              break;
+            case 'teacher':
+              navigate("/teacher/dashboard");
+              break;
+            case 'student':
+              navigate("/student/dashboard");
+              break;
+            default:
+              setError('Invalid user role');
+              toast.error('Invalid user role');
+              navigate("/");
+          }
+        }, 1000); // 1 second delay
       }
     } catch (error) {
       console.error('Login Error:', error);
-      setError(error.response?.data?.message || 'An error occurred during login');
+      const errorMessage = error.response?.data?.message || 'An error occurred during login';
+      setError(errorMessage);
+      // Show error toast
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } finally {
       setLoading(false);
-    }
+    };
+    
   };
 
   return (
     <div className="signup flex justify-center items-center h-screen bg-white lg:px-24">
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <form
         onSubmit={handleSubmit}
         className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
@@ -160,7 +201,8 @@ const Login = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    placeholder="Enter a your password"
+                    autoComplete="current-password"
+                    placeholder="Enter your password"
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
                     required
                   />
