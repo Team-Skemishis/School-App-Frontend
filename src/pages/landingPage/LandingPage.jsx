@@ -144,7 +144,7 @@ export default function LandingPage() {
                                 And it&apos;s <span className='font-bold'>100%</span> free to use!
                             </p>
                         </div>
-                        <div className="grid gap-5 sm:flex sm:space-x-4 space-x-2">
+                        <div className="grid gap-8 sm:flex sm:space-x-4 space-x-2">
                             <Link to="/register" >
                                 <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap font-montserrat">Get Started Today</span>
                             </Link>
