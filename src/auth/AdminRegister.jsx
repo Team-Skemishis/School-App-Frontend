@@ -85,7 +85,7 @@ const AdminRegister = () => {
             console.log('Form data before submission:', formData);
             const response = await userSignUp(formData);
             console.log('Registration response:', response);
-            
+
             toast.success("Account created successfully!", {
                 position: "top-right",
                 autoClose: 2000,
@@ -106,7 +106,7 @@ const AdminRegister = () => {
             console.error('Registration error:', error);
             const errorMessage = error.response?.data?.message || 'Registration failed';
             setError(errorMessage);
-            
+
             toast.error(errorMessage, {
                 position: "top-right",
                 autoClose: 3000,
@@ -121,21 +121,21 @@ const AdminRegister = () => {
 
     return (
         <div className="signup flex justify-center items-center h-screen bg-white">
-        <LoadingModal isLoading={loading} />
-        <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-        />
-            <form onSubmit={handleSubmit} className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col">
-                <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
+            <LoadingModal isLoading={loading} />
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            <form onSubmit={handleSubmit} className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col dark:bg-gray-800">
+                <div className='items-center justify-between flex flex-col bg-white dark:bg-gray-800 rounded-2xl'>
                     <section className='flex gap-5'>
                         <div className='hidden w-1/2 space-y-5 items-center justify-center sm:flex flex-col p-6 rounded-2xl'>
                             <img src={illustration} alt="eSukuu Logo" className="w-80" />

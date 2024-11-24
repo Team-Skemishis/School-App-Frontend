@@ -99,7 +99,7 @@ const Login = () => {
     } finally {
       setLoading(false);
     };
-    
+
   };
 
   return (
@@ -118,16 +118,16 @@ const Login = () => {
       />
       <form
         onSubmit={handleSubmit}
-        className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
+        className="backdrop-blur-sm dark:bg-gray-800 text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col"
       >
-        <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
+        <div className='items-center justify-between flex flex-col bg-white dark:bg-gray-800 rounded-2xl'>
           <section className='flex gap-5'>
             <div className='w-1/2 p-6 items-center justify-center hidden sm:flex flex-col  rounded-2xl my-auto'>
               <img src={illustration} alt="Login illustration" className="w-80" />
               <h2 className='text-2xl font-semibold mb-3 text-gray-800 font-josefinSans text-center'>Welcome Back to a Smarter School Management System!</h2>
               <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an <span className='font-semibold italic text-theme-color'>admin</span> overseeing operations, a <span className='font-semibold italic text-theme-color'>teacher</span> managing lessons, or a <span className='font-semibold italic text-theme-color'>student</span> staying on top of your studies, our platform is here to keep things seamless and efficient. <br /> Let&apos;s get started!</p>
             </div>
-            <div className='sm:w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto'>
+            <div className='sm:w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto mx-auto'>
               <Link to="/" className='cursor-pointer'>
                 <img src={logo} alt="eSukuuLogo" className="w-40" />
               </Link>
