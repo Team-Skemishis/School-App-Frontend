@@ -4,7 +4,9 @@ import { userSignUp } from '../services/auth';
 import { Eye, EyeOff } from 'lucide-react';
 import logo from '../assets/images/eSukuu.png'
 import illustration from '../assets/images/SignUpIllustration.png'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoadingModal from '../components/ModalLoading';
 
 const AdminRegister = () => {
     const navigate = useNavigate();
@@ -57,7 +59,7 @@ const AdminRegister = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
-            prev,
+            ...prev,
             [name]: value
         }));
     };
@@ -67,6 +69,14 @@ const AdminRegister = () => {
         setError('');
 
         if (!validateForm()) {
+            toast.error(error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
             return;
         }
 
@@ -75,17 +85,55 @@ const AdminRegister = () => {
             console.log('Form data before submission:', formData);
             const response = await userSignUp(formData);
             console.log('Registration response:', response);
-            navigate('/login');
+            
+            toast.success("Account created successfully!", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+
+            setTimeout(() => {
+                setLoading(false);
+                setTimeout(() => {
+                    navigate('/login');
+                }, 1000);
+            }, 1000);
+
         } catch (error) {
             console.error('Registration error:', error);
-            setError(error.response?.data?.message || 'Registration failed');
-        } finally {
+            const errorMessage = error.response?.data?.message || 'Registration failed';
+            setError(errorMessage);
+            
+            toast.error(errorMessage, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
             setLoading(false);
         }
     };
 
     return (
         <div className="signup flex justify-center items-center h-screen bg-white">
+        <LoadingModal isLoading={loading} />
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+        />
             <form onSubmit={handleSubmit} className="backdrop-blur-sm text-black dark:text-gray-200 w-full h-full items-center justify-center flex flex-col">
                 <div className='items-center justify-between flex flex-col bg-white rounded-2xl'>
                     <section className='flex gap-5'>
@@ -162,6 +210,7 @@ const AdminRegister = () => {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     name="password"
+                                    autoComplete="new-password"
                                     value={formData.password}
                                     onChange={handleChange}
                                     placeholder="Enter a secure password"
@@ -185,6 +234,7 @@ const AdminRegister = () => {
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     name="confirmPassword"
+                                    autoComplete="new-password"
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
                                     placeholder="Confirm Password"

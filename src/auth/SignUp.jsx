@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { userSignUp } from '../services/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -19,6 +22,11 @@ const SignUp = () => {
       const password = formData.get("password");
       const role = formData.get("role");
 
+      if (!role) {
+        toast.error("Please select a role");
+        return;
+      }
+
       // passing payload to the API...
       const payload = {
         firstName,
@@ -30,14 +38,36 @@ const SignUp = () => {
 
       // calling the API to sign up...
       const response = await userSignUp(payload);
-      console.log(response.data)
+      console.log(response.data);
+
+      // Show success toast
+      toast.success("Account created successfully!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
       // navigate to home page if signup is successful
       setTimeout(() => {
         navigate("/login");
       }, 2000) // navigate after two seconds...
     } catch (error) {
-      console.log(error);
+      console.error('Registration error:', error);
+      const errorMessage = error.response?.data?.message || 'Registration failed';
+      setError(errorMessage);
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } finally {
       setLoading(false);
     }
@@ -45,6 +75,18 @@ const SignUp = () => {
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="signin flex justify-center items-center h-screen bg-contain">
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full">
           <p className="text-2xl font-semibold text-[#0E345A] relative pl-10 mb-8">
@@ -52,6 +94,11 @@ const SignUp = () => {
             <span className="mt-[4px] absolute left-[4px] top-[5px] w-4 h-4 bg-[#0E345A] rounded-full"></span>
             <span className="mt-[5px] absolute left-0 top-0 w-6 h-6 animate-pulse bg-[#0E345A] rounded-full opacity-10"></span>
           </p>
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+              {error}
+            </div>
+          )}
           <div className='space-y-2'>
             <div>
               <input type="text" name="firstName" required id="firstName" placeholder='Enter your first name...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1" />
