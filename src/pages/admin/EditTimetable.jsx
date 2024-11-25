@@ -54,7 +54,7 @@ const EditTimetable = () => {
 
         try {
             setLoading(true);
-            const { _id, ...payload } = timetableData; // Destructure to remove _id
+            const { ...payload } = timetableData; // Destructure to remove _id ... i removed _id from the declarations of timetableData...
             await updateTimetable(id, payload); // Send the payload without _id
             navigate('/admin/timetable');
         } catch (error) {
@@ -91,7 +91,7 @@ const EditTimetable = () => {
                             name="classes"
                             value={timetableData.classes}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select a class...</option>
@@ -109,7 +109,7 @@ const EditTimetable = () => {
                             name="teacher"
                             value={timetableData.teacher}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select a teacher...</option>
@@ -127,7 +127,7 @@ const EditTimetable = () => {
                             name="day"
                             value={timetableData.day}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select a day...</option>
@@ -146,7 +146,7 @@ const EditTimetable = () => {
                             name="startTime"
                             value={timetableData.startTime}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -158,7 +158,7 @@ const EditTimetable = () => {
                             name="endTime"
                             value={timetableData.endTime}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -170,7 +170,7 @@ const EditTimetable = () => {
                             name="subject"
                             value={timetableData.subject}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>

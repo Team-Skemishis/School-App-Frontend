@@ -136,7 +136,7 @@ export default function LandingPage() {
                     </div>
                     <div className="w-full md:w-1/2 container mx-auto flex flex-col items-center md:items-start text-center md:text-left">
                         <div>
-                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold sm:mb-4 mb-2 font-arima">Empowering Schools with Simplified Management</h1>
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold sm:mb-4 mb-2 font-josefinSans">Empowering Schools with Simplified Management</h1>
                             <p className="text-base sm:text-lg md:text-xl max-w-3xl">
                                 Your all-in-one platform to streamline school operations and foster communication across every level—Admin, Teacher, Student, and Parent.
                             </p>
@@ -144,9 +144,9 @@ export default function LandingPage() {
                                 And it&apos;s <span className='font-bold'>100%</span> free to use!
                             </p>
                         </div>
-                        <div className="grid gap-8 sm:flex sm:space-x-4 space-x-2">
+                        <div className="grid gap-8 sm:gap-0 sm:flex sm:space-x-4 space-x-2">
                             <Link to="/register" >
-                                <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-blue-100 text-nowrap font-montserrat">Get Started Today</span>
+                                <span className="bg-white border-2 border-white hover:border-blue-100 text-theme-color px-5 py-2 rounded-full text-base  md:text-xl font-semibold hover:bg-blue-100 text-nowrap font-montserrat">Get Started Today</span>
                             </Link>
                             <ScrollLink to="features" smooth={true} duration={1500} >
                                 <span className="bg-transparent border-2 border-white text-white px-5 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-white font-montserrat hover:text-theme-color text-nowrap cursor-pointer">Learn More</span>

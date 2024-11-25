@@ -34,11 +34,6 @@ const TeacherSidebar = () => {
             icon: <BookOpen className="h-5 w-5" />,
         },
         {
-            path: '/teacher/classs',
-            name: 'Classes',
-            icon: <BookOpen className="h-5 w-5" />,
-        },
-        {
             path: '/teacher/assignments',
             name: 'Assignments',
             icon: <Book className="h-5 w-5" />,

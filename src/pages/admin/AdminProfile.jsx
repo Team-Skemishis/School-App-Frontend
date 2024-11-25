@@ -4,6 +4,8 @@ import { getOneUser } from '../../services/users';
 import { Edit, Mail, User as UserIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import LoadingState from '@/components/shared/LoadingState';
+import defaultAvatar from '../../assets/images/madam.jpg';
+
 
 const AdminProfile = () => {
     const { user } = useUser();
@@ -11,6 +13,20 @@ const AdminProfile = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const [profileData, setProfileData] = useState(null);
+
+    // Function to get correct shareable link based on role
+    const getShareableLink = (role) => {
+        switch (role) {
+            case 'teacher':
+                return '484';
+            case 'student':
+                return '485';
+            case 'admin':
+                return '533'; // Assuming admin uses same as teacher
+            default:
+                return '484';
+        }
+    };
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -60,16 +76,31 @@ const AdminProfile = () => {
                             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-600 mx-auto">
                                 {profileData.avatar ? (
                                     <img
-                                        src={`https://savefiles.org/${profileData.avatar}?shareable_link=533`}
+                                        src={defaultAvatar}
                                         alt="Profile"
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
                                     <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                        <UserIcon className="w-24 h-24 text-gray-400" />
+                                        <img src={defaultAvatar} alt="defaultAvatar" />
                                     </div>
                                 )}
                             </div>
+                            {/* <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-600 mx-auto">
+                                {profileData.avatar ? (
+                                    <img
+                                        src={user?.avatar
+                                            ? `https://savefiles.org/${user.avatar}?shareable_link=${getShareableLink(user.role)}`
+                                            : defaultAvatar}
+                                        alt="Profile"
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                        <img src={defaultAvatar} alt="defaultAvatar" />
+                                    </div>
+                                )}
+                            </div> */}
                         </div>
 
                         {/* Basic Information */}

@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { addTeacher } from '../../services/teachers';
 import { Upload, Eye, EyeOff } from 'lucide-react';
 import { getBaseURL } from '../../lib/utils';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoadingModal from '../../components/ModalLoading';
+
 
 const AddTeacher = () => {
     const navigate = useNavigate();
@@ -65,6 +69,14 @@ const AddTeacher = () => {
 
         // Validate form before submission
         if (!validateForm()) {
+            toast.error(error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
             return;
         }
 
@@ -77,11 +89,35 @@ const AddTeacher = () => {
             };
             console.log(payload)
             await addTeacher(payload);
-            navigate('/admin/users/teachers');
+
+            toast.success("Teacher added successfully!", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+
+            setTimeout(() => {
+                setLoading(false);
+                setTimeout(() => {
+                    navigate('/admin/users/teachers');
+                }, 1000);
+            }, 1000);
         } catch (error) {
             console.error('Error adding teacher:', error);
-            setError(error.response?.data?.message || 'Failed to add teacher');
-        } finally {
+            const errorMessage = error.response?.data?.message || 'Failed to Add Teacher';
+            setError(errorMessage);
+
+            toast.error(errorMessage, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
             setLoading(false);
         }
     };
@@ -113,6 +149,19 @@ const AddTeacher = () => {
 
     return (
         <div className="p-4">
+            <LoadingModal isLoading={loading} />
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <h2 className="text-2xl font-bold mb-6">Add New Teacher</h2>
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
@@ -130,7 +179,7 @@ const AddTeacher = () => {
                             name="firstName"
                             value={teacherData.firstName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -143,7 +192,7 @@ const AddTeacher = () => {
                             name="lastName"
                             value={teacherData.lastName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -156,7 +205,7 @@ const AddTeacher = () => {
                             name="email"
                             value={teacherData.email}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -168,7 +217,7 @@ const AddTeacher = () => {
                             name="gender"
                             value={teacherData.gender}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="" disabled>Select gender...</option>
@@ -187,7 +236,7 @@ const AddTeacher = () => {
                                 value={teacherData.password}
                                 onChange={handleChange}
                                 placeholder="Enter a secure password..."
-                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100  pr-10"
                                 required
                             />
                             <button
@@ -215,7 +264,7 @@ const AddTeacher = () => {
                                 value={teacherData.confirmPassword}
                                 onChange={handleChange}
                                 placeholder="Confirm Password..."
-                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-10"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100   pr-10"
                                 required
                             />
                             <button

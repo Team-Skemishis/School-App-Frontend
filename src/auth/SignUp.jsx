@@ -101,19 +101,19 @@ const SignUp = () => {
           )}
           <div className='space-y-2'>
             <div>
-              <input type="text" name="firstName" required id="firstName" placeholder='Enter your first name...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1" />
+              <input type="text" name="firstName" required id="firstName" placeholder='Enter your first name...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 " />
             </div>
             <div>
-              <input type="text" name="lastName" required id="lastName" placeholder='Enter your last name...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1" />
+              <input type="text" name="lastName" required id="lastName" placeholder='Enter your last name...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 " />
             </div>
             <div>
-              <input type="email" name="email" id="email" required placeholder='Enter a email...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1" />
+              <input type="email" name="email" id="email" required placeholder='Enter a email...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 " />
             </div>
             <div>
-              <input type="password" name="password" required id="password" placeholder='Enter a secure password...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 mb-1" />
+              <input type="password" name="password" required id="password" placeholder='Enter a secure password...' className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 mb-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 " />
             </div>
             <div>
-              <select name="role" id="role" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1">
+              <select name="role" id="role" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 my-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 ">
                 <option value="" disabled defaultValue={"Select your role..."}>Select your role...</option>
                 <option value="admin">Admin</option>
                 <option value="teacher">Teacher</option>

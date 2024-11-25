@@ -26,13 +26,13 @@ const TeacherStudents = () => {
       accessor: 'actions',
       cell: (row) => (
         <div className="flex gap-2">
-          <button 
+          <button
             onClick={() => handleViewDetails(row.id)}
             className="px-3 py-1 text-sm text-blue-600 hover:text-blue-800"
           >
             View Details
           </button>
-          <button 
+          <button
             onClick={() => handleMarkAttendance(row.id)}
             className="px-3 py-1 text-sm text-green-600 hover:text-green-800"
           >
@@ -65,7 +65,7 @@ const TeacherStudents = () => {
           <input
             type="search"
             placeholder="Search students..."
-            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
           />
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
             Export List
@@ -74,7 +74,7 @@ const TeacherStudents = () => {
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
-        <Table 
+        <Table
           data={students}
           columns={columns}
         />

@@ -111,7 +111,14 @@ const GetTeachers = () => {
     return (
         <div className="flex flex-col min-h-96 justify-between">
             <div>
-                <h2 className="text-2xl font-bold mb-4">List of Teachers in the system</h2>
+            <div className='flex justify-between'>
+                    <h2 className="text-2xl font-bold mb-4">Teacher Database</h2>
+                    <div>
+                        <input type="search" name="search" id="search"
+                            placeholder='Search Teachers'
+                            className='w-24 sm:w-full bg-transparent border-[0.1px] hover:border-theme-color rounded-md px-2 py-1 border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 ' />
+                    </div>
+                </div>
                 {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                         {error}

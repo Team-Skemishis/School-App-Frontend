@@ -10,6 +10,7 @@ import studentAvatar from '../assets/images/studentAvatar.png'
 import adminAvatar from '../assets/images/adminAvatar.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingModal from '../components/ModalLoading';
 
 
 const Login = () => {
@@ -103,7 +104,8 @@ const Login = () => {
   };
 
   return (
-    <div className="signup flex justify-center items-center h-screen bg-white lg:px-24">
+    <div className="signup flex justify-center items-center h-screen bg-white dark:bg-gray-800  lg:px-20">
+      <LoadingModal isLoading={loading} />
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -124,10 +126,10 @@ const Login = () => {
           <section className='flex gap-5'>
             <div className='w-1/2 p-6 items-center justify-center hidden sm:flex flex-col  rounded-2xl my-auto'>
               <img src={illustration} alt="Login illustration" className="w-80" />
-              <h2 className='text-2xl font-semibold mb-3 text-gray-800 font-josefinSans text-center'>Welcome Back to a Smarter School Management System!</h2>
+              <h2 className='text-2xl font-semibold mb-3 text-gray-800 font-josefinSans text-center dark:text-gray-200'>Welcome Back to a Smarter School Management System!</h2>
               <p className='font-montserrat text-justify'>Access your personalized dashboard and continue where you left off. Whether you&apos;re an <span className='font-semibold italic text-theme-color'>admin</span> overseeing operations, a <span className='font-semibold italic text-theme-color'>teacher</span> managing lessons, or a <span className='font-semibold italic text-theme-color'>student</span> staying on top of your studies, our platform is here to keep things seamless and efficient. <br /> Let&apos;s get started!</p>
             </div>
-            <div className='sm:w-1/2 p-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-6 my-auto mx-auto'>
+            <div className='w-[345px] md:w-1/2  md:px-16 dark:bg-gray-800 rounded-2xl flex flex-col space-y-4 my-auto mx-auto'>
               <Link to="/" className='cursor-pointer'>
                 <img src={logo} alt="eSukuuLogo" className="w-40" />
               </Link>
@@ -140,25 +142,25 @@ const Login = () => {
                   {error}
                 </div>
               )}
-              <section className='space-y-6 bg-white dark:bg-gray-800 rounded-2xl'>
+              <section className='space-y-3 sm:space-y-5 bg-white dark:bg-gray-800 rounded-2xl'>
                 <p className="text-lg font-semibold  text-center">I am</p>
 
-                <div className='flex justify-center gap-6'>
-                  <button type='button' onClick={() => handleRoleSelection("admin")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "admin" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                <div className='flex justify-center gap-3 sm:gap-6'>
+                  <button type='button' onClick={() => handleRoleSelection("admin")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "admin" ? "border-theme-color font-semibold" : "border-gray-300 dark:border-gray-600 text-gray-300"}`}>
                     <div className=" w-12 h-12 rounded-full flex items-center justify-center">
 
                       <img src={adminAvatar} alt="Login illustration" className="w-8 md:w-12" />
                     </div>
                     Admin
                   </button>
-                  <button type='button' onClick={() => handleRoleSelection("teacher")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "teacher" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                  <button type='button' onClick={() => handleRoleSelection("teacher")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "teacher" ? "border-theme-color font-semibold" : "border-gray-300 dark:border-gray-600 text-gray-300"}`}>
                     <div className=" w-12 h-12 rounded-full flex items-center justify-center">
 
                       <img src={teacherAvatar} alt="Login illustration" className="w-8 md:w-12" />
                     </div>
                     Teacher
                   </button>
-                  <button type='button' onClick={() => handleRoleSelection("student")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "student" ? "border-theme-color font-semibold" : "border-gray-300 text-gray-300"}`}>
+                  <button type='button' onClick={() => handleRoleSelection("student")} className={`flex flex-col items-center p-2 border rounded-2xl text-xs sm:text-base ${selectedRole === "student" ? "border-theme-color font-semibold" : "border-gray-300 dark:border-gray-600 text-gray-300"}`}>
                     <div className=" w-12 h-12 rounded-full flex items-center justify-center">
 
                       <img src={studentAvatar} alt="Login illustration" className="w-8 md:w-12" />

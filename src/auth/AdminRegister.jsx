@@ -139,7 +139,7 @@ const AdminRegister = () => {
                     <section className='flex gap-5'>
                         <div className='hidden w-1/2 space-y-5 items-center justify-center sm:flex flex-col p-6 rounded-2xl'>
                             <img src={illustration} alt="eSukuu Logo" className="w-80" />
-                            <h2 className='text-2xl text-gray-800 font-semibold font-josefinSans text-center'>Empower Your School Management Today!</h2>
+                            <h2 className='text-2xl text-gray-800 font-semibold font-josefinSans text-center dark:text-gray-200'>Empower Your School Management Today!</h2>
                             <p className='font-montserrat text-justify'>Take the first step toward seamless school management.
                                 <br />Create your admin account now and unlock a smarter way to run your institution</p>
                         </div>

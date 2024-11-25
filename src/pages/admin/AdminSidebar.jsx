@@ -4,7 +4,7 @@ import {
     LayoutDashboard,
     UserCircle,
     Users,
-    Settings,
+    Bell,
     School,
     CalendarClock,
     User,
@@ -52,7 +52,7 @@ const AdminSidebar = () => {
         {
             path: '/admin/announcements',
             name: 'Announcements',
-            icon: <Settings className="h-5 w-5" />,
+            icon: <Bell className="h-5 w-5" />,
         },
         {
             path: '/admin/profile',

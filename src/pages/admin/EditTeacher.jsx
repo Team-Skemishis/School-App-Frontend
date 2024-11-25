@@ -147,7 +147,7 @@ const EditTeacher = () => {
                             name="firstName"
                             value={teacherData.firstName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -160,7 +160,7 @@ const EditTeacher = () => {
                             name="lastName"
                             value={teacherData.lastName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -173,7 +173,7 @@ const EditTeacher = () => {
                             name="email"
                             value={teacherData.email}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required disabled
                         />
                     </div>
@@ -185,7 +185,7 @@ const EditTeacher = () => {
                             name="gender"
                             value={teacherData.gender}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select gender...</option>

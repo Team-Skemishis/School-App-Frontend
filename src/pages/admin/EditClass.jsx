@@ -102,7 +102,7 @@ const EditClass = () => {
                             name="classCategory"
                             value={classData.classCategory}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 focus:ring-2 focus:ring-blue-600"
                             required
                         >
                             <option value="">Select class category...</option>
@@ -122,7 +122,7 @@ const EditClass = () => {
                             name="classNumber"
                             value={classData.classNumber}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100  focus:ring-2 focus:ring-blue-600"
                             required
                             disabled={!classData.classCategory}
                         >
@@ -143,7 +143,7 @@ const EditClass = () => {
                             name="classTeacher"
                             value={classData.classTeacher}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100  focus:ring-2 focus:ring-blue-600"
                             required
                         >
                             <option value="">Select a teacher...</option>

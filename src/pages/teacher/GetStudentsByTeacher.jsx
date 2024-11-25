@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getOneClass } from '../../services/classes';
 import LoadingState from '@/components/shared/LoadingState';
 
-const GetStudents = () => {
+const GetStudentsByTeacher = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -101,7 +101,7 @@ const GetStudents = () => {
         <div className="flex flex-col min-h-96 justify-between">
             <div>
                 <div className='flex justify-between'>
-                    <h2 className="text-2xl font-bold mb-4">Student Database</h2>
+                    <h2 className="text-2xl font-bold mb-4">My Students</h2>
                     <div>
                         <input type="search" name="search" id="search"
                             placeholder='Search Students'
@@ -134,12 +134,12 @@ const GetStudents = () => {
                                     </div>
                                 </th>
                                 <th className="py-2 px-4 text-left">Class</th>
-                                <th className="py-2 px-4 text-left" onClick={() => requestSort('gender')}>
+                                {/* <th className="py-2 px-4 text-left" onClick={() => requestSort('gender')}>
                                     <div className="flex items-center">
                                         Gender
                                         <ArrowUpDown size={16} strokeWidth={1} className="ml-1" />
                                     </div>
-                                </th>
+                                </th> */}
                                 <th className="py-2 px-4 text-left">Actions</th>
                             </tr>
                         </thead>
@@ -151,9 +151,18 @@ const GetStudents = () => {
                                     <td className="py-4 px-4">
                                         {classNames[student.classes] || 'No Class Assigned'}
                                     </td>
-                                    <td className="py-4 px-4 capitalize">{student.gender || 'Not specified'}</td>
+                                    {/* <td className="py-4 px-4 capitalize">{student.gender || 'Not specified'}</td> */}
                                     <td className="py-4 px-4">
-                                        <div className="flex items-center space-x-2">
+                                        <div className="flex gap-4">
+                                            <button className="text-sm p-1 rounded-sm bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-300 dark:hover:bg-blue-700 transition-colors">
+                                                View Details
+                                            </button>
+                                            <button className="text-sm p-1 rounded-sm bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-700 transition-colors">
+                                                Mark Attendance
+                                            </button>
+                                        </div>
+
+                                        {/* <div className="flex items-center space-x-2">
                                             <button
                                                 className="text-blue-500 hover:text-blue-700"
                                                 onClick={() => navigate(`/admin/users/students/${student._id}`)}
@@ -173,7 +182,7 @@ const GetStudents = () => {
                                             >
                                                 <Trash className="w-5 h-5" />
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </td>
                                 </tr>
                             ))}
@@ -192,16 +201,16 @@ const GetStudents = () => {
                     ))}
                 </div>
             </div>
-            <div className="relative">
+            {/* <div className="relative">
                 <button
                     onClick={() => navigate('/admin/users/students/add')}
                     className="absolute bottom-0 right-0 bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition-colors"
                 >
                     <UserPlus className="w-7 h-7" />
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };
 
-export default GetStudents; 
+export default GetStudentsByTeacher; 

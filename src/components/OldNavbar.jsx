@@ -22,7 +22,7 @@ const OldNavbar = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
                 <div>
                     <input type="search" name="search" id="search"
                         placeholder='Search'
-                        className='w-24 sm:w-full bg-transparent border-[0.1px] hover:border-theme-color rounded-md px-2 py-1 border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-600 ' />
+                        className='w-24 sm:w-full bg-transparent border-[0.1px] hover:border-theme-color rounded-md px-2 py-1 border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 ' />
                 </div>
                 <button className='cursor-pointer w-10 h-10 text-theme-color dark:text-white bg-[#F0FFFF]  dark:bg-slate-900 hover:bg-gray-100 focus:outline-none p-2 dark:hover:bg-gray-700 rounded-full' onClick={toggleDarkMode}>{darkMode ? <Sun /> : <Moon />}</button>
                 <div className='cursor-pointer w-10 h-10 text-theme-color dark:text-white hover:bg-gray-100 focus:outline-none p-2 dark:hover:bg-gray-700 rounded-full'>

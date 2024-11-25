@@ -149,11 +149,11 @@ const EditAdminProfile = () => {
                                     />
                                 </div>
                             )}
-                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed p-2 rounded-md">
                                 <div className="space-y-1 text-center">
                                     <Upload className="mx-auto h-12 w-12 text-gray-400" />
                                     <div className="flex text-sm text-gray-600 dark:text-gray-400">
-                                        <label className="relative cursor-pointer bg-white dark:bg-gray-700 rounded-md font-medium text-blue-600 hover:text-blue-500">
+                                        <label className="relative cursor-pointer bg-white dark:bg-gray-700 p-2 rounded-md font-medium text-blue-600 hover:text-blue-500">
                                             <span>Upload a new photo</span>
                                             <input
                                                 type="file"
@@ -179,7 +179,7 @@ const EditAdminProfile = () => {
                                     name="firstName"
                                     value={profileData.firstName}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                    className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     required
                                 />
                             </div>
@@ -193,7 +193,7 @@ const EditAdminProfile = () => {
                                     name="lastName"
                                     value={profileData.lastName}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                    className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     required
                                 />
                             </div>
@@ -207,7 +207,7 @@ const EditAdminProfile = () => {
                                     name="schoolName"
                                     value={profileData.schoolName}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                    className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                 />
                             </div>
 
@@ -219,7 +219,7 @@ const EditAdminProfile = () => {
                                     type="email"
                                     name="email"
                                     value={profileData.email}
-                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                    className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     disabled
                                 />
                             </div>
@@ -238,7 +238,7 @@ const EditAdminProfile = () => {
                                         name="currentPassword"
                                         value={profileData.currentPassword}
                                         onChange={handleChange}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                        className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     />
                                 </div>
 
@@ -251,7 +251,7 @@ const EditAdminProfile = () => {
                                         name="newPassword"
                                         value={profileData.newPassword}
                                         onChange={handleChange}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                        className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     />
                                 </div>
 
@@ -264,7 +264,7 @@ const EditAdminProfile = () => {
                                         name="confirmNewPassword"
                                         value={profileData.confirmNewPassword}
                                         onChange={handleChange}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                        className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
                                     />
                                 </div>
                             </div>
@@ -275,14 +275,14 @@ const EditAdminProfile = () => {
                             <button
                                 type="button"
                                 onClick={() => navigate('/admin/profile')}
-                                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 p-2 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent p-2 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             >
                                 {loading ? 'Saving...' : 'Save Changes'}
                             </button>

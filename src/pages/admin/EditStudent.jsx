@@ -125,7 +125,7 @@ const EditStudent = () => {
                             name="firstName"
                             value={studentData.firstName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -139,7 +139,7 @@ const EditStudent = () => {
                             name="lastName"
                             value={studentData.lastName}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         />
                     </div>
@@ -153,7 +153,7 @@ const EditStudent = () => {
                             name="email"
                             value={studentData.email}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                             disabled
                         />
@@ -167,7 +167,7 @@ const EditStudent = () => {
                             name="gender"
                             value={studentData.gender}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select gender...</option>
@@ -184,7 +184,7 @@ const EditStudent = () => {
                             name="classes"
                             value={studentData.classes}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 "
                             required
                         >
                             <option value="">Select a class...</option>

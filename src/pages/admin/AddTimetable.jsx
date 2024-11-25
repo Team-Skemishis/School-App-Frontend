@@ -81,7 +81,7 @@ const AddTimetable = () => {
                             name="classes"
                             value={timetableData.classes}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         >
                             <option value="">Select a class...</option>
@@ -99,7 +99,7 @@ const AddTimetable = () => {
                             name="teacher"
                             value={timetableData.teacher}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         >
                             <option value="">Select a teacher...</option>
@@ -117,7 +117,7 @@ const AddTimetable = () => {
                             name="day"
                             value={timetableData.day}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         >
                             <option value="">Select a day...</option>
@@ -136,7 +136,7 @@ const AddTimetable = () => {
                             name="startTime"
                             value={timetableData.startTime}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         />
                     </div>
@@ -148,7 +148,7 @@ const AddTimetable = () => {
                             name="endTime"
                             value={timetableData.endTime}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         />
                     </div>
@@ -160,7 +160,7 @@ const AddTimetable = () => {
                             name="subject"
                             value={timetableData.subject}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                             required
                         />
                     </div>

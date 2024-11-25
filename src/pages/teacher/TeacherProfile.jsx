@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../../context/UserContext';
 import { getOneUser } from '../../services/users';
-import { Mail, User as UserIcon, Key, X } from 'lucide-react';
+import { Mail, User as UserIcon, Key, X, Eye, EyeOff } from 'lucide-react';
 import { changePassword } from '../../services/auth';
 import LoadingState from '@/components/shared/LoadingState';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const TeacherProfile = () => {
     const { user } = useUser();
@@ -37,6 +40,12 @@ const TeacherProfile = () => {
             newPassword: '',
             confirmNewPassword: ''
         });
+
+        const [showPassword, setShowPassword] = useState({
+            currentPassword: false,
+            newPassword: false,
+            confirmNewPassword: false
+        });
         const [localError, setLocalError] = useState('');
         const [localSuccess, setLocalSuccess] = useState('');
 
@@ -48,6 +57,14 @@ const TeacherProfile = () => {
             // Validate passwords
             if (!localPasswordData.currentPassword) {
                 setLocalError('Current password is required');
+                toast.error("Current password is required", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
                 return;
             }
             if (!localPasswordData.newPassword) {
@@ -79,18 +96,49 @@ const TeacherProfile = () => {
                     newPassword: '',
                     confirmNewPassword: ''
                 });
+
+                toast.success("Password changed successfully!", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+
                 setTimeout(() => {
+                    setLoading(false);
                     setShowPasswordModal(false);
                     setLocalSuccess('');
                 }, 2000);
+
             } catch (error) {
                 console.error('Error changing password:', error);
                 setLocalError(error.response?.data?.message || 'Failed to change password');
             }
         };
 
+        const togglePasswordVisibility = (field) => {
+            setShowPassword((prev) => ({
+                ...prev,
+                [field]: !prev[field]
+            }));
+        };
+
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
                 <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6 relative">
                     <button
                         onClick={() => setShowPasswordModal(false)}
@@ -114,12 +162,12 @@ const TeacherProfile = () => {
                     )}
 
                     <form onSubmit={handleLocalSubmit} className="space-y-4">
-                        <div>
+                        <div className="relative">
                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 Current Password
                             </label>
                             <input
-                                type="password"
+                                type={showPassword.currentPassword ? 'text' : 'password'}
                                 value={localPasswordData.currentPassword}
                                 onChange={(e) => setLocalPasswordData(prev => ({
                                     ...prev,
@@ -128,14 +176,21 @@ const TeacherProfile = () => {
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                                 required
                             />
+                            <button
+                                type="button"
+                                onClick={() => togglePasswordVisibility('currentPassword')}
+                                className="absolute inset-y-0 pt-6 right-4 flex items-center text-gray-500 dark:text-gray-400"
+                            >
+                                {showPassword.currentPassword ? <EyeOff /> : <Eye />}
+                            </button>
                         </div>
 
-                        <div>
+                        <div className="relative">
                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 New Password
                             </label>
                             <input
-                                type="password"
+                                type={showPassword.newPassword ? 'text' : 'password'}
                                 value={localPasswordData.newPassword}
                                 onChange={(e) => setLocalPasswordData(prev => ({
                                     ...prev,
@@ -144,14 +199,21 @@ const TeacherProfile = () => {
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                                 required
                             />
+                            <button
+                                type="button"
+                                onClick={() => togglePasswordVisibility('newPassword')}
+                                className="absolute inset-y-0 pt-6 right-4 flex items-center text-gray-500 dark:text-gray-400"
+                            >
+                                {showPassword.newPassword ? <EyeOff /> : <Eye />}
+                            </button>
                         </div>
 
-                        <div>
+                        <div className="relative">
                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 Confirm New Password
                             </label>
                             <input
-                                type="password"
+                                type={showPassword.confirmNewPassword ? 'text' : 'password'}
                                 value={localPasswordData.confirmNewPassword}
                                 onChange={(e) => setLocalPasswordData(prev => ({
                                     ...prev,
@@ -160,6 +222,13 @@ const TeacherProfile = () => {
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                                 required
                             />
+                            <button
+                                type="button"
+                                onClick={() => togglePasswordVisibility('confirmNewPassword')}
+                                className="absolute inset-y-0 pt-6 right-4 flex items-center text-gray-500 dark:text-gray-400"
+                            >
+                                {showPassword.confirmNewPassword ? <EyeOff /> : <Eye />}
+                            </button>
                         </div>
 
                         <button

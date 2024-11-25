@@ -7,7 +7,7 @@ import { LogOut } from 'lucide-react';
 import logo from '../../assets/images/eSukuu-colored.png'
 
 
-const BaseSidebar = ({ navItems, role }) => {
+const BaseSidebar = ({ navItems }) => { // took out role from the parameters i'm passing into BaseSidebar...
     const location = useLocation();
     const navigate = useNavigate();
 

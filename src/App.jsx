@@ -39,7 +39,7 @@ import TimetableDetails from "./pages/admin/TimetableDetails";
 // Teacher Components
 import TeacherDashboard from './pages/teacher/TeacherDashboard';
 import TeacherProfile from './pages/teacher/TeacherProfile';
-import TeacherStudents from './pages/teacher/TeacherStudents';
+// import TeacherStudents from './pages/teacher/TeacherStudents';
 import TeacherClasses from './pages/teacher/TeacherClasses';
 import TeacherSchedule from './pages/teacher/TeacherSchedule';
 import GetAssignments from './pages/teacher/GetAssignments';
@@ -65,6 +65,7 @@ import StudentAnnouncements from "./pages/student/StudentAnnouncements";
 import EditAdminProfile from "./pages/admin/EditAdminProfile";
 import StudentAssignments from "./pages/student/StudentAssignments";
 import ManageParents from "./pages/admin/ManageParents";
+import GetStudentsByTeacher from "./pages/teacher/GetStudentsByTeacher";
 
 
 
@@ -115,7 +116,7 @@ const App = () => {
         {/* Teacher routes */}
         <Route path="/teacher/*" element={<TeacherLayout />}>
           <Route path="dashboard" element={<TeacherDashboard />} />
-          <Route path="students" element={<TeacherStudents />} />
+          <Route path="students" element={<GetStudentsByTeacher />} />
           <Route path="classes" element={<TeacherClasses />} />
           <Route path="schedule" element={<TeacherSchedule />} />
           <Route path="assignments" element={<GetAssignments />} />
