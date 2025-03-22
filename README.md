@@ -12,18 +12,22 @@ It provides an intuitive and fully responsive interface alongside a robust backe
 - Assign roles and permissions with role-based access control
 - Oversee class schedules and school activities
 
+
 🔹 **For Teachers: 👨‍🏫**
 - Access and manage assigned courses and student records
 - Communicate with students and parents via the built-in mail system
+
 
 🔹 **For Students: 🙋🏻‍♂️**
 - View schedules, grades, and announcements
 - Receive important school updates
 
+
 🔹 **For  Parents/Guardians: 👨‍👩‍👦**
 - Track the performance of their wards
 - Receive important school updates
 - Stay in touch with Teachers and School Authorities
+
 
 ## 🛠️ TECH STACK
 
@@ -33,9 +37,11 @@ It provides an intuitive and fully responsive interface alongside a robust backe
 - **Authentication:** JWT-based authentication & role-based access control
 - **Other Tools:** React Router, Unsplash
 
+
 ## 🔗 LIVE DEMO
 
 Check out the live version here: https://schoolmgtwebapp.netlify.app/
+
 
 ## 📸 SCREENSHOTS
 
@@ -49,16 +55,19 @@ _Home Page of eSukuu_
 ![Favorites & Footer Section](...)  
 _Favorites and Footer Section_
 
+
 ## 🤝 CONTRIBUTORS
 
 - Michael Agyemang Prempeh – Frontend Developer
 - Romeo Asante – Backend Developer
+
 
 ## 📩 FEEDBACK / COMMENTS / CONTRIBUTIONS
 
 We’d love to hear your feedback! Feel free to open an issue or contribute to the project by submitting a pull request. Or you can dm us via...
 - agyemangmichael555@gmail.com
 - romeoasante66@gmail.com
+
 
 ## 📦 INSTALLATION & SETUP
 
