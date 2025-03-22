@@ -58,8 +58,8 @@ _Favorites and Footer Section_
 
 ## 🤝 CONTRIBUTORS
 
-- Michael Agyemang Prempeh – Frontend Developer
-- Romeo Asante – Backend Developer
+- https://github.com/RemedyOnline - Michael Agyemang Prempeh – Frontend Developer
+- https://github.com/roblack66 - Romeo Asante – Backend Developer
 
 
 ## 📩 FEEDBACK / COMMENTS / CONTRIBUTIONS
